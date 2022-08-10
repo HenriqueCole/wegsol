@@ -1,9 +1,18 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+const { initializeApp } = require('firebase/app');
+const {
+    getFirestore,
+    collection,
+    doc,
+    setDoc,
+    addDoc,
+    query,
+    where,
+    getDocs,
+    getDoc,
+    deleteDoc
+} = require("firebase/firestore/lite");
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyB60rXqOs2WuO_Sa4rSbabAjh6kccwG2-Y",
   authDomain: "tear-system.firebaseapp.com",
@@ -13,5 +22,69 @@ const firebaseConfig = {
   appId: "1:167425157602:web:0d152536885b72c3bd31bb"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+const db = getFirestore();
+
+async function save(nomeTabela, id, dado) {
+    if (id) {
+        const referencedEntity = await setDoc(doc(db, nomeTabela, id), dado);
+        const savedData = {
+            ...dado,
+            id: id
+        }
+        return savedData;
+    } else {
+        const referencedEntity = await addDoc(collection(db, nomeTabela), dado);
+        const savedData = {
+            ...dado,
+            id: referencedEntity.id
+        }
+        return savedData;
+    }
+}
+
+async function get(nomeTabela) {
+    const tableRef = collection(db, nomeTabela);
+
+    const q = query(tableRef);
+
+    const querySnapshot = await getDocs(q);
+
+    const lista = [];
+
+    querySnapshot.forEach((doc) => {
+        const data = {
+            ...doc.data(),
+            id: doc.id
+        }
+        lista.push(data);
+    })
+
+    return lista;
+}
+
+async function getById(nomeTabela, id) {
+    const docRef = doc(db, nomeTabela, id);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        return docSnap.data();
+    } else {
+        return new Error("Not found!");
+    }
+}
+
+async function remove(nomeTabela, id) {
+    const dado = await deleteDoc(doc(db, nomeTabela, id));
+    return {
+        message: `${id} deleted!`
+    }
+}
+
+module.exports = {
+    save,
+    get,
+    getById,
+    remove
+}

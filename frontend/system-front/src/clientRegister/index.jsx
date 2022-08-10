@@ -11,14 +11,18 @@ export default function clientRegister() {
             <span>Cadastrar cliente</span>
           </div>
           <div className="containerInputs">
-            <div className="containerLabelName">
+
+
+            <label>
               <span>Nome:</span>
               <input type="text" />
-            </div>
-            <div className="containerLabelCnpj">
+            </label>
+
+
+            <label>
               <span>CNPJ:</span>
               <input type="text" />
-            </div>
+            </label>
           </div>
           <div className="containerButton">
             <button>Concluir</button>

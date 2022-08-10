@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    width: 50%;
+    background-color: #636363;
+    padding: 50px;
+}
+
+.quadrado-cima {
+    height: 200px;
+    background-color: #414141;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+
+    &:hover {
+        background-color: #242424;
+    }
+}
+
+.quadrados {
+    display: flex;
+    justify-content: space-between;
+
+    .quadrado-esquerda,
+    .quadrado-direita {
+
+        width: 48%;
+        height: 200px;
+        background-color: #414141;
+        border-radius: 5px;
+
+        &:hover {
+            background-color: #242424;
+        }
+    }
+}

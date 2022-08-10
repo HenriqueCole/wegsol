@@ -1,46 +1,43 @@
-<<<<<<< Updated upstream
 body {
-    margin: 0;
-    width: 50%;
-    background-color: #636363;
-    padding: 50px;
+  margin: 0;
+  width: 50%;
+  background-color: #636363;
+  padding: 50px;
 }
 
 .quadrado-cima {
-    height: 200px;
-    background-color: #414141;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
+  height: 200px;
+  background-color: #414141;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
 
-    &:hover {
-        background-color: #242424;
-    }
+  &:hover {
+    background-color: #242424;
+  }
 }
 
 .quadrados {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 
-    .quadrado-esquerda,
-    .quadrado-direita {
+  .quadrado-esquerda,
+  .quadrado-direita {
+    width: 48%;
+    height: 200px;
+    background-color: #414141;
+    border-radius: 5px;
 
-        width: 48%;
-        height: 200px;
-        background-color: #414141;
-        border-radius: 5px;
-
-        &:hover {
-            background-color: #242424;
-        }
+    &:hover {
+      background-color: #242424;
     }
-=======
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+  }
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
->>>>>>> Stashed changes
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+  }
 }

@@ -23,68 +23,65 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
 const db = getFirestore();
 
-async function save(nomeTabela, id, dado) {
+async function salvar(nomeTabela, id, dado) {
     if (id) {
-        const referencedEntity = await setDoc(doc(db, nomeTabela, id), dado);
-        const savedData = {
+        const referencia = await setDoc(doc(db, nomeTabela, id), dado);
+        const dadoSalvo = {
             ...dado,
             id: id
         }
-        return savedData;
+        return dadoSalvo;
     } else {
-        const referencedEntity = await addDoc(collection(db, nomeTabela), dado);
-        const savedData = {
+        const referencia = await addDoc(collection(db, nomeTabela), dado);
+        const dadoSalvo = {
             ...dado,
-            id: referencedEntity.id
+            id: referencia.id
         }
-        return savedData;
+        return dadoSalvo;
     }
 }
 
-async function get(nomeTabela) {
-    const tableRef = collection(db, nomeTabela);
+async function buscar(nomeTabela) {
+    const tabelaReferencia = collection(db, nomeTabela);
 
-    const q = query(tableRef);
+    const q = query(tabelaReferencia);
 
     const querySnapshot = await getDocs(q);
 
     const lista = [];
 
     querySnapshot.forEach((doc) => {
-        const data = {
+        const dado = {
             ...doc.data(),
             id: doc.id
         }
-        lista.push(data);
-    })
-
+        lista.push(dado);
+    });
     return lista;
 }
 
-async function getById(nomeTabela, id) {
+async function buscarPorId(nomeTabela, id) {
     const docRef = doc(db, nomeTabela, id);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
         return docSnap.data();
     } else {
-        return new Error("Not found!");
+        return new Error("ERRO!");
     }
 }
-
-async function remove(nomeTabela, id) {
+async function remover(nomeTabela, id) {
     const dado = await deleteDoc(doc(db, nomeTabela, id));
     return {
-        message: `${id} deleted!`
+        message: `${id} deletado!`
     }
 }
 
 module.exports = {
-    save,
-    get,
-    getById,
-    remove
+    salvar,
+    buscar,
+    buscarPorId,
+    remover
 }

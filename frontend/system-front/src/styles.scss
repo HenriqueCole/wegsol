@@ -76,6 +76,19 @@ label {
     border: none;
     background-color: #D9D9D9;
   }
+
+  textarea {
+    max-width: 800px;
+    min-width: 100%;
+    padding: 10px;
+    max-height: 100px;
+    min-height: 100px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: #000;
+    background-color: #D9D9D9;
+  }
 }
 
 .flex {
@@ -84,7 +97,7 @@ label {
   }
 }
 
-.quantidade{
+.quantidade {
   margin-bottom: 10px;
   margin-top: 10px;
   font-size: 20px;
@@ -100,4 +113,31 @@ label {
   input {
     width: auto;
   }
+}
+
+.quantidade {
+
+  input {
+    width: 40px;
+    background-color: transparent;
+    color: #fff;
+  }
+
+  .mais,
+  .menos {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+
+    &:hover{
+      background-color: #ca3e47;
+    }
+  }
+
+  display: flex;
+  align-items: center;
 }

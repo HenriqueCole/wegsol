@@ -2,22 +2,21 @@ import React from "react";
 
 import "./styles.scss";
 
-export default function clientRegister() {
+export default function machineRegister() {
   return (
-    <div className="containerPageClientRegister">
+    <div className="containerPageMachineRegister">
       <main>
         <div className="containerModalRegister">
           <div className="headerModal">
-            <span>Cadastrar cliente</span>
+            <span>Cadastrar máquina</span>
           </div>
           <div className="containerInputs">
             <label>
               <span>Nome:</span>
               <input type="text" />
             </label>
-
             <label>
-              <span>CNPJ:</span>
+              <span>Marca:</span>
               <input type="text" />
             </label>
           </div>

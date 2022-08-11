@@ -1,6 +1,8 @@
 import React from "react";
 import Sidebar from "../Components/sidebar";
 
+import "./styles.scss";
+
 export default function App() {
   return (
     <div className="containerPageHome">

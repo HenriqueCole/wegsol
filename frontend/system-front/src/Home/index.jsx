@@ -1,5 +1,4 @@
 import React from "react";
-import "./styles.scss";
 import Sidebar from "../Components/sidebar";
 
 export default function App() {

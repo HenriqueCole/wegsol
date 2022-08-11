@@ -3,6 +3,9 @@ import ReactDOM from "react-dom/client";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+
+import Sidebar from "./Components/sidebar";
+
 import Home from "./Home";
 import ClientRegister from "./clientRegister";
 import MachineRegister from "./machineRegister";
@@ -21,7 +24,8 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+       
+        <Route path="/sidebar" element={<Sidebar />} />
       </Routes>
 
       <Routes>

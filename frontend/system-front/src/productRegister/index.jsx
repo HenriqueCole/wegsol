@@ -8,7 +8,7 @@ export default function clientRegister() {
       <main>
         <div className="form">
           <div className="headerModal">
-            <span>Cadastrar cliente</span>
+            <span>Cadastrar Produto</span>
           </div>
           <div className="containerInputs">
             <label>

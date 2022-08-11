@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import ClientRegister from "./clientRegister";
 import MachineRegister from "./machineRegister";
+import ProductRegister from "./productRegister"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -21,6 +22,10 @@ root.render(
 
       <Routes>
         <Route path="/machineRegister" element={<MachineRegister />} />
+      </Routes>
+
+      <Routes>
+        <Route path="/productRegister" element={<ProductRegister />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

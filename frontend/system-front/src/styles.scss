@@ -77,3 +77,18 @@ label {
     border: none;
   }
 }
+
+.flex{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  label{
+    width: 49%;
+  }
+
+  input{
+    width: auto;
+  }
+}

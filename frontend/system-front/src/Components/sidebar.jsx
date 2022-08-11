@@ -14,12 +14,12 @@ import Malha1 from "../assets/padrao-de-tecido 1.png"
 import Producao from "../assets/linha-de-montagem 1.png";
 
 export default function App() {
-    return(
+    return (
         <div className="entireContainer">
             <div className="sidebarContainer">
                 <div className="homeContainer">
                     <div className="icon-home">
-                         <img src={Casa} className="icon-home-main" />
+                        <img src={Casa} className="icon-home-main" />
                     </div>
                     <div className="text-home">
                         <p className="text-home-main">Home</p>

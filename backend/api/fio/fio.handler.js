@@ -7,7 +7,7 @@ async function buscarFios() {
 }
 
 async function buscarFio(id) {
-    if (idExiste(id))
+    if (await idExiste(id))
         return await crud.buscarPorId(tabelaFio, id);
     return `ID inválido!`
 }
@@ -17,14 +17,14 @@ async function criarFio(fio) {
 }
 
 async function atualizarFio(id, fioAtualizado) {
-    if (!idExiste(id))
+    if (!await idExiste(id))
         return `ID inválido!`
 
     return await crud.salvar(tabelaFio, id, fioAtualizado);
 }
 
 async function deletarFio(id) {
-    if (!idExiste(id))
+    if (!await idExiste(id))
         return `ID inválido!`
 
     return await crud.remover(tabelaFio, id);

@@ -7,7 +7,7 @@ async function buscarSaidas_De_Malhas() {
 }
 
 async function buscarSaidas_De_MalhasEspecifico(id) {
-    if (idExiste(id))
+    if (await idExiste(id))
         return await crud.buscarPorId(tabelaSaidas_De_Malhas, id);
     return `ID inválido!`
 }
@@ -20,7 +20,7 @@ async function criarSaidas_De_Malhas(saida_de_malha) {
 }
 
 async function atualizarSaidas_De_Malhas(id, saida_de_malhaAtualizado) {
-    if (!idExiste(id))
+    if (!await idExiste(id))
         return `ID inválido!`
 
     if (saida_de_malhaTemPropriedades(saida_de_malha) || Object.values(saida_de_malha).length != 3)
@@ -30,7 +30,7 @@ async function atualizarSaidas_De_Malhas(id, saida_de_malhaAtualizado) {
 }
 
 async function deletarSaidas_De_Malhas(id) {
-    if (!idExiste(id))
+    if (!await idExiste(id))
         return `ID inválido!`
         
     return await crud.remover(tabelaSaidas_De_Malhas, id);

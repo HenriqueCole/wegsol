@@ -7,7 +7,7 @@ async function buscarFornecedores() {
 }
 
 async function buscarFornecedor(id) {
-    if (idExiste(id))
+    if (await idExiste(id))
         return await crud.buscarPorId(tabelaFornecedor, id);
     return `ID inválido!`
 }
@@ -23,7 +23,7 @@ async function criarFornecedor(fornecedor) {
 }
 
 async function atualizarFornecedor(id, fornecedorAtualizado) {
-    if (!idExiste(id))
+    if (!await idExiste(id))
         return `ID inválido!`
 
     if (!(fornecedor.nome && fornecedor.cnpj) || Object.values(fornecedor).length != 2)
@@ -33,7 +33,7 @@ async function atualizarFornecedor(id, fornecedorAtualizado) {
 }
 
 async function deletarFornecedor(id) {
-    if (!idExiste(id))
+    if (!await idExiste(id))
         return `ID inválido!`
 
     return await crud.remover(tabelaFornecedor, id);

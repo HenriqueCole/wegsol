@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../styles.scss"
+import "../styles.scss";
 
 export default function clientRegister() {
   return (
@@ -31,7 +31,6 @@ export default function clientRegister() {
               <span>Nome:</span>
               <input type="text" />
             </label>
-
             <label>
               <span>CNPJ:</span>
               <input type="text" />

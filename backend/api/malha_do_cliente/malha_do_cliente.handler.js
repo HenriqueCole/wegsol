@@ -1,7 +1,12 @@
 const { async } = require('@firebase/util');
 const crud = require('../../crud/server');
 
+const clientes = await crud.buscar("cliente");
+const malhas = await crud.buscar("malha");
+
 async function criarMalha_Do_Cliente(req, res){
+    const malhaCliente = req.body;
+    //fazer condição
     const dados = await crud.salvar("malha", null,
     req.body);
     return dados;

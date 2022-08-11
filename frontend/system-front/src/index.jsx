@@ -10,6 +10,11 @@ import ProductRegister from "./productRegister";
 import ProviderRegister from "./providerRegister";
 import MeshRegister from "./meshRegister";
 import WireRegister from "./wireRegister";
+import EmployeeRegister from "./employeeRegister";
+import LeaveMesh from "./leaveMesh";
+import AddLeaveMesh from "./addLeaveMesh";
+import EnterWire from "./enterWire";
+import ProductionScreen from "./productionScreen";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -41,6 +46,26 @@ root.render(
 
       <Routes>
         <Route path="/wireRegister" element={<WireRegister />} />
+      </Routes>
+
+      <Routes>
+        <Route path="/leaveMesh" element={<LeaveMesh />} />
+      </Routes>
+
+      <Routes>
+        <Route path="/addLeaveMesh" element={<AddLeaveMesh />} />
+      </Routes>
+
+      <Routes>
+        <Route path="/employeeRegister" element={<EmployeeRegister />} />
+      </Routes>
+
+      <Routes>
+        <Route path="/enterWire" element={<EnterWire />} />
+      </Routes>
+
+      <Routes>
+        <Route path="/productionScreen" element={<ProductionScreen />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

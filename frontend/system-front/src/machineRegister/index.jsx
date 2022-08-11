@@ -1,12 +1,12 @@
 import React from "react";
+import "../styles.scss"
 
-import "./styles.scss";
 
 export default function machineRegister() {
   return (
-    <div className="containerPageMachineRegister">
+    <div className="container">
       <main>
-        <div className="containerModalRegister">
+        <div className="form">
           <div className="headerModal">
             <span>Cadastrar máquina</span>
           </div>

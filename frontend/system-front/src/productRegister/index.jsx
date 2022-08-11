@@ -2,29 +2,51 @@ import React from "react";
 
 import "../styles.scss";
 
-export default function clientRegister() {
-  return (
-    <div className="container">
-      <main>
-        <div className="form">
-          <div className="headerModal">
-            <span>Cadastrar Produto</span>
-          </div>
-          <div className="containerInputs">
-            <label>
-              <span>Nome:</span>
-              <input type="text" />
-            </label>
-            <label>
-              <span>CNPJ:</span>
-              <input type="text" />
-            </label>
-          </div>
-          <div className="containerButton">
-            <button>Concluir</button>
-          </div>
+export default function productRegister() {
+    return (
+        <div className="container">
+            <main>
+                <div className="form">
+                    <div className="headerModal">
+                        <span>Cadastrar Produto</span>
+                    </div>
+                    <div className="containerInputs">
+                        <label>
+                            <span>Descrição:</span>
+                            <textarea cols="30" rows="10"></textarea>
+                        </label>
+
+                        <label>
+                            <span>Quantidade:</span>
+                            <div className="quantidade">
+                                <div className="menos">-</div>
+                                <input type="text" value={0}/>
+                                <div className="mais">+</div>
+                            </div>
+                        </label>
+
+                        <label>
+                            <span>Valor Total:</span>
+                            <input type="text" />
+                        </label>
+
+                        <label>
+                            <span>Anexo NF:</span>
+                            <input type="file" />
+                        </label>
+
+                        <label>
+                            <span>Fornecedor:</span>
+                            <input type="text" />
+                        </label>
+
+
+                    </div>
+                    <div className="containerButton">
+                        <button>Concluir</button>
+                    </div>
+                </div>
+            </main>
         </div>
-      </main>
-    </div>
-  );
+    );
 }

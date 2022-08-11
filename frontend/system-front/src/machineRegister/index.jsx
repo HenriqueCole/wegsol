@@ -47,31 +47,31 @@ export default function machineRegister() {
             </div>
           </div>
 
-          <p>Quantidades</p>
+          <p className="quantidade">Quantidades</p>
 
-          <div className="flex">
+          <div className="flex-5">
             <label>
-              <span>RPM:</span>
+              <span>Agulhas:</span>
               <input type="text" />
             </label>
 
             <label>
-              <span>RPM:</span>
+              <span>Platinas:</span>
               <input type="text" />
             </label>
 
             <label>
-              <span>RPM:</span>
+              <span>Blocos:</span>
               <input type="text" />
             </label>
 
             <label>
-              <span>RPM:</span>
+              <span>Gaiolas:</span>
               <input type="text" />
             </label>
 
             <label>
-              <span>RPM:</span>
+              <span>Cones:</span>
               <input type="text" />
             </label>
           </div>

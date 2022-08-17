@@ -41,10 +41,18 @@ async function buscarProducoes(){
 async function deletarProducao(req, res){
     const producao = await crud.buscar("producao"); 
     if(producao.findIndex(c => c.idPRODUCAO == req.params.idPRODUCAO) != -1){
-    const dados = await crud.deletar("cliente", req.params.id);
-    return dados;
+    await crud.deletar("cliente", req.params.id);
     }else{
         res.status(404).send("id inválido");
+    }
+}
+
+async function editarProducao(req, res){
+    const producao = await crud.buscar("producao");
+    if(producao.findIndex(c => c.idPRODUCAO == req.params.idPRODUCAO)!= -1){   
+        await crud.deletar("cliente", req.params.id);
+    }else{
+        return await "id inválido!";
     }
 }
 
@@ -52,5 +60,6 @@ module.exports = {
     criarProducao,
     buscarProducao,
     buscarProducoes,
-    deletarProducao
+    deletarProducao,
+    editarProducao
 }

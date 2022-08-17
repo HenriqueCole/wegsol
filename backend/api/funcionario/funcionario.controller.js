@@ -3,20 +3,24 @@ const router = express.Router();
 
 const funcionarioHandler = require("./funcionario.handler");
 
-router.get("/cliente", (req, res) => {
+router.get("/", (req, res) => {
     funcionarioHandler.buscarFuncionarios().then(dados => res.send(dados));
 })
 
-router.get('/cliente/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     funcionarioHandler.buscarFuncionario().then(dados => res.send(dados));
 })
 
-router.post("/cliente", (req, res) => {   
+router.post("/", (req, res) => {   
     funcionarioHandler.criarFuncionario(req, res).then(dados => res.json(dados));
 })
 
-router.delete("/cliente/deletar/:id", (req, res) => {   
+router.delete("/:id", (req, res) => {   
     funcionarioHandler.deletarFuncionario(req, res).then(dados => res.json(dados));
+})
+
+router.put("/:id", (req, res) => {   
+    funcionarioHandler.editarFuncionario(req, res).then(dados => res.json(dados));
 })
 
 module.exports = router;

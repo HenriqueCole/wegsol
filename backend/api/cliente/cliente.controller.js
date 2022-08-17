@@ -3,20 +3,24 @@ const router = express.Router();
 
 const clienteHandler = require("./cliente.handler");
 
-router.get("/cliente", (req, res) => {
+router.get("/", (req, res) => {
     clienteHandler.buscarCliente().then(dados => res.send(dados));
 })
 
-router.get('/cliente/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     clienteHandler.buscarCliente().then(dados => res.send(dados));
 })
 
-router.post("/cliente", (req, res) => {   
+router.post("/", (req, res) => {   
     clienteHandler.criarCliente(req, res).then(dados => res.json(dados));
 })
 
-router.delete("/cliente/deletar/:id", (req, res) => {   
-    clienteHandler.deletarUsuario(req, res).then(dados => res.json(dados));
+router.delete("/:id", (req, res) => {   
+    clienteHandler.deletarCliente(req, res).then(dados => res.json(dados));
+})
+
+router.put("/:id", (req, res) => {   
+    clienteHandler.editarCliente(req, res).then(dados => res.json(dados));
 })
 
 module.exports = router;

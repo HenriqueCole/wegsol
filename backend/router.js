@@ -11,6 +11,11 @@ const possui_produto = require("./api/possui_produto/possui_produto.controller")
 const possui_malha = require("./api/possui_malha/possui_malha.controller");
 const malha = require("./api/malha/malha.controller");
 const fios_da_malha = require("./api/fios_da_malha/fios_da_malha.controller");
+const cliente = require("./api/cliente/cliente.controller");
+const funcionario = require("./api/funcionario/funcionario.controller");
+const maquina = require("./api/maquina/maquina.controller");
+const producao = require("./api/producao/producao.controller");
+const malha_do_cliente = require("./api/malha_do_cliente/malha_do_cliente.controller");
 
 router.use("/fornecedor", fornecedor);
 router.use("/fio", fio);
@@ -22,5 +27,10 @@ router.use("/malha", malha);
 router.use("/possui_malha", possui_malha);
 router.use("/possui_produto", possui_produto);
 router.use("/produto", produto);
+router.use("/cliente", cliente);
+router.use("/funcionario", funcionario);
+router.use("/maquina", maquina);
+router.use("/producao", producao);
+router.use("/malha_do_cliente", malha_do_cliente);
 
 module.exports = router;

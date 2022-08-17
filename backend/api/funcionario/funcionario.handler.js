@@ -27,8 +27,17 @@ async function buscarFuncionario(){
 
 async function deletarFuncionario(req, res){
     const funcionario = await crud.buscar("cliente"); 
-    if(funcionario.findIndex(c => c.idFUNCIONARIO == req.params.idFUNCIONARIO) != -1){
+    if(funcionario.findIndex(c => c.idFUNCIONARIO == req.params.id) != -1){
     return await crud.deletar("cliente", req.params.id);
+    }else{
+        return await "id inválido!";
+    }
+}
+
+async function editarFuncionario(req, res){
+    const funcionario = await crud.buscar("funcionario");
+    if(funcionario.findIndex(c => c.idFUNCIONARIO == req.params.id) != -1){
+        return await crud.editar("funcionario", req.params.id, req.body);
     }else{
         return await "id inválido!";
     }
@@ -38,5 +47,6 @@ module.exports = {
     criarFuncionario,
     buscarFuncionarios,
     buscarFuncionario,
-    deletarFuncionario
+    deletarFuncionario,
+    editarFuncionario
 }

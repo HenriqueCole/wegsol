@@ -1,12 +1,12 @@
-const { async } = require('@firebase/util');
 const crud = require('../../crud/server');
-
-const clientes = await crud.buscar("cliente");
-const maquinas = await crud.buscar("maquina");
-const funcionarios = await crud.buscar("funcionario");
 
 async function criarProducao(req, res){
     const producao = req.body;
+
+    const clientes = await crud.buscar("cliente");
+    const maquinas = await crud.buscar("maquina");
+    const funcionarios = await crud.buscar("funcionario");
+
     if(producao.kgRoloMalha != "" && producao.defeito != "" && producao.idCliente != "" && producao.idMaquina != ""
         && producao.idFuncionario != ""){
             if(clientes.findIndex(c => c.id == producao.idCliente != -1)){
@@ -50,7 +50,7 @@ async function deletarProducao(req, res){
 async function editarProducao(req, res){
     const producao = await crud.buscar("producao");
     if(producao.findIndex(c => c.idPRODUCAO == req.params.idPRODUCAO)!= -1){   
-        await crud.deletar("cliente", req.params.id);
+        return await crud.deletar("cliente", req.params.id);
     }else{
         return await "id inválido!";
     }

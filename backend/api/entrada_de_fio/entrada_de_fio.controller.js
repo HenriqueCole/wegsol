@@ -22,3 +22,5 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
     res.json(await entrada_de_fio.deletarEntrada_De_Fio(req.params.id));
 });
+
+module.exports = router

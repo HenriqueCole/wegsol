@@ -1,4 +1,3 @@
-const { async } = require('@firebase/util');
 const crud = require('../../crud/server');
 
 async function criarMaquina(req, res){
@@ -30,9 +29,19 @@ async function deletarMaquina(req, res){
     }
 }
 
+async function editarMaquina(req, res){
+    const maquina = await crud.buscar("maquina");
+    if(maquina.findIndex(c => c.idMAQUINA == req.params.idMAQUINA)!=-1){
+        return await crud.deletar("cliente", req.params.id);
+    }else{
+        res.status(404).send("id inválido");
+    }
+}
+
 module.exports = {
     criarMaquina,
     buscarMaquina,
     buscarMaquinas,
-    deletarMaquina
+    deletarMaquina,
+    editarMaquina
 }

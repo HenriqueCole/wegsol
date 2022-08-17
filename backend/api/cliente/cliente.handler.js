@@ -1,4 +1,3 @@
-const { async } = require('@firebase/util');
 const crud = require('../../crud/server');
 
 async function criarCliente(req, res){

@@ -22,3 +22,5 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
     res.json(await fornecedorHandler.deletarFornecedor(req.params.id));
 });
+
+module.exports = router

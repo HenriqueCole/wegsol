@@ -19,4 +19,8 @@ router.delete("/cliente/deletar/:id", (req, res) => {
     maquinaHandler.deletarMaquina(req, res).then(dados => res.json(dados));
 })
 
+router.put("/cliente/deletar/:id", (req, res) => {   
+    maquinaHandler.editarMaquina(req, res).then(dados => res.json(dados));
+})
+
 module.exports = router;

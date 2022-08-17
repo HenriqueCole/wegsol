@@ -30,11 +30,17 @@ export default function leaveMesh() {
                     </label>
 
                     <label>
-                        <span>Fornecedor:</span>
-                        <select>
-                            <option>caraio</option>
-                        </select>
+                        <span>Valor total:</span>
+
+                        <input type="number" placeholder="R$" />
                     </label>
+
+                    <label>
+                            <span>Cliente:</span>
+                            <select>
+                                <option>caraio</option>
+                            </select>
+                        </label>
 
                     <div className="containerButton">
                         <button>Concluir</button>

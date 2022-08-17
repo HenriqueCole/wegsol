@@ -1,10 +1,11 @@
 import React from "react";
-
 import "../styles.scss";
+import Sidebar from "../Components/sidebar"
 
 export default function providerRegister() {
   return (
     <div className="container">
+      <Sidebar></Sidebar>
       <main>
         <div className="form">
           <div className="headerModal">

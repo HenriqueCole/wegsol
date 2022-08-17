@@ -1,10 +1,11 @@
 import React from "react";
-
 import "../styles.scss";
+import Sidebar from "../Components/sidebar"
 
 export default function productRegister() {
     return (
         <div className="container">
+            <Sidebar></Sidebar>
             <main>
                 <div className="form">
                     <div className="headerModal">
@@ -20,7 +21,7 @@ export default function productRegister() {
                             <span>Quantidade:</span>
                             <div className="quantidade">
                                 <div className="menos">-</div>
-                                <input type="text" value={0}/>
+                                <input type="text" value={0} />
                                 <div className="mais">+</div>
                             </div>
                         </label>

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Sidebar from "./Components/sidebar";
+import Sidebar from "./Components/Sidebar/sidebar";
 
 import Home from "./Home";
 import ClientRegister from "./clientRegister";
@@ -17,6 +17,7 @@ import LeaveMesh from "./leaveMesh";
 import AddLeaveMesh from "./addLeaveMesh";
 import EnterWire from "./enterWire";
 import ProductionScreen from "./productionScreen";
+import Header from "./Components/Header/header";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -73,6 +74,11 @@ root.render(
       <Routes>
         <Route path="/productionScreen" element={<ProductionScreen />} />
       </Routes>
+
+      <Routes>
+        <Route path="/header" element={<Header />} />
+      </Routes>
+
     </BrowserRouter>
   </React.StrictMode>
 );

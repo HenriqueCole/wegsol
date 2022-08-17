@@ -1,17 +1,18 @@
 import React from "react";
 import "./sidebar.scss";
 
-import Casa from "../assets/casa.png";
-import Cliente from "../assets/cliente.png";
-import Fio from "../assets/fio.png";
-import Fornecedor from "../assets/fornecedor.png";
-import Logo from "../assets/logo.png";
-import Malha from "../assets/malha.png";
-import Maquina from "../assets/maquina.png";
-import Produto from "../assets/produto.png";
-import Fio1 from "../assets/fio 1.png";
-import Malha1 from "../assets/padrao-de-tecido 1.png"
-import Producao from "../assets/linha-de-montagem 1.png";
+import Casa from "../../assets/casa.png";
+import Cliente from "../../assets/cliente.png";
+import Fio from "../../assets/fio.png";
+import Fornecedor from "../../assets/fornecedor.png";
+import Logo from "../../assets/logo.png";
+import Malha from "../../assets/malha.png";
+import Maquina from "../../assets/maquina.png";
+import Produto from "../../assets/produto.png";
+import Fio1 from "../../assets/fio 1.png";
+import Malha1 from "../../assets/padrao-de-tecido 1.png"
+import Producao from "../../assets/linha-de-montagem 1.png";
+import Funcionario1 from "../../assets/employee.png";
 
 export default function App() {
     return (
@@ -72,6 +73,14 @@ export default function App() {
                     </div>
                     <div className="text-enterWire">
                         <p className="text-enterWire-main text-home-main">Cadastrar Fio</p>
+                    </div>
+                </div>
+                <div className="registerEmployee homeContainer">
+                    <div className="icon-registerEmployee icon-home">
+                        <img src={Funcionario1} alt="" className="icon-enterWire-main icon-home-main" />
+                    </div>
+                    <div className="text-registerEmployee">
+                        <p className="text-registerEmployee-main text-home-main">Cadastrar Funcionário</p>
                     </div>
                 </div>
                 <div className="dotLine"></div>

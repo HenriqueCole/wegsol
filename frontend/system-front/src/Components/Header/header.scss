@@ -1,0 +1,22 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #313131;
+    height: 6rem;
+
+    .logo{
+        margin-left: 3rem;
+    }
+
+    .logo-img{
+        width:70%;
+    }
+
+    .name-title{
+        font-size: 1rem;
+        color: #fff;
+        justify-self: center;
+        margin-right: 45%;
+    }
+}

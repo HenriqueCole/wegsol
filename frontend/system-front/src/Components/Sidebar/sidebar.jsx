@@ -10,10 +10,9 @@ import Malha from "../../assets/malha.png";
 import Maquina from "../../assets/maquina.png";
 import Produto from "../../assets/produto.png";
 import Fio1 from "../../assets/fio 1.png";
-import Malha1 from "../../assets/padrao-de-tecido 1.png"
+import Malha1 from "../../assets/padrao-de-tecido 1.png";
 import Producao from "../../assets/linha-de-montagem 1.png";
 import Funcionario1 from "../../assets/employee.png";
-
 
 import { Link } from "react-router-dom";
 
@@ -129,14 +128,22 @@ export default function App() {
           </div>
         </Link>
         <Link to="/registerEmployee">
-        <div className="registerEmployee homeContainer">
-                    <div className="icon-registerEmployee icon-home">
-                        <img src={Funcionario1} alt="" className="icon-enterWire-main icon-home-main" />
-                    </div>
-                    <div className="text-registerEmployee">
-                        <p className="text-registerEmployee-main text-home-main">Cadastrar Funcionário</p>
-                    </div>
-                </div>
+          <Link to="/employeeRegister">
+            <div className="registerEmployee homeContainer">
+              <div className="icon-registerEmployee icon-home">
+                <img
+                  src={Funcionario1}
+                  alt=""
+                  className="icon-enterWire-main icon-home-main"
+                />
+              </div>
+              <div className="text-registerEmployee">
+                <p className="text-registerEmployee-main text-home-main">
+                  Cadastrar Funcionário
+                </p>
+              </div>
+            </div>
+          </Link>
         </Link>
         <div className="dotLine"></div>
         <Link to="/enterWire">

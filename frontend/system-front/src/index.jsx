@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
 import Sidebar from "./Components/sidebar";
 
 import Home from "./Home";
@@ -24,7 +23,10 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-       
+        <Route path="/" element={<Sidebar />} />
+      </Routes>
+
+      <Routes>
         <Route path="/sidebar" element={<Sidebar />} />
       </Routes>
 

@@ -1,7 +1,11 @@
 import React from "react";
-import "../styles.scss"
+import "../styles.scss";
 import Sidebar from "../Components/Sidebar/sidebar";
 import Header from "../Components/Header/header";
+
+import toast, { Toaster } from "react-hot-toast";
+
+const notify = () => toast.success("Máquina cadastrada com sucesso!");
 
 export default function machineRegister() {
   return (
@@ -9,6 +13,17 @@ export default function machineRegister() {
       <Header></Header>
       <Sidebar></Sidebar>
 
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={{
+          className: "",
+          style: {
+            backgroundColor: "#414141",
+            color: "white",
+          },
+        }}
+      />
       <main>
         <div className="form">
           <div className="headerModal">
@@ -24,7 +39,6 @@ export default function machineRegister() {
               <input type="text" />
             </label>
 
-
             <div className="flex">
               <label>
                 <span>Ano fabricação:</span>
@@ -38,7 +52,6 @@ export default function machineRegister() {
             </div>
 
             <div className="flex">
-
               <label>
                 <span>Valor compra:</span>
                 <input type="text" />
@@ -81,7 +94,7 @@ export default function machineRegister() {
           </div>
 
           <div className="containerButton">
-            <button>Concluir</button>
+            <button onClick={notify}>Concluir</button>
           </div>
         </div>
       </main>

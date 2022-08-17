@@ -3,11 +3,26 @@ import Sidebar from "../Components/Sidebar/sidebar";
 import Header from "../Components/Header/header";
 import "../styles.scss";
 
+import toast, { Toaster } from "react-hot-toast";
+
+const notify = () => toast.success("Cliente cadastrado com sucesso!");
+
 export default function clientRegister() {
   return (
     <div className="container">
       <Header></Header>
       <Sidebar></Sidebar>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={{
+          className: "",
+          style: {
+            backgroundColor: "#414141",
+            color: "white",
+          },
+        }}
+      />
       <main>
         <div className="form">
           <div className="headerModal">
@@ -24,7 +39,7 @@ export default function clientRegister() {
             </label>
           </div>
           <div className="containerButton">
-            <button>Concluir</button>
+            <button onClick={notify}>Concluir</button>
           </div>
         </div>
       </main>

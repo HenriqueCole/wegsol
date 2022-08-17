@@ -3,57 +3,73 @@ import "../styles.scss";
 import Sidebar from "../Components/Sidebar/sidebar";
 import Header from "../Components/Header/header";
 
+import toast, { Toaster } from "react-hot-toast";
+
+const notify = () => toast.success("Sucesso!");
 
 export default function leaveMesh() {
-    return (
-        <div className="container">
-            <Header></Header>
-            <Sidebar></Sidebar>
-            <main>
-                <div className="form">
-                    <div className="headerModal">
-                        <span>Saída de Malha</span>
-                    </div>
-                    <label>
-                        <span>Adicionar saídas:</span>
-                        <div className="saida">
+  return (
+    <div className="container">
+      <Header></Header>
+      <Sidebar></Sidebar>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={{
+          className: "",
+          style: {
+            backgroundColor: "#414141",
+            color: "white",
+          },
+        }}
+      />
+      <main>
+        <div className="form">
+          <div className="headerModal">
+            <span>Saída de Malha</span>
+          </div>
+          <label>
+            <span>Adicionar saídas:</span>
+            <div className="saida">
+              <input type="text"></input>
+              <img
+                className="addSaida"
+                src="https://i.imgur.com/LiEAL12.png"
+                alt=""
+              />
+            </div>
+          </label>
 
-                            <input type="text"></input>
-                            <img className="addSaida" src="https://i.imgur.com/LiEAL12.png" alt="" />
-                        </div>
-                    </label>
+          <label className="malhas">
+            <div className="malha">
+              <input type="text" disabled placeholder="Malha 01"></input>
+              <img src="https://i.imgur.com/05V0IrH.png" alt="" />
+            </div>
+          </label>
 
-                    <label className="malhas">
+          <label>
+            <span>Anexo NF:</span>
+            <input type="file" />
+          </label>
 
-                        <div className="malha">
-                            <input type="text" disabled placeholder="Malha 01"></input>
-                            <img src="https://i.imgur.com/05V0IrH.png" alt="" />
-                        </div>
-                    </label>
+          <label>
+            <span>Valor total:</span>
 
-                    <label>
-                        <span>Anexo NF:</span>
-                        <input type="file" />
-                    </label>
+            <input type="number" placeholder="R$" />
+          </label>
 
-                    <label>
-                        <span>Valor total:</span>
+          <label>
+            <span>Cliente:</span>
+            <select>
+              <option>caraio</option>
+            </select>
+          </label>
 
-                        <input type="number" placeholder="R$" />
-                    </label>
-
-                    <label>
-                        <span>Cliente:</span>
-                        <select>
-                            <option>caraio</option>
-                        </select>
-                    </label>
-
-                    <div className="containerButton">
-                        <button>Concluir</button>
-                    </div>
-                </div>
-            </main>
+          <div className="containerButton">
+            <button onClick={notify}>Concluir</button>
+          </div>
         </div>
-    );
+      </main>
+    </div>
+  );
 }

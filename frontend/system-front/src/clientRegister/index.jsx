@@ -1,12 +1,12 @@
 import React from "react";
-
 import Sidebar from "../Components/Sidebar/sidebar";
-
+import Header from "../Components/Header/header";
 import "../styles.scss";
 
 export default function clientRegister() {
   return (
     <div className="container">
+      <Header></Header>
       <Sidebar></Sidebar>
       <main>
         <div className="form">

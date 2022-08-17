@@ -1,13 +1,13 @@
 import React from "react";
 import "../styles.scss";
 import Sidebar from "../Components/Sidebar/sidebar";
-
-
+import Header from "../Components/Header/header";
 
 export default function meshRegister() {
     return (
         <div className="container">
-        <Sidebar></Sidebar>
+            <Header></Header>
+            <Sidebar></Sidebar>
             <main>
                 <div className="form">
                     <div className="headerModal">

@@ -1,10 +1,13 @@
 import React from "react";
 import "../styles.scss";
 import Sidebar from "../Components/Sidebar/sidebar";
+import Header from "../Components/Header/header";
+
 
 export default function wireRegister() {
     return (
         <div className="container">
+            <Header></Header>
             <Sidebar></Sidebar>
             <main>
                 <div className="form">

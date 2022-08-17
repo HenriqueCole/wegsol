@@ -4,11 +4,11 @@ const router = express.Router();
 const clienteHandler = require("./cliente.handler");
 
 router.get("/", (req, res) => {
-    clienteHandler.buscarCliente().then(dados => res.send(dados));
+    clienteHandler.buscarCliente().then(dados => res.json(dados));
 })
 
 router.get('/:id', (req, res) => {
-    clienteHandler.buscarCliente().then(dados => res.send(dados));
+    clienteHandler.buscarCliente().then(dados => res.json(dados));
 })
 
 router.post("/", (req, res) => {   

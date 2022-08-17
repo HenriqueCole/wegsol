@@ -16,7 +16,11 @@ export default function leaveMesh() {
                     </div>
                     <label>
                         <span>Adicionar saídas:</span>
-                        <input type="text"></input>
+                        <div className="saida">
+
+                            <input type="text"></input>
+                            <img className="addSaida" src="https://i.imgur.com/LiEAL12.png" alt="" />
+                        </div>
                     </label>
 
                     <label className="malhas">

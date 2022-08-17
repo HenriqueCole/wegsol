@@ -39,9 +39,10 @@ export default function productRegister() {
 
                         <label>
                             <span>Fornecedor:</span>
-                            <input type="text" />
+                            <select>
+                                <option>caraio</option>
+                            </select>
                         </label>
-
 
                     </div>
                     <div className="containerButton">

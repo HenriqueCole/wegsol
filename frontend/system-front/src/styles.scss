@@ -7,7 +7,7 @@
   color: #fff;
 }
 
-#root{
+#root {
   height: 100vh;
 }
 
@@ -74,7 +74,7 @@ label {
   display: grid;
   margin-bottom: 10px;
 
-  input {
+  input, select {
     height: 40px;
     outline: none;
     color: #000;
@@ -147,4 +147,30 @@ label {
 
   display: flex;
   align-items: center;
+}
+
+.malhas {
+  margin-top: 30px;
+  width: 100%;
+
+
+
+  .malha {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    img {
+      width: 30px;
+      height: 30px;
+      margin-left: 10px;
+    }
+
+
+    input {
+      width: 100%;
+    }
+  }
+
+
 }

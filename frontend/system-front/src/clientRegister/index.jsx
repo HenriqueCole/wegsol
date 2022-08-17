@@ -1,14 +1,13 @@
 import React from "react";
+
 import Sidebar from "../Components/Sidebar/sidebar"
 
 import "../styles.scss";
 
 export default function clientRegister() {
   return (
-
     <div className="container">
       <Sidebar></Sidebar>
-
       <main>
         <div className="form">
           <div className="headerModal">

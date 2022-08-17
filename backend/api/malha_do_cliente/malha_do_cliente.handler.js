@@ -1,11 +1,10 @@
-const { async } = require('@firebase/util');
 const crud = require('../../crud/server');
-
-const clientes = await crud.buscar("cliente");
-const malhas = await crud.buscar("malha");
 
 async function criarMalha_Do_Cliente(req, res){
     const malhaCliente = req.body;
+    const clientes = await crud.buscar("cliente");
+    const malhas = await crud.buscar("malha");
+    
     if(malhas.findIndex(m => m.id == malhaCliente.idCliente) == -1){
         return await "Erro! Id do cliente não encontrado.";
     }else if(clientes.findIndex(c => c.id == malhaCliente.idMalha) == -1){
@@ -36,9 +35,19 @@ async function deletarMalha_Do_Cliente(req, res){
     }
 }
 
+async function editarMalha_do_Cliente(req, res){
+    const malha = await crud.buscar("malha");
+    if(malha.findIndex(c => c.idMALHA == req.params.idMALHA)!= -1){
+        return await crud.deletar("cliente", req.params.id);
+    }else{
+        res.status(404).send("id inválido");
+    }
+}
+
 module.exports = {
     criarMalha_Do_Cliente,
     procurarMalha_Do_Cliente,
     procurarMalhas_Do_Cliente,
-    deletarMalha_Do_Cliente
+    deletarMalha_Do_Cliente,
+    editarMalha_Do_Cliente
 }

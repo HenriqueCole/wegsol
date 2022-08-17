@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles.scss";
-import Sidebar from "../Components/sidebar"
+import Sidebar from "../Components/Sidebar/sidebar";
 
 export default function wireRegister() {
     return (

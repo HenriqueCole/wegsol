@@ -32,7 +32,7 @@ async function editarCliente(req, res){
     if(cliente.findIndex(c => c.idCLIENTE == req.params.idCLIENTE) != -1){
         return await crud.editar("cliente", req.params.id);
     }else{
-        return await"Id inválido!";
+        return await "Id inválido!";
     }
 }
 

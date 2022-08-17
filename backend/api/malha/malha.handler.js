@@ -1,12 +1,13 @@
 const crud = require("../../CRUD/server");
 const tabela = "malha"
-const listaMalhas = await crud.buscar(tabela);
 
 async function procurarMalhas() {
     return await crud.buscar(tabela);
 }
 
 async function procurarMalha(id) {
+    const listaMalhas = await procurarMalhas(tabela);
+
     if (listaMalhas.filter((Malhas) => Malhas.id == id).length == 0) {
         return "Erro! Este ID não foi encontrado!"
     } else {
@@ -15,6 +16,8 @@ async function procurarMalha(id) {
 }
 
 async function criarMalha(dados) {
+    const listaMalhas = await procurarMalhas(tabela);
+
     if (dados.descricao) {
         if (listaMalhas.filter((Malhas) => Malhas.descricao == dados.descricao).length == 0) {
             return await crud.salvar(tabela, false, dados);
@@ -28,6 +31,8 @@ async function criarMalha(dados) {
 }
 
 async function editarMalha(dados, id) {
+    const listaMalhas = await procurarMalhas(tabela);
+
     if (dados.id && dados.descricao) {
         if (listaMalhas.filter((Malhas) => Malhas.descricao == dados.descricao).length == 0) {
             return await crud.salvar(tabela, id, dados);
@@ -40,6 +45,8 @@ async function editarMalha(dados, id) {
 }
 
 async function deletarMalha(id) {
+    const listaMalhas = await procurarMalhas(tabela);
+
     if (listaMalhas.filter((Malhas) => Malhas.id == id).length == 0) {
         return "Erro! Este ID não foi encontrado!"
     } else {

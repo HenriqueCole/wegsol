@@ -1,13 +1,13 @@
 const crud = require("../../CRUD/server");
 const tabela = "produto";
-const listaProduto = await crud.buscar(tabela);
-const listaFornecedor = await criarProduto.buscar("fornecedor");
 
 async function procurarProdutos() {
     return await crud.buscar(tabela);
 }
 
 async function procurarProduto(id) {
+    const listaProduto = await procurarProdutos();
+    
     if (listaProduto.filter((Produto) => Produto.id == id).length == 0) {
         return "Este ID não foi encontrado!"
     } else {
@@ -16,6 +16,9 @@ async function procurarProduto(id) {
 }
 
 async function criarProduto(dados) {
+    const listaFornecedor = await crud.buscar("fornecedor");
+    const listaProduto = await procurarProdutos();
+
     if (dados.descricao && dados.quantidade && dados.valorTotal && dados.arquivoNF && dados.idFornecedor) {
         if (listaProduto.filter((Produto) => Produto.descricao == dados.descricao && Produto.idFornecedor == dados.idFornecedor).length == 0) {
             if (listaFornecedor.filter((Fornecedor) => Fornecedor.id == dados.idFornecedor).length != 0) {
@@ -32,6 +35,9 @@ async function criarProduto(dados) {
 }
 
 async function editarProduto(dados, id) {
+    const listaFornecedor = await crud.buscar("fornecedor");
+    const listaProduto = await procurarProdutos();
+
     if (dados.id && dados.descricao && dados.quantidade && dados.valorTotal && dados.arquivoNF && dados.idFornecedor) {
         if (listaProduto.filter((Produto) => Produto.descricao == dados.descricao && Produto.idFornecedor == dados.idFornecedor).length == 0) {
             if (listaFornecedor.filter((Fornecedor) => Fornecedor.id == dados.idFornecedor).length != 0) {
@@ -48,6 +54,8 @@ async function editarProduto(dados, id) {
 }
 
 async function deletarProduto(id) {
+    const listaProduto = await procurarProdutos();
+
     if (listaProduto.filter((Produto) => Produto.id == id).length == 0) {
         return "Este ID não foi encontrado!"
     } else {
@@ -57,5 +65,9 @@ async function deletarProduto(id) {
 
 
 module.exports = {
-    procurarProdutos, procurarProduto, criarProduto, editarProduto, deletarProduto
+    procurarProdutos, 
+    procurarProduto, 
+    criarProduto, 
+    editarProduto, 
+    deletarProduto
 };

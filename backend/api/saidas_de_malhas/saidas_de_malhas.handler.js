@@ -13,7 +13,7 @@ async function buscarSaidas_De_MalhasEspecifico(id) {
 }
 
 async function criarSaidas_De_Malhas(saida_de_malha) {
-    if (saida_de_malhaTemPropriedades(saida_de_malha) || Object.values(saida_de_malha).length != 3)
+    if (saida_de_malhaTemPropriedades(saida_de_malha) && Object.values(saida_de_malha).length != 3)
         return `Para cadastrar um saida_de_malha é preciso ter os seguintes campos: nota_fiscal, valorTotal, idCliente!`
 
     return await crud.salvar(tabelaSaidas_De_Malhas, null, saida_de_malha);
@@ -23,7 +23,7 @@ async function atualizarSaidas_De_Malhas(id, saida_de_malhaAtualizado) {
     if (!await idExiste(id))
         return `ID inválido!`
 
-    if (saida_de_malhaTemPropriedades(saida_de_malha) || Object.values(saida_de_malha).length != 3)
+    if (saida_de_malhaTemPropriedades(saida_de_malha) && Object.values(saida_de_malha).length != 3)
         return `Para atualizar um saida_de_malha é preciso ter os seguintes campos: nota_fiscal, valorTotal, idCliente!`
 
     return await crud.salvar(tabelaSaidas_De_Malhas, id, saida_de_malhaAtualizado);

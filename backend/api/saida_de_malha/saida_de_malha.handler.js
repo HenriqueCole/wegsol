@@ -13,7 +13,7 @@ async function buscarSaida_De_Malha(id) {
 }
 
 async function criarSaida_De_Malha(saida_de_malha) {
-    if (saida_de_malhaTemPropriedades(saida_de_malha) || Object.values(saida_de_malha).length != 7)
+    if (saida_de_malhaTemPropriedades(saida_de_malha) && Object.values(saida_de_malha).length != 7)
         return `Para cadastrar um saida_de_malha é preciso ter os seguintes campos: qtd_rolos, peso, qualidade, valor_saida, arquivo_nf, idMalha, idSaidas_De_Malhas!`
         
     return await crud.salvar(tabelaSaida_De_Malha, null, saida_de_malha);
@@ -23,7 +23,7 @@ async function atualizarSaida_De_Malha(id, saida_de_malhaAtualizado) {
     if (!await idExiste(id))
         return `ID inválido!`
 
-    if (saida_de_malhaTemPropriedades(saida_de_malha) || Object.values(saida_de_malha).length != 7)
+    if (saida_de_malhaTemPropriedades(saida_de_malha) && Object.values(saida_de_malha).length != 7)
         return `Para atualizar um saida_de_malha é preciso ter os seguintes campos: qtd_rolos, peso, qualidade, valor_saida, arquivo_nf, idMalha, idSaidas_De_Malhas!`
 
     return await crud.salvar(tabelaSaida_De_Malha, id, saida_de_malhaAtualizado);

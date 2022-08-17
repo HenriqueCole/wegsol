@@ -13,7 +13,7 @@ async function buscarEntrada_De_Fio(id) {
 }
 
 async function criarEntrada_De_Fio(entrada_de_fio) {
-    if (entrada_de_fioTemPropriedades(entrada_de_fio) || Object.values(entrada_de_fio).length != 8)
+    if (entrada_de_fioTemPropriedades(entrada_de_fio) && Object.values(entrada_de_fio).length != 8)
         return `Para cadastrar um entrada_de_fio é preciso ter os seguintes campos: qtd_caixa, qtd_kg, subtotal, qtd_rolos_por_caixa, arquivo_nf, idFornecedor, idFio, idCliente!`
         
     return await crud.salvar(tabelaEntrada_De_Fio, null, entrada_de_fio);
@@ -23,7 +23,7 @@ async function atualizarEntrada_De_Fio(id, entrada_de_fioAtualizado) {
     if (!await idExiste(id))
         return `ID inválido!`
 
-    if (entrada_de_fioTemPropriedades(entrada_de_fio) || Object.values(entrada_de_fio).length != 8)
+    if (entrada_de_fioTemPropriedades(entrada_de_fio) && Object.values(entrada_de_fio).length != 8)
         return `Para atualizar um entrada_de_fio é preciso ter os seguintes campos: qtd_caixa, qtd_kg, subtotal, qtd_rolos_por_caixa, arquivo_nf, idFornecedor, idFio, idCliente!`
 
     return await crud.salvar(tabelaEntrada_De_Fio, id, entrada_de_fioAtualizado);
@@ -49,9 +49,9 @@ async function entrada_de_fioTemPropriedades(entrada_de_fio) {
 }
 
 async function idExiste(id) {
-    const listaFio = await crud.buscar(tabelaFio);
+    const listaEntradasFios = await crud.buscar(tabelaEntrada_De_Fio);
 
-    const existe = listaFio.some((element) => {
+    const existe = listaEntradasFios.some((element) => {
         return element.id == id
     });
 

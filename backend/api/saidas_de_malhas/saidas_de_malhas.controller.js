@@ -22,3 +22,5 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
     res.json(await saidas_de_malhas.deletarSaidas_De_Malhas(req.params.id));
 });
+
+module.exports = router

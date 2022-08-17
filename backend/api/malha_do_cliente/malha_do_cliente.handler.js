@@ -49,5 +49,5 @@ module.exports = {
     procurarMalha_Do_Cliente,
     procurarMalhas_Do_Cliente,
     deletarMalha_Do_Cliente,
-    editarMalha_Do_Cliente
+    editarMalha_do_Cliente
 }

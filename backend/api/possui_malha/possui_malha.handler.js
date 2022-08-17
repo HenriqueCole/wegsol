@@ -13,7 +13,7 @@ async function criarPossui_Malha(dados) {
     if (dados.idMaquina && dados.idMalha) {
         return await crud.salvar(tabela, false, dados);
     } else {
-        return await "Erro! Falta algum dado!"
+        return "Erro! Falta algum dado!"
     }
 }
 
@@ -21,7 +21,7 @@ async function editarPossui_Malha(dados, id){
     if (dados.id && dados.idMaquina && dados.idMalha) {
         return await crud.salvar(tabela, id, dados);
     } else {
-        return await "Erro! Falta algum dado!"
+        return "Erro! Falta algum dado!"
     }
 }
 

@@ -4,11 +4,11 @@ const router = express.Router();
 const funcionarioHandler = require("./funcionario.handler");
 
 router.get("/", (req, res) => {
-    funcionarioHandler.buscarFuncionarios().then(dados => res.send(dados));
+    funcionarioHandler.buscarFuncionarios().then(dados => res.json(dados));
 })
 
 router.get('/:id', (req, res) => {
-    funcionarioHandler.buscarFuncionario().then(dados => res.send(dados));
+    funcionarioHandler.buscarFuncionario().then(dados => res.json(dados));
 })
 
 router.post("/", (req, res) => {   

@@ -4,11 +4,11 @@ const router = express.Router();
 const producaoHandler = require("./producao.handler");
 
 router.get("/", (req, res) => {
-    producaoHandler.buscarProducao().then(dados => res.send(dados));
+    producaoHandler.buscarProducao().then(dados => res.json(dados));
 })
 
 router.get('/:id', (req, res) => {
-    producaoHandler.buscarProducoes().then(dados => res.send(dados));
+    producaoHandler.buscarProducoes().then(dados => res.json(dados));
 })
 
 router.post("/", (req, res) => {   

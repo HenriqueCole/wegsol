@@ -4,11 +4,11 @@ const router = express.Router();
 const maquinaHandler = require("./maquina.handler");
 
 router.get("/cliente", (req, res) => {
-    maquinaHandler.buscarMaquina().then(dados => res.send(dados));
+    maquinaHandler.buscarMaquina().then(dados => res.json(dados));
 })
 
 router.get('/cliente/:id', (req, res) => {
-    maquinaHandler.buscarMaquinas().then(dados => res.send(dados));
+    maquinaHandler.buscarMaquinas().then(dados => res.json(dados));
 })
 
 router.post("/cliente", (req, res) => {   

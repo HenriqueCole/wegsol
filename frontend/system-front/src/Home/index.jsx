@@ -8,7 +8,7 @@ export default function App() {
     <div className="containerPageHome">
       <Sidebar></Sidebar>
 
-      <div class="container">
+      <div class="container-home">
         <div className="quadrado-cima"></div>
 
         <div className="quadrados">

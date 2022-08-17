@@ -8,7 +8,7 @@ async function procurarMalhas() {
 
 async function procurarMalha(id) {
     if (listaMalhas.filter((Malhas) => Malhas.id == id).length == 0) {
-        return await "Erro! Este ID não foi encontrado!"
+        return "Erro! Este ID não foi encontrado!"
     } else {
         return await crud.buscarPorId(tabela, id);
     }
@@ -19,10 +19,10 @@ async function criarMalha(dados) {
         if (listaMalhas.filter((Malhas) => Malhas.descricao == dados.descricao).length == 0) {
             return await crud.salvar(tabela, false, dados);
         } else {
-            return await "Erro! A descrição dessa malha já existe!"
+            return "Erro! A descrição dessa malha já existe!"
         }
     } else {
-        return await "Erro! Falta algum dado!"
+        return "Erro! Falta algum dado!"
     }
 
 }
@@ -32,16 +32,16 @@ async function editarMalha(dados, id) {
         if (listaMalhas.filter((Malhas) => Malhas.descricao == dados.descricao).length == 0) {
             return await crud.salvar(tabela, id, dados);
         } else {
-            return await "Erro! A descrição dessa malha já existe!"
+            return "Erro! A descrição dessa malha já existe!"
         }
     } else {
-        return await "Erro! Falta algum dado!"
+        return "Erro! Falta algum dado!"
     }
 }
 
 async function deletarMalha(id) {
     if (listaMalhas.filter((Malhas) => Malhas.id == id).length == 0) {
-        return await "Erro! Este ID não foi encontrado!"
+        return "Erro! Este ID não foi encontrado!"
     } else {
         return await crud.remover(tabela, id);
     }

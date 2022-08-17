@@ -13,7 +13,7 @@ async function criarFios_Da_Malha(dados) {
     if (dados.idFio && dados.idMalha) {
         return await crud.salvar(tabela, false, dados);
     } else {
-        return await "Erro! Falta algum dado!"
+        return "Erro! Falta algum dado!"
     }
 }
 
@@ -21,7 +21,7 @@ async function editarFios_Da_Malha(dados, id){
     if (dados.id && dados.idFio && dados.idMalha) {
         return await crud.salvar(tabela, id, dados);
     } else {
-        return await "Erro! Falta algum dado!"
+        return "Erro! Falta algum dado!"
     }
 }
 

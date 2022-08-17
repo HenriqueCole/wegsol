@@ -35,7 +35,7 @@ async function editarProduto(dados, id) {
     if (dados.id && dados.descricao && dados.quantidade && dados.valorTotal && dados.arquivoNF && dados.idFornecedor) {
         if (listaProduto.filter((Produto) => Produto.descricao == dados.descricao && Produto.idFornecedor == dados.idFornecedor).length == 0) {
             if (listaFornecedor.filter((Fornecedor) => Fornecedor.id == dados.idFornecedor).length != 0) {
-                return await crud.salvar(tabela, false, dados);
+                return await crud.salvar(tabela, id, dados);
             } else {
                 return "Erro! Fornecedor inexistente!"
             }

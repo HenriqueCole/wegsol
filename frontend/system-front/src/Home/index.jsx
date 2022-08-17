@@ -6,6 +6,7 @@ import "./styles.scss";
 export default function App() {
   return (
     <div className="containerPageHome">
+      <Sidebar></Sidebar>
       <div className="quadrado-cima"></div>
 
       <div className="quadrados">

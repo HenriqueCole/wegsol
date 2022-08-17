@@ -23,7 +23,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Sidebar />} />
+        <Route path="/" element={<Home />} />
       </Routes>
 
       <Routes>

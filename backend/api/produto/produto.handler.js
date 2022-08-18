@@ -18,9 +18,9 @@ async function procurarProduto(id) {
 async function criarProduto(dados) {
     const listaFornecedor = await crud.buscar("fornecedor");
     const listaProduto = await procurarProdutos();
-    const listaMaquina = await criarProduto.buscar("maquina");
+    const listaMaquina = await crud.buscar("maquina");
 
-    if (dados.descricao && dados.quantidade && dados.valorTotal && dados.arquivoNF && dados.idFornecedor && dados.idMaquina) {
+    if (dados.descricao && dados.quantidade && dados.valor_total_produto && dados.arquivo_nf && dados.idFornecedor && dados.idMaquina) {
         if (listaProduto.filter((Produto) => Produto.descricao == dados.descricao && Produto.idFornecedor == dados.idFornecedor).length == 0) {
             if (listaFornecedor.filter((Fornecedor) => Fornecedor.id == dados.idFornecedor).length != 0) {
                 if (listaMaquina.filter((Maquina) => Maquina.id == dados.idMaquina).length != 0) {

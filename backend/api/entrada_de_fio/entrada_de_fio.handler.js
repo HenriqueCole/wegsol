@@ -15,18 +15,24 @@ async function buscarEntrada_De_Fio(id) {
 async function criarEntrada_De_Fio(entrada_de_fio) {
     if (entrada_de_fioTemPropriedades(entrada_de_fio) && Object.values(entrada_de_fio).length != 8)
         return `Para cadastrar um entrada_de_fio é preciso ter os seguintes campos: qtd_caixa, qtd_kg, subtotal, qtd_rolos_por_caixa, arquivo_nf, idFornecedor, idFio, idCliente!`
+    
+    if (!await chaveSecundariaValida(entrada_de_fio))
+        return `Há chaves secundárias inválidas!`
         
     return await crud.salvar(tabelaEntrada_De_Fio, null, entrada_de_fio);
 }
 
-async function atualizarEntrada_De_Fio(id, entrada_de_fioAtualizado) {
+async function atualizarEntrada_De_Fio(id, entrada_de_fio) {
     if (!await idExiste(id))
         return `ID inválido!`
 
     if (entrada_de_fioTemPropriedades(entrada_de_fio) && Object.values(entrada_de_fio).length != 8)
         return `Para atualizar um entrada_de_fio é preciso ter os seguintes campos: qtd_caixa, qtd_kg, subtotal, qtd_rolos_por_caixa, arquivo_nf, idFornecedor, idFio, idCliente!`
+    
+    if (!await chaveSecundariaValida(entrada_de_fio))
+        return `Há chaves secundárias inválidas!`
 
-    return await crud.salvar(tabelaEntrada_De_Fio, id, entrada_de_fioAtualizado);
+    return await crud.salvar(tabelaEntrada_De_Fio, id, entrada_de_fio);
 }
 
 async function deletarEntrada_De_Fio(id) {
@@ -56,6 +62,28 @@ async function idExiste(id) {
     });
 
     return existe;
+}
+
+async function chaveSecundariaValida(entrada_de_fio) {
+    const listaFornecedores = await crud.buscar("fornecedor");
+    const listaFios = await crud.buscar("fio");
+    const listaClientes = await crud.buscar("cliente");
+
+    const existeFornecedor = listaFornecedores.some((element) => {
+        return element.id == entrada_de_fio.idFornecedor
+    });
+
+    const existeFio = listaFios.some((element) => {
+        return element.id == entrada_de_fio.idFio
+    });
+
+    const existeCliente = listaClientes.some((element) => {
+        return element.id == entrada_de_fio.idCliente
+    });
+
+    if (existeFornecedor && existeFio && existeCliente)
+        return true;
+    return false;
 }
 
 module.exports = {

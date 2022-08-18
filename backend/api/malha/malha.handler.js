@@ -30,12 +30,12 @@ async function criarMalha(dados) {
                     idFio: malha.idFio,
                     idMalha: malha.id,
                 }
-                fios_da_malha.criarFios_Da_Malha(dados);
+                await fios_da_malha.criarFios_Da_Malha(dados);
                 dados = {
                     idMalha: malha.id,
                     idCliente: malha.idCliente
                 }
-                malha_do_cliente.criarMalha_Do_Cliente(dados);
+                await malha_do_cliente.criarMalha_Do_Cliente(dados);
                 return await crud.salvar(tabela, false, dados);
         } else {
             return "Erro! A descrição dessa malha já existe!"

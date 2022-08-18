@@ -6,7 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Sidebar from "./Components/Sidebar/sidebar";
 
 import Home from "./Home";
-import ClientRegister from "./clientRegister";
+import ClientRegister from "./container-client/clientRegister";
+import Client from "./container-client/clientPage";
 import MachineRegister from "./machineRegister";
 import ProductRegister from "./productRegister";
 import ProviderRegister from "./providerRegister";
@@ -29,6 +30,10 @@ root.render(
 
       <Routes>
         <Route path="/sidebar" element={<Sidebar />} />
+      </Routes>
+
+      <Routes>
+        <Route path="/client" element={<Client />} />
       </Routes>
 
       <Routes>

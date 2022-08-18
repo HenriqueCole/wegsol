@@ -16,20 +16,20 @@ async function criarFornecedor(fornecedor) {
     if (!(fornecedor.nome && fornecedor.cnpj) && Object.values(fornecedor).length != 2)
         return `Para cadastrar um fornecedor é preciso ter somente um nome e CNPJ!`
 
-    if (cnpjInvalido(fornecedor.cnpj))
+    if (await cnpjInvalido(fornecedor.cnpj))
         return `CNPJ já em uso`
 
     return await crud.salvar(tabelaFornecedor, null, fornecedor);
 }
 
-async function atualizarFornecedor(id, fornecedorAtualizado) {
+async function atualizarFornecedor(id, fornecedor) {
     if (!await idExiste(id))
         return `ID inválido!`
 
     if (!(fornecedor.nome && fornecedor.cnpj) && Object.values(fornecedor).length != 2)
         return `Para atualizar um fornecedor é preciso ter somente um nome e CNPJ!`
     
-    return await crud.salvar(tabelaFornecedor, id, fornecedorAtualizado);
+    return await crud.salvar(tabelaFornecedor, id, fornecedor);
 }
 
 async function deletarFornecedor(id) {

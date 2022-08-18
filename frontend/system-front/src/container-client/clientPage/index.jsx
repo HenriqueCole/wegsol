@@ -2,6 +2,7 @@ import React from "react";
 import Sidebar from "../../Components/Sidebar/sidebar";
 import Header from "../../Components/Header/header";
 import "../../styles.scss";
+import { Link } from "react-router-dom";
 
 export default function client() {
 
@@ -13,9 +14,13 @@ export default function client() {
             <div className="container">
                 <main>
                     <div className="page">
-                        <button>
-                            Cadastrar Cliente
-                        </button>
+                        <input type="text" placeholder="Procure um cliente aqui" />
+
+                        <a href="/clientRegister">
+                            <button>
+                                Cadastrar Cliente
+                            </button>
+                        </a>
                     </div>
 
                     <div className="tabela">

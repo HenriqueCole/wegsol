@@ -42,7 +42,7 @@ export default function App() {
             </div>
             <div className="text-registerClient ">
               <p className="text-registerClient-main text-home-main">
-                Cadastrar Cliente
+                Clientes
               </p>
             </div>
           </div>
@@ -58,7 +58,7 @@ export default function App() {
             </div>
             <div className="text-registerMachines">
               <p className="text-registerMachines-main text-home-main">
-                Cadastrar Máquina
+                Máquinas
               </p>
             </div>
           </div>
@@ -74,7 +74,7 @@ export default function App() {
             </div>
             <div className="text-registerProduct">
               <p className="text-registerProduct-main text-home-main">
-                Cadastrar Produto
+                Produtos
               </p>
             </div>
           </div>
@@ -90,7 +90,7 @@ export default function App() {
             </div>
             <div className="text-registerProvider">
               <p className="text-registerProvider-main text-home-main">
-                Cadastrar Fornecedor
+                Fornecedores
               </p>
             </div>
           </div>
@@ -106,7 +106,7 @@ export default function App() {
             </div>
             <div className="text-registerMesh">
               <p className="text-registerMesh-main text-home-main">
-                Cadastrar Malha
+                Malhas
               </p>
             </div>
           </div>
@@ -122,7 +122,7 @@ export default function App() {
             </div>
             <div className="text-enterWire">
               <p className="text-enterWire-main text-home-main">
-                Cadastrar Fio
+                Fios
               </p>
             </div>
           </div>
@@ -139,7 +139,7 @@ export default function App() {
               </div>
               <div className="text-registerEmployee">
                 <p className="text-registerEmployee-main text-home-main">
-                  Cadastrar Funcionário
+                  Funcionários
                 </p>
               </div>
             </div>

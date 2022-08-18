@@ -3,8 +3,9 @@ const crud = require('../../crud/server');
 async function criarMaquina(req, res){
     const maquina = req.body;
     if(maquina.nome != "" && maquina.marca != "" && maquina.ano_fabricacao !=  "" && maquina.ano_compra != "" 
-        && maquina.valorCompra != "" && maquina.rpm != "" && maquina.qtd_agulhas && maquina.qtd_blocos 
-        && maquina.qtd_gaiolas != "" && maquina.qtd_cones_por_gaiola){
+        && maquina.valor_compra != "" && maquina.rpm != "" && maquina.qtd_agulhas && maquina.qtd_blocos != "" 
+        && maquina.qtd_platinas != "" &&
+        maquina.qtd_gaiolas != "" && maquina.qtd_cones_por_gaiola != "" && maquina.idMalha != ""){
             return await crud.salvar("maquina", null, maquina);
         }else{
             return await "Erro! Falta algum dado!";
@@ -15,8 +16,8 @@ async function buscarMaquinas(){
     return await crud.buscar("maquinas");
 }
 
-async function buscarMaquina(){
-    return await crud.buscarPorId("maquinas");
+async function buscarMaquina(id){
+    return await crud.buscarPorId("maquinas", id);
 }
 
 async function deletarMaquina(req, res){

@@ -19,8 +19,8 @@ async function buscarFuncionarios(){
     return await crud.buscar("funcionario");
 }
 
-async function buscarFuncionario(){
-    const dados = await crud.buscarPorId("funcionario");
+async function buscarFuncionario(id){
+    const dados = await crud.buscarPorId("funcionario", id);
     return dados;
 }
 

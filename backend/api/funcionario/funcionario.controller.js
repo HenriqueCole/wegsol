@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-    funcionarioHandler.buscarFuncionario().then(dados => res.json(dados));
+    funcionarioHandler.buscarFuncionario(req.params.id).then(dados => res.json(dados));
 })
 
 router.post("/", (req, res) => {   

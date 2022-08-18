@@ -13,8 +13,8 @@ async function buscarClientes(){
     return await crud.buscar("cliente");
 }
 
-async function buscarCliente(id){
-    return await crud.buscarPorId("cliente", id);
+async function buscarCliente(req, res){
+    return await crud.buscarPorId("cliente", req.params.id);
 }
 
 async function deletarCliente(req, res){

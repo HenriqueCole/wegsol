@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-    clienteHandler.buscarCliente().then(dados => res.json(dados));
+    clienteHandler.buscarCliente(req, res).then(dados => res.json(dados));
 })
 
 router.post("/", (req, res) => {   

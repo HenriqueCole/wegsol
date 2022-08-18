@@ -20,8 +20,8 @@ async function procurarMalha_Do_Cliente(){
     return (dados);
 }
 
-async function procurarMalhas_Do_Cliente(){
-    const dados = await crud.buscarPorId("malha");
+async function procurarMalhas_Do_Cliente(id){
+    const dados = await crud.buscarPorId("malha", id);
     return dados;
 }
 

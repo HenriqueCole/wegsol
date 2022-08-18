@@ -3,23 +3,23 @@ const router = express.Router();
 
 const maquinaHandler = require("./maquina.handler");
 
-router.get("/cliente", (req, res) => {
-    maquinaHandler.buscarMaquina().then(dados => res.json(dados));
-})
-
-router.get('/cliente/:id', (req, res) => {
+router.get("/", (req, res) => {
     maquinaHandler.buscarMaquinas().then(dados => res.json(dados));
 })
 
-router.post("/cliente", (req, res) => {   
+router.get('/:id', (req, res) => {
+    maquinaHandler.buscarMaquina(req.params.id).then(dados => res.json(dados));
+})
+
+router.post("/", (req, res) => {   
     maquinaHandler.criarMaquina(req, res).then(dados => res.json(dados));
 })
 
-router.delete("/cliente/deletar/:id", (req, res) => {   
+router.delete("/:id", (req, res) => {   
     maquinaHandler.deletarMaquina(req, res).then(dados => res.json(dados));
 })
 
-router.put("/cliente/deletar/:id", (req, res) => {   
+router.put("/:id", (req, res) => {   
     maquinaHandler.editarMaquina(req, res).then(dados => res.json(dados));
 })
 

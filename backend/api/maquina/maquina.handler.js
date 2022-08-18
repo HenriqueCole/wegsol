@@ -1,9 +1,7 @@
 const crud = require('../../crud/server');
-const possui_malha = require('../../api/possui_malha/possui_malha.handler');
 
 async function criarMaquina(req, res) {
     const maquina = req.body;
-    const listaMalha = await crud.buscar("malha");
     if (maquina.nome != "" && maquina.marca != "" && maquina.ano_fabricacao != "" && maquina.ano_compra != ""
         && maquina.valor_compra != "" && maquina.rpm != "" && maquina.qtd_agulhas && maquina.qtd_blocos != ""
         && maquina.qtd_platinas != "" &&

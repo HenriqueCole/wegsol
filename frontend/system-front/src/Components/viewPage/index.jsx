@@ -6,61 +6,42 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
 export default function client() {
+  let url = window.location.reload;
 
+  console.log(url);
 
-    let url = (window.location.reload);
+  return (
+    <div className="container">
+      <Header></Header>
+      <Sidebar></Sidebar>
 
+      <div className="container">
+        <main>
+          <div className="page">
+            <input type="text" placeholder="Procure um cliente aqui" />
 
-    console.log(url);
+            <Link to="/clientRegister">
+              <button>Cadastrar Cliente</button>
+            </Link>
+          </div>
 
-    return (
-        <div className="container">
-            <Header></Header>
-            <Sidebar></Sidebar>
+          <div className="tabela">
+            <table>
+              <tr key="">
+                <th>Nome</th>
 
-            <div className="container">
-                <main>
-                    <div className="page">
-                        <input type="text" placeholder="Procure um cliente aqui" />
+                <th>CNPJ</th>
+              </tr>
 
-                        <Link to="/clientRegister">
-                            <button>
-                                Cadastrar Cliente
-                            </button>
-                        </Link>
-                    </div>
+              <tr id="" key="">
+                <td>Leonardo Heitor Poglia</td>
 
-                    <div className="tabela">
-                        <table>
-
-                            <tr key="">
-                                <th>
-                                    Nome
-                                </th>
-
-                                <th>
-                                    CNPJ
-                                </th>
-                            </tr>
-
-
-                            <tr id="" key="">
-                                <td>
-                                    Leonardo Heitor Poglia
-                                </td>
-
-                                <td>
-                                    89254549305
-                                </td>
-                            </tr>
-
-
-                        </table>
-
-                    </div>
-                </main>
-            </div>
-
-        </div>
-    );
+                <td>89254549305</td>
+              </tr>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+  );
 }

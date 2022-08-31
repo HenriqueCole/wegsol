@@ -24,7 +24,7 @@ async function buscarMaquina(id) {
 async function deletarMaquina(req, res) {
     const maquina = await crud.buscar("maquina");
     if (maquina.findIndex(c => c.idMAQUINA == req.params.idMAQUINA) != -1) {
-        const dados = await crud.deletar("cliente", req.params.id);
+        const dados = await crud.remover("cliente", req.params.id);
         return dados;
     } else {
         res.status(404).send("id inválido");

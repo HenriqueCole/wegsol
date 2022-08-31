@@ -9,7 +9,7 @@ async function criarProducao(req, res){
 
     if(producao.kgRoloMalha != "" && producao.defeito != "" && producao.idCliente != "" && producao.idMaquina != ""
         && producao.idFuncionario != ""){
-            if(clientes.findIndex(c => c.id == producao.idCliente != -1)){
+            if(clientes.findIndex(c => c.id == producao.idCliente) != -1){
                 if(maquinas.findIndex(m => m.id == producao.idMaquina) != -1){
                     if(funcionarios.findIndex(f => f.id == producao.idFuncionario) != -1){
                         return await crud.salvar("maquina", null, producao); 

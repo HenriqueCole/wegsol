@@ -41,7 +41,7 @@ async function buscarProducoes(){
 async function deletarProducao(req, res){
     const producao = await crud.buscar("producao"); 
     if(producao.findIndex(c => c.idPRODUCAO == req.params.idPRODUCAO) != -1){
-    await crud.remover("cliente", req.params.id);
+    return await crud.remover("producao", req.params.id);
     }else{
         res.status(404).send("id inválido");
     }

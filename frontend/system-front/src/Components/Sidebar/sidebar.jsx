@@ -17,6 +17,15 @@ import Funcionario1 from "../../assets/employee.png";
 import { Link } from "react-router-dom";
 
 export default function App() {
+
+  function refreshPage() {
+    setTimeout(() => {
+      window.location.reload(false);
+    }, 50);
+    console.log('page to reload')
+  }
+
+
   return (
     <div className="entireContainer">
       <div className="sidebarContainer">
@@ -31,7 +40,7 @@ export default function App() {
           </div>
         </Link>
         <div className="dotLine"></div>
-        <Link to="/clientRegister">
+        <Link to="/view?client" onClick={refreshPage}>
           <div className="registerClient homeContainer">
             <div className="icon-registerClient icon-home">
               <img
@@ -47,7 +56,7 @@ export default function App() {
             </div>
           </div>
         </Link>
-        <Link to="/machineRegister">
+        <Link to="/view?machine" onClick={refreshPage}>
           <div className="registerMachines homeContainer">
             <div className="icon-registerMachines icon-home">
               <img
@@ -63,7 +72,7 @@ export default function App() {
             </div>
           </div>
         </Link>
-        <Link to="/productRegister">
+        <Link to="/view?product" onClick={refreshPage}>
           <div className="registerProduct homeContainer">
             <div className="icon-registerProduct icon-home">
               <img
@@ -79,7 +88,7 @@ export default function App() {
             </div>
           </div>
         </Link>
-        <Link to="/providerRegister">
+        <Link to="/view?provider" onClick={refreshPage}>
           <div className="registerProvider homeContainer">
             <div className="icon-registerProvider icon-home">
               <img
@@ -95,7 +104,7 @@ export default function App() {
             </div>
           </div>
         </Link>
-        <Link to="/meshRegister">
+        <Link to="/view?mesh" onClick={refreshPage}>
           <div className="registerMesh homeContainer">
             <div className="icon-registerMesh icon-home">
               <img
@@ -111,7 +120,7 @@ export default function App() {
             </div>
           </div>
         </Link>
-        <Link to="/wireRegister">
+        <Link to="/view?wire" onClick={refreshPage}>
           <div className="enterWire homeContainer">
             <div className="icon-enterWire icon-home">
               <img
@@ -127,26 +136,24 @@ export default function App() {
             </div>
           </div>
         </Link>
-        <Link to="/registerEmployee">
-          <Link to="/employeeRegister">
-            <div className="registerEmployee homeContainer">
-              <div className="icon-registerEmployee icon-home">
-                <img
-                  src={Funcionario1}
-                  alt=""
-                  className="icon-enterWire-main icon-home-main"
-                />
-              </div>
-              <div className="text-registerEmployee">
-                <p className="text-registerEmployee-main text-home-main">
-                  Funcionários
-                </p>
-              </div>
+        <Link to="/view?employee" onClick={refreshPage}>
+          <div className="registerEmployee homeContainer">
+            <div className="icon-registerEmployee icon-home">
+              <img
+                src={Funcionario1}
+                alt=""
+                className="icon-enterWire-main icon-home-main"
+              />
             </div>
-          </Link>
+            <div className="text-registerEmployee">
+              <p className="text-registerEmployee-main text-home-main">
+                Funcionários
+              </p>
+            </div>
+          </div>
         </Link>
         <div className="dotLine"></div>
-        <Link to="/enterWire">
+        <Link to="/view?enterWire" onClick={refreshPage}>
           <div className="enterWire homeContainer">
             <div className="icon-enterWire icon-home">
               <img
@@ -160,7 +167,7 @@ export default function App() {
             </div>
           </div>
         </Link>
-        <Link to="/leaveMesh">
+        <Link to="/view?leaveMesh" onClick={refreshPage}>
           <div className="leftMesh homeContainer">
             <div className="icon-leftMesh icon-home">
               <img
@@ -176,7 +183,7 @@ export default function App() {
             </div>
           </div>
         </Link>
-        <Link to="/productionScreen">
+        <Link to="/view?productionScreen" onClick={refreshPage}>
           <div className="startProduction homeContainer">
             <div className="icon-startProduction icon-home">
               <img

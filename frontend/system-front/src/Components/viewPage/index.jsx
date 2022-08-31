@@ -1,10 +1,17 @@
 import React from "react";
-import Sidebar from "../../Components/Sidebar/sidebar";
-import Header from "../../Components/Header/header";
+import Sidebar from "../Sidebar/sidebar";
+import Header from "../Header/header";
 import "../../styles.scss";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function client() {
+
+
+    let url = (window.location.reload);
+
+
+    console.log(url);
 
     return (
         <div className="container">
@@ -16,11 +23,11 @@ export default function client() {
                     <div className="page">
                         <input type="text" placeholder="Procure um cliente aqui" />
 
-                        <a href="/clientRegister">
+                        <Link to="/clientRegister">
                             <button>
                                 Cadastrar Cliente
                             </button>
-                        </a>
+                        </Link>
                     </div>
 
                     <div className="tabela">

@@ -1,7 +1,7 @@
 import React from "react";
-import Sidebar from "../../Components/Sidebar/sidebar";
-import Header from "../../Components/Header/header";
-import "../../styles.scss";
+import Sidebar from "../Components/Sidebar/sidebar";
+import Header from "../Components/Header/header";
+import "../styles.scss";
 
 import toast, { Toaster } from "react-hot-toast";
 

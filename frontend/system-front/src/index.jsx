@@ -6,8 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Sidebar from "./Components/Sidebar/sidebar";
 
 import Home from "./Home";
-import ClientRegister from "./container-client/clientRegister";
-import Client from "./container-client/clientPage";
+import ClientRegister from "./clientRegister";
 import MachineRegister from "./machineRegister";
 import ProductRegister from "./productRegister";
 import ProviderRegister from "./providerRegister";
@@ -19,6 +18,8 @@ import AddLeaveMesh from "./addLeaveMesh";
 import EnterWire from "./enterWire";
 import ProductionScreen from "./productionScreen";
 import Header from "./Components/Header/header";
+
+import View from "./Components/viewPage"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -33,7 +34,7 @@ root.render(
       </Routes>
 
       <Routes>
-        <Route path="/client" element={<Client />} />
+        <Route path="/view" element={<View />} />
       </Routes>
 
       <Routes>

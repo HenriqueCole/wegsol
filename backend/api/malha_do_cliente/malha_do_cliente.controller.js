@@ -12,7 +12,7 @@ router.get('/:id', (req, res) => {
 })
 
 router.post("/", (req, res) => {   
-    Malha_Do_ClienteHandler.criarMalha_Do_Cliente(req, res).then(dados => res.json(dados));
+    Malha_Do_ClienteHandler.criarMalha_Do_Cliente(req.body).then(dados => res.json(dados));
 })
 
 router.delete("/:id", (req, res) => {   

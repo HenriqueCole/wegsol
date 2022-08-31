@@ -1,5 +1,6 @@
 const crud = require("../../CRUD/server");
 const tabela = "malha"
+const tabelaFio = "fio"
 const fios_da_malha = require("../fios_da_malha/fios_da_malha.handler");
 const malha_do_cliente = require("../malha_do_cliente/malha_do_cliente.handler");
 
@@ -19,24 +20,29 @@ async function procurarMalha(id) {
 
 async function criarMalha(dados) {
     const listaMalhas = await procurarMalhas(tabela);
-    const fios = await crud.buscar(tabelaFio);
-    const cliente = await crud.buscar(cliente);
-    const malha = req.body;
+    const cliente = await crud.buscar("cliente");
+    const malha = dados;
 
     if (dados.descricao) {
-        if (listaMalhas.filter((Malhas) => Malhas.descricao == dados.descricao).length == 0 
-        && fios.findIndex(f => f.id == malha.idFio) != -1 && cliente.findIndex(c => c.id == malha.idCliente) != -1) {
-                const dados = {
-                    idFio: malha.idFio,
-                    idMalha: malha.id,
+        if (listaMalhas.filter((Malhas) => Malhas.descricao == dados.descricao).length == 0
+            && cliente.findIndex(c => c.id == malha.idCliente) != -1) {
+            if (await fiosValido(malha.idFio)) {
+                for (let fioDaMalha of dados.idFio) {
+                    const dados = {
+                        idFio: fioDaMalha.idFio,
+                        idMalha: malha.id,
+                    }
+                    await fios_da_malha.criarFios_Da_Malha(dados);
                 }
-                await fios_da_malha.criarFios_Da_Malha(dados);
-                dados = {
-                    idMalha: malha.id,
-                    idCliente: malha.idCliente
-                }
-                await malha_do_cliente.criarMalha_Do_Cliente(dados);
-                return await crud.salvar(tabela, false, dados);
+            } else {
+                return "Erro! Há fios inválidos!"
+            }
+            dados = {
+                idMalha: malha.id,
+                idCliente: malha.idCliente
+            }
+            await malha_do_cliente.criarMalha_Do_Cliente(dados);
+            return await crud.salvar(tabela, false, dados);
         } else {
             return "Erro! A descrição dessa malha já existe!"
         }
@@ -44,6 +50,16 @@ async function criarMalha(dados) {
         return "Erro! Falta algum dado!"
     }
 
+}
+
+async function fiosValido(listaIdFios) {
+    for (let idFio of listaIdFios) {
+        await crud.buscarPorId(tabelaFio, idFio).catch((error) => {
+            return false;
+        });
+    }
+
+    return true;
 }
 
 async function editarMalha(dados, id) {

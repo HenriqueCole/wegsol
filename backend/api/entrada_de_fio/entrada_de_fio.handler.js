@@ -2,7 +2,7 @@ const crud = require("../../crud/server");
 
 const tabelaEntrada_De_Fio = "entrada_de_fio";
 
-async function buscarEntradas_De_Fio() {
+async function buscarEntradas_De_Fios() {
     return await crud.buscar(tabelaEntrada_De_Fio);
 }
 
@@ -87,7 +87,7 @@ async function chaveSecundariaValida(entrada_de_fio) {
 }
 
 module.exports = {
-    buscarEntradas_De_Fio,
+    buscarEntradas_De_Fios,
     buscarEntrada_De_Fio,
     criarEntrada_De_Fio,
     atualizarEntrada_De_Fio,

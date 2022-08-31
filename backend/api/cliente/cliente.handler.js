@@ -35,7 +35,7 @@ async function deletarCliente(req, res){
 
 async function editarCliente(req, res){
     const cliente = await crud.buscar("cliente");
-    if(cliente.findIndex(c => c.idCLIENTE == req.params.idCLIENTE) != -1){
+    if(cliente.findIndex(c => c.id == req.params.id) != -1){
         return await crud.salvar("cliente", req.params.id, req.body);
     }else{
         return await "Id inválido!";

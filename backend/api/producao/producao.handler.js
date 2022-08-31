@@ -12,7 +12,7 @@ async function criarProducao(req, res){
             if(clientes.findIndex(c => c.id == producao.idCliente) != -1){
                 if(maquinas.findIndex(m => m.id == producao.idMaquina) != -1){
                     if(funcionarios.findIndex(f => f.id == producao.idFuncionario) != -1){
-                        return await crud.salvar("maquina", null, producao); 
+                        return await crud.salvar("producao", null, producao); 
                     }else{
                         return "Erro! Funcionario não existe!";
                     }
@@ -29,12 +29,12 @@ async function criarProducao(req, res){
 }
 
 async function buscarProducao(id){
-    const dados = await crud.buscarPorId("maquinas", id);
+    const dados = await crud.buscarPorId("producao", id);
     return (dados);
 }
 
 async function buscarProducoes(){
-    const dados = await crud.buscar("maquinas");
+    const dados = await crud.buscar("producao");
     return dados;
 }
 

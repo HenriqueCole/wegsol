@@ -49,11 +49,16 @@ async function criarProduto(dados) {
 async function editarProduto(dados, id) {
     const listaFornecedor = await crud.buscar("fornecedor");
     const listaProduto = await procurarProdutos();
+    const listaMaquina = await crud.buscar("maquina");
 
-    if (dados.id && dados.descricao && dados.quantidade && dados.valorTotal && dados.arquivoNF && dados.idFornecedor) {
+    if (dados.descricao && dados.quantidade && dados.valor_total_produto && dados.arquivo_nf && dados.idFornecedor && dados.idMaquina) {
         if (listaProduto.filter((Produto) => Produto.descricao == dados.descricao && Produto.idFornecedor == dados.idFornecedor).length == 0) {
             if (listaFornecedor.filter((Fornecedor) => Fornecedor.id == dados.idFornecedor).length != 0) {
-                return await crud.salvar(tabela, id, dados);
+                if (listaMaquina.filter((Maquina) => Maquina.id == dados.idMaquina).length != 0) {
+                    return await crud.salvar(tabela, id, dados);
+                } else {
+                    return "Erro! ID da máquina inválido!";
+                }
             } else {
                 return "Erro! Fornecedor inexistente!"
             }

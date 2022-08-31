@@ -7,7 +7,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 const notify = () => toast.success("Produção iniciada com sucesso!");
 
-export default function wireRegister() {
+export default function productionScreen() {
   return (
     <div className="container">
       <Header></Header>

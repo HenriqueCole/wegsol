@@ -29,7 +29,7 @@ export default function client() {
         currentPage = "Cadastrar Produtos"
         linkPage = "/productRegister";
 
-        list = [{ descricacao: "Maquina de costura tals tals", quantidade: 5, valorTotal: 10, anexo: "2012", valorCompra: "lol", rpm: 1, agulhas: 5, platinas: 3, blocos: 10, gaiolas: 5, cones: 10 }]
+        list = [{ descricacao: "Maquina de costura tals tals", quantidade: 5, valorTotal: 10, anexo: "2012", valorCompra: "500", rpm: 1, agulhas: 5, platinas: 3, blocos: 10, gaiolas: 5, cones: 10 }]
 
     } else if (url == "provider") {
         currentPage = "Cadastrar Fornecedor"

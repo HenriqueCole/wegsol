@@ -26,23 +26,29 @@ async function criarMalha(dados) {
     if (dados.descricao) {
         if (listaMalhas.filter((Malhas) => Malhas.descricao == dados.descricao).length == 0
             && cliente.findIndex(c => c.id == malha.idCliente) != -1) {
+            let malhaSalva;
             if (await fiosValido(malha.idFio)) {
+                
+                malhaSalva = await crud.salvar(tabela, false, { descricao: dados.descricao });
+
                 for (let fioDaMalha of dados.idFio) {
-                    const dados = {
-                        idFio: fioDaMalha.idFio,
-                        idMalha: malha.id,
+                    console.log(fioDaMalha)
+                    console.log(malhaSalva)
+                    const dadosNovo = {
+                        idFio: fioDaMalha,
+                        idMalha: malhaSalva.id,
                     }
-                    await fios_da_malha.criarFios_Da_Malha(dados);
+                    await fios_da_malha.criarFios_Da_Malha(dadosNovo);
                 }
             } else {
                 return "Erro! Há fios inválidos!"
             }
-            dados = {
+            dadosNovo = {
                 idMalha: malha.id,
                 idCliente: malha.idCliente
             }
-            await malha_do_cliente.criarMalha_Do_Cliente(dados);
-            return await crud.salvar(tabela, false, dados);
+            await malha_do_cliente.criarMalha_Do_Cliente(dadosNovo);
+            return malhaSalva;
         } else {
             return "Erro! A descrição dessa malha já existe!"
         }
@@ -53,13 +59,13 @@ async function criarMalha(dados) {
 }
 
 async function fiosValido(listaIdFios) {
+    let valido = true;
     for (let idFio of listaIdFios) {
         await crud.buscarPorId(tabelaFio, idFio).catch((error) => {
-            return false;
+            valido = false;
         });
     }
-
-    return true;
+    return valido;
 }
 
 async function editarMalha(dados, id) {

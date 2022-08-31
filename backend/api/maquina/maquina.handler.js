@@ -14,11 +14,11 @@ async function criarMaquina(req, res) {
 }
 
 async function buscarMaquinas() {
-    return await crud.buscar("maquinas");
+    return await crud.buscar("maquina");
 }
 
 async function buscarMaquina(id) {
-    return await crud.buscarPorId("maquinas", id);
+    return await crud.buscarPorId("maquina", id);
 }
 
 async function deletarMaquina(req, res) {

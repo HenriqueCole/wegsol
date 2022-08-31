@@ -68,7 +68,7 @@ async function buscarPorId(nomeTabela, id) {
     if (docSnap.exists()) {
         return docSnap.data();
     } else {
-        return new Error("ERRO!");
+        throw new Error("ERRO!");
     }
 }
 async function remover(nomeTabela, id) {

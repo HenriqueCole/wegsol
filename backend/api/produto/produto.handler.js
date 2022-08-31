@@ -1,5 +1,6 @@
 const crud = require("../../CRUD/server");
 const tabela = "produto";
+const possui_produto = require("../possui_produto/possui_produto.handler");
 
 async function procurarProdutos() {
     return await crud.buscar(tabela);
@@ -25,14 +26,14 @@ async function criarProduto(dados) {
             if (listaFornecedor.filter((Fornecedor) => Fornecedor.id == dados.idFornecedor).length != 0) {
                 if (listaMaquina.filter((Maquina) => Maquina.id == dados.idMaquina).length != 0) {
                     const produtoCriado = await crud.salvar(tabela, false, dados);
-                    const dados = {
+                    const dado = {
                         idEntrada_De_Produtos: produtoCriado.id,
                         idMaquina: dados.idMaquina
                     }
-                    possui_malha.criarPossui_Malha(dados)
+                    possui_produto.criarPossui_Produto(dado)
                     return produtoCriado;
                 } else {
-                    return "Erro! ID da máquina inválido!"
+                    return "Erro! ID da máquina inválido!";
                 }
             } else {
                 return "Erro! Fornecedor inexistente!"

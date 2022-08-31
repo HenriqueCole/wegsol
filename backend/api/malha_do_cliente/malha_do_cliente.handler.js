@@ -1,14 +1,14 @@
 const crud = require('../../crud/server');
 
-async function criarMalha_Do_Cliente(req, res){
-    const malhaCliente = req.body;
+async function criarMalha_Do_Cliente(dadosReq){
+    const malhaCliente = dadosReq;
     const clientes = await crud.buscar("cliente");
     const malhas = await crud.buscar("malha");
     
     if(malhas.findIndex(m => m.id == malhaCliente.idCliente) == -1){
-        return await "Erro! Id do cliente não encontrado.";
+        return "Erro! Id do cliente não encontrado.";
     }else if(clientes.findIndex(c => c.id == malhaCliente.idMalha) == -1){
-        return await "Erro! Id da malha não encontrado.";
+        return "Erro! Id da malha não encontrado.";
     }else{
         const dados = await crud.salvar("malha", null, req.body);
         return dados;

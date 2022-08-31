@@ -47,12 +47,11 @@ async function criarProduto(dados) {
 }
 
 async function editarProduto(dados, id) {
+    const listaProduto = await criarProduto.buscar("produto")
     const listaFornecedor = await crud.buscar("fornecedor");
-    const listaProduto = await procurarProdutos();
     const listaMaquina = await crud.buscar("maquina");
-
-    if (dados.descricao && dados.quantidade && dados.valor_total_produto && dados.arquivo_nf && dados.idFornecedor && dados.idMaquina) {
-        if (listaProduto.filter((Produto) => Produto.descricao == dados.descricao && Produto.idFornecedor == dados.idFornecedor).length == 0) {
+    if (listaProduto.filter((Produto) => Produto.id == id) = ! "") {
+        if (dados.descricao && dados.quantidade && dados.valor_total_produto && dados.arquivo_nf && dados.idFornecedor && dados.idMaquina) {
             if (listaFornecedor.filter((Fornecedor) => Fornecedor.id == dados.idFornecedor).length != 0) {
                 if (listaMaquina.filter((Maquina) => Maquina.id == dados.idMaquina).length != 0) {
                     return await crud.salvar(tabela, id, dados);
@@ -63,10 +62,11 @@ async function editarProduto(dados, id) {
                 return "Erro! Fornecedor inexistente!"
             }
         } else {
-            return "Erro! Já existe este produto!"
+            return "Erro! Falta algum dado!"
         }
     } else {
-        return "Erro! Falta algum dado!"
+        return "Erro! ID do produto que deseja editar inválido!"
+
     }
 }
 

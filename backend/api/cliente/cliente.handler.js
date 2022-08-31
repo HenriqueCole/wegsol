@@ -1,3 +1,4 @@
+const { request } = require('express');
 const crud = require('../../crud/server');
 
 async function criarCliente(req, res){
@@ -14,7 +15,13 @@ async function buscarClientes(){
 }
 
 async function buscarCliente(req, res){
-    return await crud.buscarPorId("cliente", req.params.id);
+    const cliente = await crud.buscar("cliente"); 
+    if(cliente.findIndex(c => c.id == req.params.id) != -1){
+        return await crud.buscarPorId("cliente", req.params.id);
+    }else{
+        return await "Erro! Id inválido!";
+    }
+    
 }
 
 async function deletarCliente(req, res){

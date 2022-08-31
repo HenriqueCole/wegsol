@@ -47,7 +47,7 @@ async function criarProduto(dados) {
 }
 
 async function editarProduto(dados, id) {
-    const listaProduto = await criarProduto.buscar("produto")
+    const listaProduto = await crud.buscar("produto")
     const listaFornecedor = await crud.buscar("fornecedor");
     const listaMaquina = await crud.buscar("maquina");
     if (listaProduto.filter((Produto) => Produto.id == id) = ! "") {

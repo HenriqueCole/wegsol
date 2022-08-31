@@ -44,7 +44,7 @@ async function criarMalha(dados) {
                 return "Erro! Há fios inválidos!"
             }
             dadosNovo = {
-                idMalha: malha.id,
+                idMalha: malhaSalva.id,
                 idCliente: malha.idCliente
             }
             await malha_do_cliente.criarMalha_Do_Cliente(dadosNovo);

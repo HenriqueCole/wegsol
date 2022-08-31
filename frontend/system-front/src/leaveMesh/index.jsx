@@ -4,6 +4,7 @@ import Sidebar from "../Components/Sidebar/sidebar";
 import Header from "../Components/Header/header";
 
 import toast, { Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const notify = () => toast.success("Sucesso!");
 
@@ -32,11 +33,13 @@ export default function leaveMesh() {
             <span>Adicionar saídas:</span>
             <div className="saida">
               <input type="text"></input>
-              <img
-                className="addSaida"
-                src="https://i.imgur.com/LiEAL12.png"
-                alt=""
-              />
+              <Link to="/addLeaveMesh">
+                <img
+                  className="addSaida"
+                  src="https://i.imgur.com/LiEAL12.png"
+                  alt=""
+                />
+              </Link>
             </div>
           </label>
 

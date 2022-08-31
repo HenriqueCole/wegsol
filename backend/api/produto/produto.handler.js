@@ -50,7 +50,7 @@ async function editarProduto(dados, id) {
     const listaProduto = await crud.buscar("produto")
     const listaFornecedor = await crud.buscar("fornecedor");
     const listaMaquina = await crud.buscar("maquina");
-    if (listaProduto.filter((Produto) => Produto.id == id) = ! "") {
+    if (listaProduto.filter((Produto) => Produto.id == id) != "") {
         if (dados.descricao && dados.quantidade && dados.valor_total_produto && dados.arquivo_nf && dados.idFornecedor && dados.idMaquina) {
             if (listaFornecedor.filter((Fornecedor) => Fornecedor.id == dados.idFornecedor).length != 0) {
                 if (listaMaquina.filter((Maquina) => Maquina.id == dados.idMaquina).length != 0) {

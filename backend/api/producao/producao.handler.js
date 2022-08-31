@@ -9,10 +9,10 @@ async function criarProducao(req, res){
 
     if(producao.kgRoloMalha != "" && producao.defeito != "" && producao.idCliente != "" && producao.idMaquina != ""
         && producao.idFuncionario != ""){
-            if(clientes.findIndex(c => c.id == producao.idCliente != -1)){
+            if(clientes.findIndex(c => c.id == producao.idCliente) != -1){
                 if(maquinas.findIndex(m => m.id == producao.idMaquina) != -1){
                     if(funcionarios.findIndex(f => f.id == producao.idFuncionario) != -1){
-                        return await crud.salvar("maquina", null, producao); 
+                        return await crud.salvar("producao", null, producao); 
                     }else{
                         return "Erro! Funcionario não existe!";
                     }
@@ -29,19 +29,19 @@ async function criarProducao(req, res){
 }
 
 async function buscarProducao(id){
-    const dados = await crud.buscarPorId("maquinas", id);
+    const dados = await crud.buscarPorId("producao", id);
     return (dados);
 }
 
 async function buscarProducoes(){
-    const dados = await crud.buscar("maquinas");
+    const dados = await crud.buscar("producao");
     return dados;
 }
 
 async function deletarProducao(req, res){
     const producao = await crud.buscar("producao"); 
     if(producao.findIndex(c => c.idPRODUCAO == req.params.idPRODUCAO) != -1){
-    await crud.remover("cliente", req.params.id);
+    return await crud.remover("producao", req.params.id);
     }else{
         res.status(404).send("id inválido");
     }

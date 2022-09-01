@@ -24,8 +24,11 @@ async function buscarFuncionarios(){
 }
 
 async function buscarFuncionario(id){
-    const dados = await crud.buscarPorId("funcionario", id);
-    return dados;
+    const listaFuncionarios = await crud.buscar("funcionario");
+    if (listaFuncionarios.filter((Funcionario) => Funcionario.id == id) != "") {
+        return await crud.buscarPorId("funcionario", id);
+    }
+    return "Erro! ID inválido!";
 }
 
 async function deletarFuncionario(req, res){

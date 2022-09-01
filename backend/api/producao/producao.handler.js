@@ -43,7 +43,7 @@ async function buscarProducoes(){
 
 async function deletarProducao(req, res){
     const producao = await crud.buscar("producao"); 
-    if(producao.findIndex(c => c.idPRODUCAO == req.params.idPRODUCAO) != -1){
+    if(producao.findIndex(c => c.id == req.params.id) != -1){
     return await crud.remover("producao", req.params.id);
     }else{
         res.status(404).send("id inválido");
@@ -52,7 +52,7 @@ async function deletarProducao(req, res){
 
 async function editarProducao(req, res){
     const producao = await crud.buscar("producao");
-    if(producao.findIndex(c => c.idPRODUCAO == req.params.idPRODUCAO)!= -1){   
+    if(producao.findIndex(c => c.id == req.params.id)!= -1){   
         return await crud.salvar("cliente", req.params.id, req.body);
     }else{
         return await "id inválido!";

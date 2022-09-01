@@ -15,12 +15,12 @@ async function criarMalha_Do_Cliente(dadosReq){
     }
 }
 
-async function procurarMalha_Do_Cliente(){
+async function procurarMalhas_Do_Cliente(){
     const dados = await crud.buscar("malha");
     return (dados);
 }
 
-async function procurarMalhas_Do_Cliente(id){
+async function procurarMalha_Do_Cliente(id){
     const dados = await crud.buscarPorId("malha", id);
     return dados;
 }
@@ -35,7 +35,7 @@ async function deletarMalha_Do_Cliente(req, res){
     }
 }
 
-async function editarMalha_do_Cliente(req, res){
+async function editarMalha_Do_Cliente(req, res){
     const malha = await crud.buscar("malha");
     if(malha.findIndex(c => c.idMALHA == req.params.idMALHA)!= -1){
         return await crud.deletar("cliente", req.params.id);
@@ -49,5 +49,5 @@ module.exports = {
     procurarMalha_Do_Cliente,
     procurarMalhas_Do_Cliente,
     deletarMalha_Do_Cliente,
-    editarMalha_do_Cliente
+    editarMalha_Do_Cliente
 }

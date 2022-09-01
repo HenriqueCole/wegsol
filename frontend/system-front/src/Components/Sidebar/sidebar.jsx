@@ -25,6 +25,33 @@ export default function App() {
     console.log('page to reload')
   }
 
+      let url = window.location.search.substring(1);
+
+
+  if (url == "client") {
+
+  } else if (url == "machine") {
+
+  } else if (url == "product") {
+
+
+  } else if (url == "provider") {
+
+  } else if (url == "mesh") {
+
+  } else if (url == "wire") {
+
+  } else if (url == "employee") {
+
+  } else if (url == "enterWire") {
+
+  } else if (url == "leaveMesh") {
+
+  } else if (url == "productionScreen") {
+
+  }
+
+
 
   return (
     <div className="entireContainer">

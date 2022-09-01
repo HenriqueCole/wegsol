@@ -14,9 +14,9 @@ export default function client() {
         currentPage = "Cadastrar Cliente"
         linkPage = "/clientRegister"
 
-        list = [{ name: "Leonardo Heitor Poglia", cnpj: 123 }]
+        list = [{ nome: "Leonardo Heitor Poglia", cnpj: 123 }]
         headerlist = (<tr key="name"><th>Nome</th><th>CNPJ</th></tr>)
-        viewList = list.map(function (item) { return (<tr id="" key=""><td>{item.name}</td><td>{item.cnpj}</td></tr>); });
+        viewList = list.map(function (item) { return (<tr id="" key=""><td>{item.nome}</td><td>{item.cnpj}</td></tr>); });
 
     } else if (url == "machine") {
         currentPage = "Cadastrar Maquina"
@@ -119,7 +119,6 @@ export default function client() {
                     </div>
                 </main>
             </div>
-
         </div>
     );
 }

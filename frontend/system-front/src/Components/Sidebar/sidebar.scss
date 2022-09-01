@@ -9,25 +9,29 @@ a {
   width: 100%;
 }
 
-label a{
+label a {
   width: auto !important;
 }
 
+#atual {
+  background-color: #ca3e47;
+}
+
 .entireContainer {
-  width: 250px;
   display: flex;
   align-items: flex-end;
+  margin-top: 70px;
   justify-content: start;
-  padding-top: 70px;
 
   .homeContainer {
     display: flex;
     align-items: center;
     justify-content: start;
+    height: 100%;
     column-gap: 1.3rem;
     transition: 0.2s ease-in-out;
-    width: 100%;
-    padding: 6px 0px;
+    width: 210px;
+    padding: 3.8px 0px;
   }
 
   .homeContainer:hover {

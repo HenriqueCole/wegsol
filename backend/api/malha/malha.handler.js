@@ -28,7 +28,7 @@ async function criarMalha(dados) {
             && cliente.findIndex(c => c.id == malha.idCliente) != -1) {
             let malhaSalva;
             if (await fiosValido(malha.idFio)) {
-                
+
                 malhaSalva = await crud.salvar(tabela, false, { descricao: dados.descricao });
 
                 for (let fioDaMalha of dados.idFio) {
@@ -59,13 +59,22 @@ async function criarMalha(dados) {
 }
 
 async function fiosValido(listaIdFios) {
-    let valido = true;
+    const listaFios = await crud.buscar(tabelaFio);
+
+    let valido, varReturn = true;
     for (let idFio of listaIdFios) {
-        await crud.buscarPorId(tabelaFio, idFio).catch((error) => {
-            valido = false;
-        });
+        valido = false;
+        for (let itemFio of listaFios) {
+            if (idFio == itemFio.id) {
+                valido = true;
+            }
+        }
+        if (!valido) {
+            varReturn = false;
+        }
     }
-    return valido;
+
+    return varReturn;
 }
 
 async function editarMalha(dados, id) {

@@ -16,7 +16,7 @@ router.post("/", (req, res) => {
 })
 
 router.delete("/:id", (req, res) => {   
-    maquinaHandler.deletarMaquina(req, res).then(dados => res.json(dados));
+    maquinaHandler.deletarMaquina(req.params.id).then(dados => res.json(dados));
 })
 
 router.put("/:id", (req, res) => {   

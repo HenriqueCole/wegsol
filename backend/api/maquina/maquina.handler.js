@@ -31,11 +31,11 @@ async function buscarMaquina(id) {
     }
 }
 
-async function deletarMaquina(req, res) {
+async function deletarMaquina(id) {
     const maquina = await crud.buscar("maquina");
-    if (maquina.findIndex(c => c.id == req.params.id) != -1) {
-        const dados = await crud.remover("maquina", req.params.id);
-        return dados;
+    console.log("id: ", id);
+    if (maquina.findIndex(m => m.id == id) != -1) {
+        return await crud.remover("maquina", id);
     } else {
         res.status(404).send("id inválido");
     }

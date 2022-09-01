@@ -79,9 +79,19 @@ export default function client() {
     } else if (url == "leaveMesh") {
         currentPage = "Cadastrar Saída de Fio"
         linkPage = "/leaveMesh";
+
+        list = [{ saida: "Malha de Couro", anexo: ".zip", valorTotal: 500, cliente: "Leonardo Heitor Poglia" }]
+        headerlist = (<tr key="name"><th>Saída</th><th>Anexo</th><th>Valor Total</th><th>Cliente</th></tr>)
+        viewList = list.map(function (item) { return (<tr id="" key=""><td>{item.saida}</td><td>{item.anexo}</td><td>{item.valorTotal}</td><td>{item.cliente}</td></tr>); })
+
     } else if (url == "productionScreen") {
         currentPage = "Iniciar Produção"
         linkPage = "/productionScreen";
+
+        list = [{ peso: 500, defeitos: "0 defeitos", cliente: "Leonardo Heitor Poglia", maquina: "Maquina 01", funcionario: "Henrique Cole Fernandes" }]
+        headerlist = (<tr key="name"><th>Peso</th><th>Defeitos</th><th>Cliente</th><th>Maquina</th><th>Funcionário</th></tr>)
+        viewList = list.map(function (item) { return (<tr id="" key=""><td>{item.peso}</td><td>{item.defeitos}</td><td>{item.cliente}</td><td>{item.maquina}</td><td>{item.funcionario}</td></tr>); })
+
     }
 
     return (

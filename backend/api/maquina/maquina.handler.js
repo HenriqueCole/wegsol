@@ -23,12 +23,17 @@ async function buscarMaquinas() {
 }
 
 async function buscarMaquina(id) {
-    return await crud.buscarPorId("maquina", id);
+    const maquina = await crud.buscar("maquina");
+    if(maquina.findIndex(m => m.id == id) != -1){
+        return await crud.buscarPorId("maquina", id);
+    }else{
+        return "Erro! id inexistente!";
+    }
 }
 
 async function deletarMaquina(req, res) {
     const maquina = await crud.buscar("maquina");
-    if (maquina.findIndex(c => c.idMAQUINA == req.params.idMAQUINA) != -1) {
+    if (maquina.findIndex(c => c.id == req.params.id) != -1) {
         const dados = await crud.remover("maquina", req.params.id);
         return dados;
     } else {
@@ -38,7 +43,7 @@ async function deletarMaquina(req, res) {
 
 async function editarMaquina(req, res) {
     const maquina = await crud.buscar("maquina");
-    if (maquina.findIndex(c => c.idMAQUINA == req.params.idMAQUINA) != -1) {
+    if (maquina.findIndex(c => c.id == req.params.id) != -1) {
         return await crud.salvar("maquina", req.params.id, req.body);
     } else {
         res.status(404).send("id inválido");

@@ -31,7 +31,7 @@ async function deletarMalha_Do_Cliente(req, res) {
 async function editarMalha_Do_Cliente(req, res) {
     const malha = await crud.buscar("malha");
     if (malha.findIndex(c => c.idMALHA == req.params.idMALHA) != -1) {
-        return await crud.deletar("cliente", req.params.id);
+        return await crud.salvar("cliente", req.params.id, req.body);
     } else {
         res.status(404).send("id inválido");
     }

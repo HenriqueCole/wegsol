@@ -29,10 +29,9 @@ async function criarProducao(req, res){
 }
 
 async function buscarProducao(id){
-    const dados = await crud.buscarPorId("producao", id);
-    console.log("Aqui"+dados);
-    if (typeof dados == "object") {
-        return (dados);
+    const listaProducoes = await crud.buscar("producao");
+    if (listaProducoes.filter((Producao) => Producao.id == id) != "") {
+        return await crud.buscarPorId("producao", id);
     }
     return "Erro! ID inválido!";
 }

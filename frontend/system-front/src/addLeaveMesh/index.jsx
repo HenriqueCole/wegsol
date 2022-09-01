@@ -48,7 +48,6 @@ export default function addLeaveMesh() {
                             <span >Peso:</span>
                             <div className="inputPeso">
                                 <input type="text" />
-                                <span>     Kg</span>
                             </div>
                         </label>
                     </div>
@@ -84,7 +83,6 @@ export default function addLeaveMesh() {
                             <span>Preço:</span>
                             <div className="inputPeso">
                                 <input type="text" />
-                                <span>   R$</span>
                             </div>
                         </label>
                     </div>

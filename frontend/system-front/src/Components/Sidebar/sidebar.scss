@@ -9,9 +9,12 @@ a {
   width: 100%;
 }
 
+label a{
+  width: auto !important;
+}
+
 .entireContainer {
   width: 250px;
-  height: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: start;

@@ -27,7 +27,19 @@ const Services = {
 
     cadastrarMalhas: function (descricao, idFio, idCliente) {
         return new Promise((resolve, reject) => {
-            fetch('http://127.0.0.1:8080/api/fornecedor', { method: 'POST', body: JSON.stringify({ descricao: descricao, idFio: idFio, idCliente: idCliente }), headers: { 'Content-Type': 'application/json' } }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
+            fetch('http://127.0.0.1:8080/api/malha', { method: 'POST', body: JSON.stringify({ descricao: descricao, idFio: idFio, idCliente: idCliente }), headers: { 'Content-Type': 'application/json' } }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
+        })
+    },
+
+    cadastrarFio: function (descricao) {
+        return new Promise((resolve, reject) => {
+            fetch('http://127.0.0.1:8080/api/fio', { method: 'POST', body: JSON.stringify({ descricao: descricao }), headers: { 'Content-Type': 'application/json' } }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
+        })
+    },
+
+    cadastrarFuncionario: function (nome, cpf, idade, salario, turno) {
+        return new Promise((resolve, reject) => {
+            fetch('http://127.0.0.1:8080/api/funcionario', { method: 'POST', body: JSON.stringify({ nome: nome, cpf: cpf, idade: idade, salario: salario, turno: turno }), headers: { 'Content-Type': 'application/json' } }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
         })
     },
 

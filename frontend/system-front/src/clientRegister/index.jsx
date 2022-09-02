@@ -1,13 +1,38 @@
+
+/* eslint-disable*/
 import React from "react";
 import Sidebar from "../Components/Sidebar/sidebar";
 import Header from "../Components/Header/header";
 import "../styles.scss";
+import Service from "../services/service.ts";
+import { useState } from "react";
 
 import toast, { Toaster } from "react-hot-toast";
 
 const notify = () => toast.success("Cliente cadastrado com sucesso!");
 
+
 export default function clientRegister() {
+
+  const [nome, setNome] = useState("");
+  const [cpf, setCpf] = useState("");
+
+
+  function cadastrarCliente() {
+    Service.cadastrarCliente(nome, cpf).then((result) => {
+      console.log(result);
+    });
+  }
+
+  function handleName(event) {
+    setNome(event.target.value);
+  }
+
+  function handleCpf(event) {
+    setCpf(event.target.value);
+  }
+
+
   return (
     <div className="container">
       <Header></Header>
@@ -31,15 +56,15 @@ export default function clientRegister() {
           <div className="containerInputs">
             <label>
               <span>Nome:</span>
-              <input type="text" />
+              <input id="name" type="text" onChange={handleName} />
             </label>
             <label>
               <span>CNPJ:</span>
-              <input type="text" />
+              <input id="cnpj" type="text" onChange={handleCpf} />
             </label>
           </div>
           <div className="containerButton">
-            <button onClick={notify}>Concluir</button>
+            <button onClick={cadastrarCliente} >Concluir</button>
           </div>
         </div>
       </main>

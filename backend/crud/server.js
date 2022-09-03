@@ -43,22 +43,22 @@ async function salvar(nomeTabela, id, dado) {
 }
 
 async function buscar(nomeTabela) {
-    const tabelaReferencia = collection(db, nomeTabela);
+    // const tabelaReferencia = collection(db, nomeTabela);
 
-    const q = query(tabelaReferencia);
+    // const q = query(tabelaReferencia);
 
-    const querySnapshot = await getDocs(q);
+    // const querySnapshot = await getDocs(q);
 
     const lista = [];
 
-    querySnapshot.forEach((doc) => {
-        const dado = {
-            ...doc.data(),
-            id: doc.id
-        }
-        lista.push(dado);
-    });
-    return lista;
+    // querySnapshot.forEach((doc) => {
+    //     const dado = {
+    //         ...doc.data(),
+    //         id: doc.id
+    //     }
+    //     lista.push(dado);
+    // });
+    return Promise.resolve(lista);
 }
 
 async function buscarPorId(nomeTabela, id) {

@@ -1,4 +1,4 @@
-const crud = require("../../CRUD/server");
+const crud = require("../../crud/server");
 const tabela = "produto";
 const possui_produto = require("../possui_produto/possui_produto.handler");
 

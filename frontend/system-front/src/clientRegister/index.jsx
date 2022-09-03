@@ -1,4 +1,3 @@
-
 /* eslint-disable*/
 import React from "react";
 import Sidebar from "../Components/Sidebar/sidebar";
@@ -14,8 +13,6 @@ const notify = () => toast.success("Cliente cadastrado com sucesso!");
 
 export default function clientRegister() {
 
-  const [nome, setNome] = useState("");
-  const [cpf, setCpf] = useState("");
 
 
   function cadastrarCliente() {
@@ -24,10 +21,12 @@ export default function clientRegister() {
     });
   }
 
+  const [nome, setNome] = useState("");
   function handleName(event) {
     setNome(event.target.value);
   }
 
+  const [cpf, setCpf] = useState("");
   function handleCpf(event) {
     setCpf(event.target.value);
   }

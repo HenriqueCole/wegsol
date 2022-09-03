@@ -1,4 +1,4 @@
-const crud = require("../../CRUD/server");
+const crud = require("../../crud/server");
 const tabela = "fios_da_malha"
 
 async function procurarFios_Da_Malhas() {

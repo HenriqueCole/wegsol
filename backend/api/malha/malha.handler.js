@@ -1,4 +1,4 @@
-const crud = require("../../CRUD/server");
+const crud = require("../../crud/server");
 const tabela = "malha"
 const tabelaFio = "fio"
 const fios_da_malha = require("../fios_da_malha/fios_da_malha.handler");
@@ -100,7 +100,6 @@ async function deletarMalha(id) {
         return await crud.remover(tabela, id);
     }
 }
-
 
 module.exports = {
     procurarMalhas, procurarMalha, criarMalha, editarMalha, deletarMalha

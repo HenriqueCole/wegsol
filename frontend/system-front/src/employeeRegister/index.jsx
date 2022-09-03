@@ -8,6 +8,17 @@ import toast, { Toaster } from "react-hot-toast";
 const notify = () => toast.success("Funcionário cadastrado com sucesso!");
 
 export default function providerRegister() {
+
+  const [nome, setNome] = useState("");
+  function handleName(event) {
+    setNome(event.target.value);
+  }
+
+  const [cpf, setCpf] = useState("");
+  function handleCpf(event) {
+    setCpf(event.target.value);
+  }
+
   return (
     <div className="container">
       <Header></Header>

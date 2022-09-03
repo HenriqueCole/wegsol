@@ -96,7 +96,7 @@ export default function productRegister() {
                 <div className="menos" onClick={(e) => decreaseValue(e)}>
                   -
                 </div>
-                <input onChance={handleQuantidade} type="text" value={0} />
+                <input id="quantidade" onChance={handleQuantidade} type="text" value={0} />
                 <div className="mais" onClick={(e) => increaseValue(e)}>
                   +
                 </div>

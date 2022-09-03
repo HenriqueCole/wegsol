@@ -13,8 +13,6 @@ const notify = () => toast.success("Cliente cadastrado com sucesso!");
 
 export default function clientRegister() {
 
-
-
   function cadastrarCliente() {
     Service.cadastrarCliente(nome, cpf).then((result) => {
       console.log(result);

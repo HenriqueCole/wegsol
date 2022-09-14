@@ -9,10 +9,14 @@ import toast, { Toaster } from "react-hot-toast";
 
 const notify = () => toast.success("Sucesso!");
 
-export default function enterWire() {
 
-  function cadastrarEntradaFio(){
-    Service.cadastrarEntradaFio(qtd_caixa, qtd_kg, subtotal, qtd_rolos_por_caixa, arquivo_nf, idFornecedor, idFio, idCliente);
+export default function EnterWire() {
+
+  function cadastrarEntradaFio() {
+    Service.cadastrarEntradaFio(qtd_caixa, qtd_kg, subtotal, qtd_rolos_por_caixa, arquivo_nf, idFornecedor, idFio, idCliente).then((result) => {
+      console.log(result);
+      notify();
+    });
   }
 
   const [qtd_caixa, setQtd_Caixa] = useState("");
@@ -118,8 +122,13 @@ export default function enterWire() {
             <input onChange={handleArquivoNf} type="file" />
           </label>
 
+          <label>
+            <span>Id do cliente:</span>
+            <input onChange={handleIdCliente} type="text" />
+          </label>
+
           <div className="containerButton">
-            <button onClick={notify}>Concluir</button>
+            <button onClick={cadastrarEntradaFio}>Concluir</button>
           </div>
         </div>
       </main>

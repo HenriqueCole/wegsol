@@ -17,6 +17,7 @@ export default function clientRegister() {
     Service.cadastrarCliente(nome, cpf).then((result) => {
       console.log(result);
     });
+    notify();
   }
 
   const [nome, setNome] = useState("");

@@ -51,23 +51,23 @@ main {
 
   .form {
 
-    .labelQuality{
+    .labelQuality {
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .titleAndInput{
-     width: 100%; 
+    .titleAndInput {
+      width: 100%;
     }
 
-    .buttonUpload{
+    .buttonUpload {
       display: flex;
       align-items: center;
       column-gap: 2rem;
     }
 
-    button{
+    button {
       color: black;
       width: 10rem;
       height: 2rem;
@@ -76,28 +76,29 @@ main {
       transition: .4s;
     }
 
-    button:hover{
+    button:hover {
       background-color: rgb(194, 194, 194);
       cursor: pointer;
     }
 
-    .inputQuality{
+    .inputQuality {
       width: 100%;
       height: 6rem;
     }
+
     background-color: #414141;
     width: 100%;
     border-radius: 5px;
     padding: 20px;
 
-    .topContainer{
+    .topContainer {
       margin-top: 2rem;
       display: flex;
       align-items: center;
       justify-content: space-evenly;
     }
 
-    .labelPeso{
+    .labelPeso {
       height: 81px;
     }
   }
@@ -266,7 +267,7 @@ label {
   }
 
 
-  a{
+  a {
     width: auto !important;
   }
 
@@ -319,4 +320,16 @@ label {
   }
 
 
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.loading img {
+  width: 60px;
 }

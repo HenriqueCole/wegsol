@@ -28,26 +28,26 @@ export default function App() {
       let url = window.location.search.substring(1);
 
 
-  if (url == "client") {
+  if (url === "client") {
 
-  } else if (url == "machine") {
+  } else if (url === "machine") {
 
-  } else if (url == "product") {
+  } else if (url === "product") {
 
 
-  } else if (url == "provider") {
+  } else if (url === "provider") {
 
-  } else if (url == "mesh") {
+  } else if (url === "mesh") {
 
-  } else if (url == "wire") {
+  } else if (url === "wire") {
 
-  } else if (url == "employee") {
+  } else if (url === "employee") {
 
-  } else if (url == "enterWire") {
+  } else if (url === "enterWire") {
 
-  } else if (url == "leaveMesh") {
+  } else if (url === "leaveMesh") {
 
-  } else if (url == "productionScreen") {
+  } else if (url === "productionScreen") {
 
   }
 

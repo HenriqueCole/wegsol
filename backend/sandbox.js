@@ -1,7 +1,8 @@
-const crud = require("./crud/server");
+const service = require("./api/retonarId/retornaid.js");
 
-async function buscarTeste() {
-    return await crud.buscar("cliente");
+async function retornaIdFio() {
+    let teste = await service.retornaIdFio("123");
+    console.log(teste);
 }
 
-console.log(buscarTeste());
+retornaIdFio();

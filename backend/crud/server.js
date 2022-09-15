@@ -78,9 +78,28 @@ async function remover(nomeTabela, id) {
     }
 }
 
+async function buscarComFiltro(nomeTabela, operador, nomeDado, dado) {
+    const tableRef = collection(db, nomeTabela);
+    const q = query(tableRef, where(nomeDado, operador, dado));
+    const data = await getDocs(q)
+
+    const lista = [];
+
+    data.forEach((doc) => {
+        const data = {
+            ...doc.data(),
+            id: doc.id
+        }
+        lista.push(data);
+    })
+
+    return lista;
+}
+
 module.exports = {
     salvar,
     buscar,
     buscarPorId,
+    buscarComFiltro,
     remover
 }

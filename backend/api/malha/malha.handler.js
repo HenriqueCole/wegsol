@@ -5,7 +5,15 @@ const fios_da_malha = require("../fios_da_malha/fios_da_malha.handler");
 const malha_do_cliente = require("../malha_do_cliente/malha_do_cliente.handler");
 
 async function procurarMalhas() {
-  return await crud.buscar(tabela);
+  let malhas = await crud.buscar(tabela);
+
+  // for (let malha of malhas) {
+  //   malha.idFio = await fios_da_malha.procurarFios_Da_Malha(malha.id);
+
+  //   malha.idCliente = await malha_do_cliente.procurarMalha_Do_Cliente(malha.id);
+  // }
+
+  return malhas;
 }
 
 async function procurarMalha(id) {

@@ -4,11 +4,15 @@ import "../styles.scss";
 import Sidebar from "../Components/Sidebar/sidebar";
 import Header from "../Components/Header/header";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import Service from "../services/service.ts";
 
 export default function addLeaveMesh() {
     const [value, setValue] = useState(0);
 
+
     function increaseValue() {
+        console.log(value);
         setValue(value + 1);
     }
 
@@ -18,6 +22,73 @@ export default function addLeaveMesh() {
             setValue(0);
         }
     }
+
+    var count = 0;
+
+    function setLocalStorageObject() {
+        count++;
+
+        var obj = {
+            qtd: value,
+            peso: peso,
+            qualidade: qualidade,
+            notaFiscal: notaFiscal,
+            preco: preco,
+            malha: malha
+        }
+        localStorage.setItem("saidaMalha" + count, JSON.stringify(obj));
+    }
+
+    const [qtd, setQtd] = useState("");
+    function handleQtd(event) {
+        setQtd(event.target.value);
+        console.log("qtd: ", qtd);
+    }
+
+    const [peso, setPeso] = useState("");
+    function handlePeso(event) {
+        setPeso(event.target.value);
+        console.log("peso: ", peso);
+    }
+
+    const [qualidade, setQualidade] = useState("");
+    function handleQualidade(event) {
+        setQualidade(event.target.value);
+    }
+
+    const [notaFiscal, setNotaFiscal] = useState("");
+    function handleNotaFiscal(event) {
+        setNotaFiscal(event.target.value);
+    }
+
+    const [preco, setPreco] = useState("");
+    function handlePreco(event) {
+        setPreco(event.target.value);
+    }
+
+    const [malha, setMalha] = useState("");
+    function handleMalha(event) {
+        setMalha(event.target.value);
+    }
+
+
+    var listaMalhas = [];
+
+    async function addListaMalhas() {
+        listaMalhas = await Service.buscarMalha();
+        console.log("listaMalhas: ", listaMalhas);
+    }
+
+    function addOption() {
+        addListaMalhas();
+        var select = document.querySelector("#meshInput")
+        for (var i = 0; i < listaMalhas.length; i++) {
+            var option = document.createElement("option");
+            option.value = listaMalhas[i].descricao;
+            select.add(option);
+        }
+    }
+
 
     return (
         <div className="container">
@@ -37,7 +108,7 @@ export default function addLeaveMesh() {
                                 <div className="menos" onClick={decreaseValue}>
                                     -
                                 </div>
-                                <input type="text" value={value} />
+                                <input type="text" value={value} onChange={handleQtd} />
                                 <div className="mais" onClick={increaseValue}>
                                     +
                                 </div>
@@ -47,7 +118,7 @@ export default function addLeaveMesh() {
                         <label className="labelPeso">
                             <span >Peso:</span>
                             <div className="inputPeso">
-                                <input type="text" />
+                                <input onChange={handlePeso} type="text" />
                             </div>
                         </label>
                     </div>
@@ -59,7 +130,7 @@ export default function addLeaveMesh() {
                             <label className="titleAndInput">
                                 <span>Qualidade</span>
                                 <div className="inputQualidade">
-                                    <input type="text" className="inputQuality" />
+                                    <input onChange={handleQualidade} type="text" className="inputQuality" />
                                 </div>
                             </label>
                         </label>
@@ -71,7 +142,7 @@ export default function addLeaveMesh() {
                         <label>
                             <span>Anexar Nota Fiscal: </span>
                             <div className="buttonUpload">
-                                <input type="file" />
+                                <input onChange={handleNotaFiscal} type="file" />
                             </div>
                         </label>
                     </div>
@@ -82,7 +153,7 @@ export default function addLeaveMesh() {
                         <label className="labelPeso">
                             <span>Preço:</span>
                             <div className="inputPeso">
-                                <input type="text" />
+                                <input onChange={handlePreco} type="text" />
                             </div>
                         </label>
                     </div>
@@ -93,17 +164,19 @@ export default function addLeaveMesh() {
                         <label className="labelPeso">
                             <span>Malha: </span>
                             <div className="inputPeso">
-                                <input list="mesh" name="mesh" id="meshInput" />
+                                <input onChange={handleMalha} list="mesh" name="mesh" id="meshInput" />
                                 <datalist id="mesh">
-                                    <option value="Poliêster" />
-                                    <option value="Algodão" />
-                                    <option value="DryFit" />
+                                    {
+                                        addOption()
+                                    }
                                 </datalist>
                             </div>
                         </label>
                     </div>
                     <div className="containerButton">
-                        <button>Concluir</button>
+                        <Link to="/leaveMesh">
+                            <button onClick={setLocalStorageObject}>Concluir</button>
+                        </Link>
                     </div>
                 </div>
             </main>

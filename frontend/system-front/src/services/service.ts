@@ -107,6 +107,12 @@ const Services = {
         })
     },
 
+    // cadastrarSaidasMalhas: function (qtd_rolos, peso, qualidade, preco, arquivo_nf, idMalha) {
+    //     return new Promise((resolve, reject) => {
+    //         fetch(url + '/saida_de_malha', { method: 'POST', body: JSON.stringify({ qtd_rolos: qtd_rolos, peso: peso, qualidade: qualidade, valor_saida: valor_saida, arquivo_nf: arquivo_nf, idMalha: idMalha, idSaidas_De_Malhas: idSaidas_De_Malhas }), headers: { 'Content-Type': 'application/json' } }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
+    //     })
+    // },
+
     buscarSaidaMalha: function () {
         return new Promise((resolve, reject) => {
             fetch(url + '/saida_de_malha', { method: 'GET' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)

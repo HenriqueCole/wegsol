@@ -13,7 +13,7 @@ const notify = () => toast.success("Sucesso!");
 export default function EnterWire() {
 
   function cadastrarEntradaFio() {
-    Service.cadastrarEntradaFio(qtd_caixa, qtd_kg, subtotal, qtd_rolos_por_caixa, arquivo_nf, idFornecedor, idFio, idCliente).then((result) => {
+    Service.cadastrarFuncionario(qtd_caixa, qtd_kg, subtotal, qtd_rolos_por_caixa, arquivo_nf, idFornecedor, idFio, idCliente).then((result) => {
       console.log(result);
       notify();
     });
@@ -128,7 +128,7 @@ export default function EnterWire() {
           </label>
 
           <div className="containerButton">
-            <button onClick={cadastrarEntradaFio}>Concluir</button>
+            <button onClick={cadastrarEntradaFio()}>Concluir</button>
           </div>
         </div>
       </main>

@@ -11,7 +11,7 @@ const Services = {
         })
     },
 
-    buscarClientes: function () {
+    buscarClientes: async function () {
         return new Promise((resolve, reject) => {
             fetch(url + '/cliente', { method: 'GET' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
         })
@@ -37,7 +37,7 @@ const Services = {
 
     buscarProdutos: function () {
         return new Promise((resolve, reject) => {
-            fetch(url + '/produtos', { method: 'GET' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
+            fetch(url + '/produto', { method: 'GET' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
         })
     },
 
@@ -73,7 +73,7 @@ const Services = {
 
     buscarFios: function () {
         return new Promise((resolve, reject) => {
-            fetch(url + '/fios', { method: 'GET' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
+            fetch(url + '/fio', { method: 'GET' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
         })
     },
 

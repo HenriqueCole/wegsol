@@ -1,124 +1,138 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../Sidebar/sidebar";
 import Header from "../Header/header";
 import "../../styles.scss";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import Services from "../../services/service.ts";
 
-export default function client() {
+export default function Client() {
+  const [list, setList] = useState([]);
 
-    let url = window.location.search.substring(1);
-    let currentPage, linkPage, viewList, list, headerlist;
+  let url = window.location.search.substring(1);
+  const [currentPage, setCurrentPage] = useState('');
+  let [linkPage, setLinkPage] = useState('');
+  const [viewList, setViewList] = useState(undefined);
+  const [headerlist, setHeaderList] = useState(undefined);
 
+  useEffect(() => {
     if (url == "client") {
-        currentPage = "Cadastrar Cliente"
-        linkPage = "/clientRegister"
+      setCurrentPage("Cadastrar Cliente")
+      setLinkPage("/clientRegister");
 
-        list = [{ nome: "Leonardo Heitor Poglia", cnpj: 123 }]
-        headerlist = (<tr key="name"><th>Nome</th><th>CNPJ</th></tr>)
-        viewList = list.map(function (item) { return (<tr id="" key=""><td>{item.nome}</td><td>{item.cnpj}</td></tr>); });
-
+      Services.buscarClientes().then((result) => {
+        setHeaderList((<tr key="name"><th>Nome</th><th>CNPJ</th></tr>))
+        setViewList(result.map(function (item) { return (<tr id="" key={item.id}><td>{item.nome}</td><td>{item.cnpj}</td></tr>); }));
+        setList(result);
+      });
     } else if (url == "machine") {
-        currentPage = "Cadastrar Maquina"
-        linkPage = "/machineRegister";
+      setCurrentPage("Cadastrar Maquina")
+      setLinkPage("/machineRegister");
 
-        list = [{ name: "Maquina de Costura Tunada", marca: "Wegsol", anoFabricacao: "2010", anoCompra: "2012", valorCompra: "500", rpm: 1, agulhas: 5, platinas: 3, blocos: 10, gaiolas: 5, cones: 10 }]
-        headerlist = (<tr key="name"><th>Nome</th><th>Marca</th><th>Ano Fab.</th><th>Ano Compra</th><th>Valor Compra</th><th>RPM</th><th>Agulhas</th><th>Platinas</th><th>Blocos</th><th>Gaiolas</th><th>Cones</th></tr>)
-        viewList = list.map(function (item) { return (<tr id="" key=""><td>{item.name}</td><td>{item.marca}</td><td>{item.anoFabricacao}</td><td>{item.anoCompra}</td><td>{item.valorCompra}</td><td>{item.rpm}</td><td>{item.agulhas}</td><td>{item.platinas}</td><td>{item.blocos}</td><td>{item.gaiolas}</td><td>{item.cones}</td></tr>); });
+      Services.buscarMaquinas().then((result) => {
+        setHeaderList((<tr key="name"><th>Nome</th><th>Marca</th><th>Ano Fab.</th><th>Ano Compra</th><th>Valor Compra</th><th>RPM</th><th>Agulhas</th><th>Platinas</th><th>Blocos</th><th>Gaiolas</th><th>Cones</th></tr>))
+        setViewList(result.map(function (item) { return (<tr id="" key={item.id}><td>{item.nome}</td><td>{item.marca}</td><td>{item.ano_fabricacao}</td><td>{item.ano_compra}</td><td>{item.valor_compra}</td><td>{item.rpm}</td><td>{item.qtd_agulhas}</td><td>{item.qtd_platinas}</td><td>{item.qtd_blocos}</td><td>{item.qtd_gaiolas}</td><td>{item.qtd_cones_por_gaiola}</td></tr>); }));
+        setList(result);
+
+      });
     } else if (url == "product") {
-        currentPage = "Cadastrar Produtos"
-        linkPage = "/productRegister";
+      setCurrentPage("Cadastrar Produtos")
+      setLinkPage("/productRegister");
 
-        list = [{ descricacao: "Maquina de costura tals tals", quantidade: 5, valorTotal: 10, anexo: "2012", fornecedor: "Fornecedor Alberto" }]
-        headerlist = (<tr key="name"><th>Descrição</th><th>Quantidade</th><th>Valor Total</th><th>Anexo</th><th>Fornecedor</th></tr>)
-        viewList = list.map(function (item) { return (<tr id="" key=""><td>{item.descricacao}</td><td>{item.quantidade}</td><td>{item.valorTotal}</td><td>{item.anexo}</td><td>{item.fornecedor}</td></tr>); });
-
-
+      Services.buscarProdutos().then((result) => {
+        setHeaderList((<tr key="name"><th>Descrição</th><th>Quantidade</th><th>Valor Total</th><th>Anexo</th><th>Fornecedor</th></tr>))
+        setViewList(result.map(function (item) { return (<tr id="" key={item.id}><td>{item.descricao}</td><td>{item.quantidade}</td><td>{item.valor_total_produto}</td><td>{item.arquivo_nf}</td><td>{item.idFornecedor}</td></tr>); }));
+        setList(result);
+      });
     } else if (url == "provider") {
-        currentPage = "Cadastrar Fornecedor"
-        linkPage = "/providerRegister";
+      setCurrentPage("Cadastrar Fornecedor")
+      setLinkPage("/providerRegister");
 
-        list = [{ name: "Leonardo Heitor Poglia", cnpj: 123 }]
-        headerlist = (<tr key="name"><th>Nome</th><th>CNPJ</th></tr>)
-        viewList = list.map(function (item) { return (<tr id="" key=""><td>{item.name}</td><td>{item.cnpj}</td></tr>); });
-
-
+      Services.buscarFornecedores().then((result) => {
+        setHeaderList((<tr key="name"><th>Nome</th><th>CNPJ</th></tr>))
+        setViewList(result.map(function (item) { return (<tr id="" key={item.id}><td>{item.nome}</td><td>{item.cnpj}</td></tr>); }));
+      });
     } else if (url == "mesh") {
-        currentPage = "Cadastrar Malha"
-        linkPage = "/meshRegister";
+      setCurrentPage("Cadastrar Malha")
+      setLinkPage("/meshRegister");
 
-        list = [{ descricacao: "Malha das boa", fioMalha: "Malha boa", cliente: "Leonardo Heitor Poglia" }]
-        headerlist = (<tr key="name"><th>Descrição</th><th>Fio Malha</th><th>Cliente</th></tr>)
-        viewList = list.map(function (item) { return (<tr id="" key=""><td>{item.descricacao}</td><td>{item.fioMalha}</td><td>{item.cliente}</td></tr>); });
+      Services.buscarMalha().then((result) => {
+        console.log(result);
+        setHeaderList((<tr key="name"><th>Descrição</th><th>Fio Malha</th><th>Cliente</th></tr>))
+        setViewList(result.map(function (item) { return (<tr id="" key={item.id}><td>{item.descricao}</td><td>{item.fioMalha}</td><td>{item.cliente}</td></tr>); }));
+      });
 
     } else if (url == "wire") {
-        currentPage = "Cadastrar Fio"
-        linkPage = "/wireRegister"; 
+      setCurrentPage("Cadastrar Fio")
+      setLinkPage("/wireRegister");
 
-        list = [{ descricacao: "Fio Wegsol" }]
-        headerlist = (<tr key="name"><th>Descrição</th></tr>)
-        viewList = list.map(function (item) { return (<tr id="" key=""><td>{item.descricacao}</td></tr>); });
-
-
+      Services.buscarFios().then((result) => {
+        setHeaderList((<tr key="name"><th>Descrição</th></tr>))
+        setViewList(result.map(function (item) { return (<tr id="" key={item.id}><td>{item.descricao}</td></tr>); }));
+      });
     } else if (url == "employee") {
-        currentPage = "Cadastrar Funcionário"
-        linkPage = "/employeeRegister";
+      setCurrentPage("Cadastrar Funcionário")
+      setLinkPage("/employeeRegister");
 
-        list = [{ name: "Leonardo Heitor Poglia", cnpj: 123, idade: 17, salario: 10000, turno: "2" }]
-        headerlist = (<tr key="name"><th>Nome</th><th>CNPJ</th><th>Idade</th><th>Salário</th><th>Turno</th></tr>)
-        viewList = list.map(function (item) { return (<tr id="" key=""><td>{item.name}</td><td>{item.cnpj}</td><td>{item.idade}</td><td>{item.salario}</td><td>{item.turno}</td></tr>); });
+      Services.buscarFuncionarios().then((result) => {
+        setHeaderList((<tr key="name"><th>Nome</th><th>CNPJ</th><th>Idade</th><th>Salário</th><th>Turno</th></tr>))
+        setViewList(result.map(function (item) { return (<tr id="" key={item.id}><td>{item.nome}</td><td>{item.cpf}</td><td>{item.idade}</td><td>{item.salario}</td><td>{item.turno}</td></tr>); }));
+      });
 
     } else if (url == "enterWire") {
-        currentPage = "Cadastrar Entrada de Fio"
-        linkPage = "/enterWire";
+      setCurrentPage("Cadastrar Entrada de Fio")
+      setLinkPage("/enterWire");
 
-        list = [{ qtdCaixas: 5, qtdQuilos: 123, qtdRolos: 17, subtotal: 10000, fornecedor: "Henrique Cole", fio: "Fio dos bom", anexo: ".zip" }]
-        headerlist = (<tr key="name"><th>Caixas</th><th>Kg</th><th>Rolos</th><th>Sub-total</th><th>Fornecedor</th><th>Fio</th><th>Anexo</th></tr>)
-        viewList = list.map(function (item) { return (<tr id="" key=""><td>{item.qtdCaixas}</td><td>{item.qtdQuilos}</td><td>{item.qtdRolos}</td><td>{item.subtotal}</td><td>{item.fornecedor}</td><td>{item.fio}</td><td>{item.anexo}</td></tr>); })
-
+      Services.buscarEntradaFio().then((result) => {
+        setHeaderList((<tr key="name"><th>Caixas</th><th>Kg</th><th>Rolos</th><th>Sub-total</th><th>Fornecedor</th><th>Fio</th><th>Anexo</th></tr>))
+        setViewList(result.map(function (item) { return (<tr id="" key={item.id}><td>{item.qtd_caixa}</td><td>{item.td_kg}</td><td>{item.qtd_rolos_por_caixa}</td><td>{item.subtotal}</td><td>{item.idFornecedor}</td><td>{item.idFio}</td><td>{item.arquivo_nf}</td></tr>); }))
+      });
     } else if (url == "leaveMesh") {
-        currentPage = "Cadastrar Saída de Fio"
-        linkPage = "/leaveMesh";
+      setCurrentPage("Cadastrar Saída de Fio")
+      setLinkPage("/leaveMesh");
 
-        list = [{ saida: "Malha de Couro", anexo: ".zip", valorTotal: 500, cliente: "Leonardo Heitor Poglia" }]
-        headerlist = (<tr key="name"><th>Saída</th><th>Anexo</th><th>Valor Total</th><th>Cliente</th></tr>)
-        viewList = list.map(function (item) { return (<tr id="" key=""><td>{item.saida}</td><td>{item.anexo}</td><td>{item.valorTotal}</td><td>{item.cliente}</td></tr>); })
+      Services.buscarSaidaMalha().then((result) => {
+        console.log(result)
+        setHeaderList((<tr key="name"><th>Saída</th><th>Anexo</th><th>Valor Total</th><th>Cliente</th></tr>))
+        setViewList(result.map(function (item) { return (<tr id="" key={item.id}><td>{item.saida}</td><td>{item.anexo}</td><td>{item.valorTotal}</td><td>{item.cliente}</td></tr>); }))
+      });
 
     } else if (url == "productionScreen") {
-        currentPage = "Iniciar Produção"
-        linkPage = "/productionScreen";
+      setCurrentPage("Iniciar Produção")
+      setLinkPage("/productionScreen");
 
-        list = [{ peso: 500, defeitos: "0 defeitos", cliente: "Leonardo Heitor Poglia", maquina: "Maquina 01", funcionario: "Henrique Cole Fernandes" }]
-        headerlist = (<tr key="name"><th>Peso</th><th>Defeitos</th><th>Cliente</th><th>Maquina</th><th>Funcionário</th></tr>)
-        viewList = list.map(function (item) { return (<tr id="" key=""><td>{item.peso}</td><td>{item.defeitos}</td><td>{item.cliente}</td><td>{item.maquina}</td><td>{item.funcionario}</td></tr>); })
-
+      Services.buscarProducoes().then((result) => {
+        console.log(result)
+        setHeaderList((<tr key="name"><th>Peso</th><th>Defeitos</th><th>Cliente</th><th>Maquina</th><th>Funcionário</th></tr>))
+        setViewList(list.map(function (item) { return (<tr id="" key={item.id}><td>{item.peso}</td><td>{item.defeitos}</td><td>{item.cliente}</td><td>{item.maquina}</td><td>{item.funcionario}</td></tr>); }))
+      });
     }
+  }, [])
 
-    return (
-        <div className="container">
-            <Header></Header>
-            <Sidebar></Sidebar>
+  return (
+    <div className="container">
+      <Header></Header>
+      <Sidebar></Sidebar>
 
-            <div className="container">
-                <main>
-                    <div className="page">
-                        <input type="text" placeholder="Procure um cliente aqui" />
+      <div className="container">
+        <main>
+          <div className="page">
+            <input type="text" placeholder="Procure um cliente aqui" />
 
-                        <Link to={linkPage}>
-                            <button>
-                                {currentPage}
-                            </button>
-                        </Link>
-                    </div>
+            <Link to={linkPage}>
+              <button>
+                {currentPage}
+              </button>
+            </Link>
+          </div>
 
-                    <div className="tabela">
-                        <table>
-                            {headerlist}
-                            {viewList}
-                        </table>
-                    </div>
-                </main>
-            </div>
-        </div>
-    );
+          <div className="tabela">
+            <table>
+              {headerlist}
+              {viewList}
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+  );
 }

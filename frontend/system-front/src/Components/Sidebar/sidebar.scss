@@ -22,6 +22,7 @@ label a {
   align-items: flex-end;
   margin-top: 70px;
   justify-content: start;
+  position: fixed;
 
   .homeContainer {
     display: flex;
@@ -73,6 +74,7 @@ label a {
     justify-content: start;
     flex-direction: column;
     row-gap: 1rem;
+    padding-bottom: 20px;
   }
 
   .dotLine {

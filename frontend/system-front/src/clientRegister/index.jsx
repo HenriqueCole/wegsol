@@ -18,6 +18,11 @@ export default function clientRegister() {
       console.log(result);
     });
     notify();
+
+    Service.buscarClientes().then((result) => {
+      console.log(result);
+    });
+
   }
 
   const [nome, setNome] = useState("");

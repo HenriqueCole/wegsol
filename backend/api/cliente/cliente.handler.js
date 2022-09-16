@@ -6,7 +6,7 @@ async function criarCliente(req, res){
     if(cliente.nome != "" && cliente.cnpj != ""){
         return await crud.salvar("cliente", null, cliente);
     }else{
-        return await "Erro! Falta algum dado!";
+        return "Erro! Falta algum dado!";
     }
 }
 
@@ -19,7 +19,7 @@ async function buscarCliente(req, res){
     if(cliente.findIndex(c => c.id == req.params.id) != -1){
         return await crud.buscarPorId("cliente", req.params.id);
     }else{
-        return await "Erro! Id inválido!";
+        return "Erro! Id inválido!";
     }
     
 }
@@ -29,7 +29,7 @@ async function deletarCliente(req, res){
     if(cliente.findIndex(c => c.id == req.params.id) != -1){
     return await crud.remover("cliente", req.params.id);
     }else{
-        return await("Id inválido!");
+        return ("Id inválido!");
     }
 }
 
@@ -38,7 +38,7 @@ async function editarCliente(req, res){
     if(cliente.findIndex(c => c.id == req.params.id) != -1){
         return await crud.salvar("cliente", req.params.id, req.body);
     }else{
-        return await "Id inválido!";
+        return "Id inválido!";
     }
 }
 

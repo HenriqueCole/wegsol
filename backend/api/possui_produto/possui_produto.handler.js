@@ -9,6 +9,12 @@ async function procurarPossui_Produto(id) {
     return await crud.buscarPorId(tabela, id);
 }
 
+async function procurarMaquinaPorProdutoID(id) {
+    const listaPossuiProduto = await crud.buscarComFiltro(tabela, "==", "idMalha", id); 
+
+    return listaPossuiProduto;
+}
+
 async function criarPossui_Produto(dados) {
     if (dados.idMaquina && dados.idEntrada_De_Produtos) {
         return await crud.salvar(tabela, false, dados);
@@ -31,5 +37,5 @@ async function deletarPossui_Produto(id){
 
 
 module.exports = {
-    procurarPossui_Produtos, procurarPossui_Produto, criarPossui_Produto, editarPossui_Produto, deletarPossui_Produto
+    procurarPossui_Produtos, procurarPossui_Produto, procurarFioPorMalhaID, criarPossui_Produto, editarPossui_Produto, deletarPossui_Produto
 };

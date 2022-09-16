@@ -1,9 +1,27 @@
 const crud = require("../../crud/server");
 const tabela = "produto";
+const tabelaFornecedor = "fornecedor";
 const possui_produto = require("../possui_produto/possui_produto.handler");
 
 async function procurarProdutos() {
-    return await crud.buscar(tabela);
+    let produtos = await crud.buscar(tabela);
+
+    for (let produto of produtos) {
+        produto.fornecedor = await crud.buscarPorId(tabelaFornecedor, produto.idFornecedor);
+
+        let listaPossui_produtos = await possui_produto.procurarMaquinaPorProdutoID(malha.id);
+        let listaFios = [];
+
+        for (let fioMalha of listaFiosMalha) {
+            let fio = await crud.buscarPorId(tabelaFio, fioMalha.idFio);
+
+            listaFios.push(JSON.stringify(fio));
+        }
+
+        malha.idFio = listaFios;
+        produto.maquina = await crud.buscarPorId("maquina", produto.idMaquina);
+    }
+    return produtos;
 }
 
 async function procurarProduto(id) {

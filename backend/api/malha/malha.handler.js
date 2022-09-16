@@ -14,9 +14,18 @@ async function procurarMalhas() {
     let clienteId = await malha_do_cliente.procurarClientePorMalhaID(malha.id);
     let cliente = await crud.buscarPorId(tabelaCliente, clienteId);
     malha.idCliente = cliente;
+
+    let listaFiosMalha = await fios_da_malha.procurarFioPorMalhaID(malha.id);
+    let listaFios = [];
+    
+    for (let fioMalha of listaFiosMalha) {
+      let fio = await crud.buscarPorId(tabelaFio, fioMalha.idFio);
+      
+      listaFios.push(JSON.stringify(fio));
+    }
+
+    malha.idFio = listaFios;
   }
-  
-  console.log(malhas);
 
   return malhas;
 }

@@ -21,7 +21,7 @@ async function procurarMalhas() {
     for (let fioMalha of listaFiosMalha) {
       let fio = await crud.buscarPorId(tabelaFio, fioMalha.idFio);
       
-      listaFios.push(JSON.stringify(fio));
+      listaFios.push(fio.descricao);
     }
 
     malha.idFio = listaFios;

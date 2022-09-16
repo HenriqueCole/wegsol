@@ -11,9 +11,22 @@ const Services = {
         })
     },
 
+    excluirCliente: function (id) {
+        return new Promise((resolve, reject) => {
+            fetch(url + '/cliente/' + id, { method: 'DELETE' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
+        })
+    },
+
+
     buscarClientes: async function () {
         return new Promise((resolve, reject) => {
             fetch(url + '/cliente', { method: 'GET' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
+        })
+    },
+
+    buscarCliente: async function (id) {
+        return new Promise((resolve, reject) => {
+            fetch(url + '/cliente/' + id, { method: 'GET' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
         })
     },
 

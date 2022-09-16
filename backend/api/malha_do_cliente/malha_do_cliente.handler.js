@@ -18,6 +18,12 @@ async function procurarMalha_Do_Cliente(id) {
     return dados;
 }
 
+async function procurarClientePorMalhaID(idMalha) {
+    const dados = await crud.buscarComFiltro(tabela, "==", "idMalha", idMalha);
+
+    return dados[0].idCliente;
+}
+
 async function deletarMalha_Do_Cliente(req, res) {
     const malha = await crud.buscar("malha");
     if (malha.findIndex(c => c.idMALHA == req.params.idMALHA) != -1) {
@@ -42,5 +48,6 @@ module.exports = {
     procurarMalha_Do_Cliente,
     procurarMalhas_Do_Cliente,
     deletarMalha_Do_Cliente,
-    editarMalha_Do_Cliente
+    editarMalha_Do_Cliente,
+    procurarClientePorMalhaID
 }

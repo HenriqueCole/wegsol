@@ -36,7 +36,7 @@ async function deletarFuncionario(req, res){
     if(funcionario.findIndex(c => c.id == req.params.id) != -1){
     return await crud.remover("funcionario", req.params.id);
     }else{
-        return await "id inválido!";
+        return "id inválido!";
     }
 }
 
@@ -45,7 +45,7 @@ async function editarFuncionario(req, res){
     if(funcionario.findIndex(c => c.id == req.params.id) != -1){
         return await crud.salvar("funcionario", req.params.id, req.body);
     }else{
-        return await "id inválido!";
+        return "id inválido!";
     }
 }
 

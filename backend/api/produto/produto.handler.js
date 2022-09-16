@@ -1,9 +1,29 @@
 const crud = require("../../crud/server");
 const tabela = "produto";
+const tabelaFornecedor = "fornecedor";
+const tabelaPossuiProduto = "possui_produto";
+const tabelaMaquina = "maquina";
 const possui_produto = require("../possui_produto/possui_produto.handler");
 
 async function procurarProdutos() {
-    return await crud.buscar(tabela);
+    let produtos = await crud.buscar(tabela);
+
+    for (let produto of produtos) {
+        produto.fornecedor = await crud.buscarPorId(tabelaFornecedor, produto.idFornecedor);
+
+        let listaPossui_produtos = await possui_produto.procurarMaquinaPorProdutoID(produto.id);
+        let possuiProdutos = [];
+
+        for (let possuiProduto of listaPossui_produtos) {
+            let maquina = await crud.buscarPorId(tabelaMaquina, possuiProduto.idMaquina);
+
+            possuiProdutos.push(maquina.nome + " - " + maquina.marca);
+        }
+
+        produto.maquina = possuiProdutos;
+    }
+
+    return produtos;
 }
 
 async function procurarProduto(id) {
@@ -79,7 +99,6 @@ async function deletarProduto(id) {
         return await crud.remover(tabela, id);
     }
 }
-
 
 module.exports = {
     procurarProdutos,

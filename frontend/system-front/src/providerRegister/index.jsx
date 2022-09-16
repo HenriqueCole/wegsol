@@ -24,9 +24,9 @@ export default function providerRegister() {
     setNome(event.target.value);
   }
 
-  const [cnpj, handlecnpj] = useState("");
-  function handleCpf(event) {
-    handlecnpj(event.target.value);
+  const [cnpj, setCnpj] = useState("");
+  function handleCnpj(event) {
+    setCnpj(event.target.value);
   }
 
 
@@ -58,7 +58,7 @@ export default function providerRegister() {
             </label>
             <label>
               <span>CNPJ:</span>
-              <input type="text" onChange={handlecnpj} />
+              <input type="text" onChange={handleCnpj} />
             </label>
           </div>
           <div className="containerButton">

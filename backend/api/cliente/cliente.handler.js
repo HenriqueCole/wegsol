@@ -34,7 +34,7 @@ async function deletarCliente(req, res){
     if(cliente.findIndex(c => c.id == req.params.id) != -1){
     return await crud.remover("cliente", req.params.id);
     }else{
-        return await("Id inválido!");
+        return ("Id inválido!");
     }
 }
 

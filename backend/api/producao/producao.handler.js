@@ -55,7 +55,7 @@ async function editarProducao(req, res){
     if(producao.findIndex(c => c.id == req.params.id)!= -1){   
         return await crud.salvar("producao", req.params.id, req.body);
     }else{
-        return await "id inválido!";
+        return "id inválido!";
     }
 }
 

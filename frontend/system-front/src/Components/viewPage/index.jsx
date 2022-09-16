@@ -7,9 +7,9 @@ import Services from "../../services/service.ts";
 import toast, { Toaster } from "react-hot-toast";
 
 import deleteIcon from "../../assets/excluir.png";
+import deleteAllIcon from "../../assets/excluirAll.png";
 
 const notify = () => toast.success("Excluido com sucesso!");
-
 
 export default function Client() {
   const [list, setList] = useState([]);
@@ -21,8 +21,6 @@ export default function Client() {
   const [headerlist, setHeaderList] = useState(undefined);
   const [loading, setLoading] = useState();
   const [placeholderName, setPlaceholderName] = useState("");
-
-
 
   function buscarCliente() {
     Services.buscarCliente().then((result) => {
@@ -54,7 +52,6 @@ export default function Client() {
       setPlaceholderName("um cliente");
 
       Services.buscarClientes().then((result) => {
-      
         setViewList(
           result.map(function (item) {
             return (
@@ -87,7 +84,6 @@ export default function Client() {
       setPlaceholderName("uma maquina");
 
       Services.buscarMaquinas().then((result) => {
-      
         setViewList(
           result.map(function (item) {
             return (
@@ -131,7 +127,6 @@ export default function Client() {
       setPlaceholderName("um produto");
 
       Services.buscarProdutos().then((result) => {
-        
         setViewList(
           result.map(function (item) {
             return (
@@ -163,7 +158,6 @@ export default function Client() {
       setPlaceholderName("um Fornecedor");
 
       Services.buscarFornecedores().then((result) => {
-      
         setViewList(
           result.map(function (item) {
             return (
@@ -188,7 +182,7 @@ export default function Client() {
       setLinkPage("/meshRegister");
       setPlaceholderName("uma malha");
 
-      Services.buscarMalha().then((result) => {       
+      Services.buscarMalha().then((result) => {
         setViewList(
           result.map(function (item) {
             return (
@@ -216,7 +210,6 @@ export default function Client() {
       setPlaceholderName("um Fio");
 
       Services.buscarFios().then((result) => {
-       
         setViewList(
           result.map(function (item) {
             return (
@@ -240,7 +233,6 @@ export default function Client() {
       setPlaceholderName("um funcionário");
 
       Services.buscarFuncionarios().then((result) => {
-      
         setViewList(
           result.map(function (item) {
             return (
@@ -272,7 +264,6 @@ export default function Client() {
       setPlaceholderName("uma entrada de fio");
 
       Services.buscarEntradaFio().then((result) => {
-       
         setViewList(
           result.map(function (item) {
             return (
@@ -308,7 +299,6 @@ export default function Client() {
       setPlaceholderName("uma saída de fio");
 
       Services.buscarSaidaMalha().then((result) => {
-        
         setViewList(
           result.map(function (item) {
             return (
@@ -337,7 +327,7 @@ export default function Client() {
       setLinkPage("/productionScreen");
       setPlaceholderName("uma produção");
 
-      Services.buscarProducoes().then((result) => {       
+      Services.buscarProducoes().then((result) => {
         setViewList(
           list.map(function (item) {
             return (
@@ -386,7 +376,6 @@ export default function Client() {
         <main>
           <div className="page">
             <input type="text" placeholder={`Procure ${placeholderName}`} />
-
 
             <Link to={linkPage}>
               <button>{currentPage}</button>

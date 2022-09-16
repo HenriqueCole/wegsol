@@ -17,7 +17,6 @@ const Services = {
         })
     },
 
-
     buscarClientes: async function () {
         return new Promise((resolve, reject) => {
             fetch(url + '/cliente', { method: 'GET' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)

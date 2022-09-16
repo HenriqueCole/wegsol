@@ -14,7 +14,7 @@ async function buscarSaidas_De_MalhasEspecifico(id) {
 
 async function criarSaidas_De_Malhas(saidas_de_malhas) {
     if (saida_de_malhaTemPropriedades(saidas_de_malhas) && Object.values(saidas_de_malhas).length != 3)
-        return `Para cadastrar um saida_de_malha é preciso ter os seguintes campos: nota_fiscal, valorTotal, idCliente!`
+        return `Para cadastrar um saidas_de_malhas é preciso ter os seguintes campos: nota_fiscal, valorTotal, idCliente!`
 
     if (!await chaveSecundariaValida(saidas_de_malhas))
         return `Há chaves secundárias inválidas!`

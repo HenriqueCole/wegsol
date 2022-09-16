@@ -95,6 +95,12 @@ const Services = {
         })
     },
 
+    excluirFuncionario: function (id) {
+        return new Promise((resolve, reject) => {
+            fetch(url + '/funcionario/' + id, { method: 'DELETE' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
+        })
+    },
+
     buscarFuncionarios: function () {
         return new Promise((resolve, reject) => {
             fetch(url + '/funcionario', { method: 'GET' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)

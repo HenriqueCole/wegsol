@@ -5,7 +5,7 @@ async function criarCliente(req, res){
     const cliente = req.body;
     const clientes = await crud.buscar('cliente');
     if(cliente.nome != "" && cliente.cnpj != ""){
-        if(clientes.findIndex(c => clientes.cnpj == cliente.cnpj)){
+        if(clientes.findIndex(c => c.cnpj == cliente.cnpj)){
             return await crud.salvar("cliente", null, cliente);
         }else{
             return "Erro! cnpj existente!"

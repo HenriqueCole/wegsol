@@ -7,7 +7,6 @@ import Services from "../../services/service.ts";
 import toast, { Toaster } from "react-hot-toast";
 
 import deleteIcon from "../../assets/excluir.png";
-import deleteAllIcon from "../../assets/excluirAll.png";
 
 const notify = () => toast.success("Excluido com sucesso!");
 
@@ -22,8 +21,6 @@ export default function Client() {
   const [loading, setLoading] = useState();
   const [placeholderName, setPlaceholderName] = useState("");
 
-
-
   useEffect(() => {
     setLoading(
       <div className="loading">
@@ -33,6 +30,16 @@ export default function Client() {
 
     function excluirCliente(id) {
       Services.excluirCliente(id).then((result) => {
+        notify();
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      });
+    }
+
+    function excluirFuncionario(id) {
+      Services.excluirFuncionario(id).then((result) => {
         notify();
 
         setTimeout(() => {
@@ -54,7 +61,10 @@ export default function Client() {
                 <tr id="" key={item.id}>
                   <td>{item.nome}</td>
                   <td>{item.cnpj}</td>
-                  <div onClick={() => excluirCliente(item.id)} className="containerDelete">
+                  <div
+                    onClick={() => excluirCliente(item.id)}
+                    className="containerDelete"
+                  >
                     <img className="deleteIcon" src={deleteIcon} alt="" />
                   </div>
                 </tr>
@@ -235,6 +245,12 @@ export default function Client() {
                 <td>{item.idade}</td>
                 <td>{item.salario}</td>
                 <td>{item.turno}</td>
+                <div
+                  onClick={() => excluirFuncionario(item.id)}
+                  className="containerDelete"
+                >
+                  <img className="deleteIcon" src={deleteIcon} alt="" />
+                </div>
               </tr>
             );
           })

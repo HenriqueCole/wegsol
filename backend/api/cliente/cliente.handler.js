@@ -1,4 +1,3 @@
-const { request } = require('express');
 const crud = require('../../crud/server');
 
 async function criarCliente(req, res){

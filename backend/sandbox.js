@@ -8,7 +8,7 @@ async function retornaIdFio() {
    // console.log(await fio.buscarFios());
    // console.log(await service.retornaIdFio("fio do cassianio"));
    // console.log(await fio.buscarFio("0GTToxDNtEO4uC1Rsf1C"));
-   console.log(await produto.procurarProdutos());
+   // console.log(await produto.procurarProdutos());
 }
 
 retornaIdFio();

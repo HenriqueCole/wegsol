@@ -1,6 +1,8 @@
 const crud = require("../../crud/server");
 const tabela = "produto";
 const tabelaFornecedor = "fornecedor";
+const tabelaPossuiProduto = "possui_produto";
+const tabelaMaquina = "maquina";
 const possui_produto = require("../possui_produto/possui_produto.handler");
 
 async function procurarProdutos() {
@@ -9,18 +11,18 @@ async function procurarProdutos() {
     for (let produto of produtos) {
         produto.fornecedor = await crud.buscarPorId(tabelaFornecedor, produto.idFornecedor);
 
-        let listaPossui_produtos = await possui_produto.procurarMaquinaPorProdutoID(malha.id);
-        let listaFios = [];
+        let listaPossui_produtos = await possui_produto.procurarMaquinaPorProdutoID(produto.id);
+        let possuiProdutos = [];
 
-        for (let fioMalha of listaFiosMalha) {
-            let fio = await crud.buscarPorId(tabelaFio, fioMalha.idFio);
+        for (let possuiProduto of listaPossui_produtos) {
+            let maquina = await crud.buscarPorId(tabelaMaquina, possuiProduto.idMaquina);
 
-            listaFios.push(JSON.stringify(fio));
+            possuiProdutos.push(maquina.nome + " - " + maquina.marca);
         }
 
-        malha.idFio = listaFios;
-        produto.maquina = await crud.buscarPorId("maquina", produto.idMaquina);
+        produto.maquina = possuiProdutos;
     }
+
     return produtos;
 }
 

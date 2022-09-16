@@ -1,8 +1,8 @@
 const service = require("./api/retonarId/retornaid.js");
+const malha = require("./api/malha/malha.handler.js");
 
 async function retornaIdFio() {
-    let teste = await service.retornaIdFio("123");
-    console.log(teste);
+   console.log(await malha.procurarMalhas());
 }
 
 retornaIdFio();

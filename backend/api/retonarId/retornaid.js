@@ -1,4 +1,5 @@
 const crud = require("../../crud/server");
+
 const tabelaFornecedor = "fornecedor";
 const tabelaFio = "fio";
 const tabelaCliente = "cliente";

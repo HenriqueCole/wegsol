@@ -32,9 +32,9 @@ async function buscarFuncionario(id){
 }
 
 async function deletarFuncionario(req, res){
-    const funcionario = await crud.buscar("cliente"); 
+    const funcionario = await crud.buscar("funcionario"); 
     if(funcionario.findIndex(c => c.idFUNCIONARIO == req.params.id) != -1){
-    return await crud.remover("cliente", req.params.id);
+    return await crud.remover("funcionario", req.params.id);
     }else{
         return await "id inválido!";
     }

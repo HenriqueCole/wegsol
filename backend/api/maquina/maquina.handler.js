@@ -9,11 +9,10 @@ async function criarMaquina(req, res) {
         && maquina.valor_compra && maquina.rpm && maquina.qtd_agulhas && maquina.qtd_blocos
         && maquina.qtd_platinas &&
         maquina.qtd_gaiolas && maquina.qtd_cones_por_gaiola && maquina.idMalha) {
-            console.log("maquina: " + maquina);
+            console.log("maquina: " + maquina.nome);
         if (malha.filter((Malha) => Malha.id == maquina.idMalha) != "") {
-            if(maquinas.findIndex(m => m.nome == maquina.nome) != -1 && maquinas.findIndex(m => m.marca == maquina.marca) != -1){
+            if(maquinas.findIndex(m => m.nome == maquina.nome) != -1){
                 return await crud.salvar("maquina", null, maquina);
-                
             }else{
                 return "Erro! Já existe com este nome e esta marca!";
             }

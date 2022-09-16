@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import "./sidebar.scss";
 
 import Casa from "../../assets/casa.png";
@@ -25,32 +25,43 @@ export default function App() {
     console.log('page to reload')
   }
 
-      let url = window.location.search.substring(1);
+  let url = window.location.search.substring(1);
+
+  const [currentClient, setCurrentClient] = useState("");
+  const [currentMachine, setCurrentMachine] = useState("");
+  const [currentProduct, setCurrentProduct] = useState("");
+  const [currentProvider, setCurrentProvider] = useState("");
+  const [currentMesh, setCurrentMesh] = useState("");
+  const [currentWire, setCurrentWire] = useState("");
+  const [currentEmployee, setCurrentEmployee] = useState("");
+  const [currentEnterWire, setCurrentEnterWire] = useState("");
+  const [currentLeftMesh, setCurrentLeftMesh] = useState("");
+  const [currentStartProduction, setCurrentStartProduction] = useState("");
 
 
-  if (url === "client") {
-
-  } else if (url === "machine") {
-
-  } else if (url === "product") {
-
-
-  } else if (url === "provider") {
-
-  } else if (url === "mesh") {
-
-  } else if (url === "wire") {
-
-  } else if (url === "employee") {
-
-  } else if (url === "enterWire") {
-
-  } else if (url === "leaveMesh") {
-
-  } else if (url === "productionScreen") {
-
-  }
-
+  useEffect(() => {
+    if (url === "client") {
+      setCurrentClient("current");
+    } else if (url === "machine") {
+      setCurrentMachine("current");
+    } else if (url === "product") {
+      setCurrentProduct("current");
+    } else if (url === "provider") {
+      setCurrentProvider("current");
+    } else if (url === "mesh") {
+      setCurrentMesh("current");
+    } else if (url === "wire") {
+      setCurrentWire("current");
+    } else if (url === "employee") {
+      setCurrentEmployee("current");
+    } else if (url === "enterWire") {
+      setCurrentEnterWire("current");
+    } else if (url === "leaveMesh") {
+      setCurrentLeftMesh("current");
+    } else if (url === "productionScreen") {
+      setCurrentStartProduction("current");
+    }
+  }, [])
 
 
   return (
@@ -68,7 +79,7 @@ export default function App() {
         </Link>
         <div className="dotLine"></div>
         <Link to="/view?client" onClick={refreshPage}>
-          <div className="registerClient homeContainer">
+          <div className="registerClient homeContainer" id={currentClient}>
             <div className="icon-registerClient icon-home">
               <img
                 src={Cliente}
@@ -84,7 +95,7 @@ export default function App() {
           </div>
         </Link>
         <Link to="/view?machine" onClick={refreshPage}>
-          <div className="registerMachines homeContainer">
+          <div className="registerMachines homeContainer" id={currentMachine}>
             <div className="icon-registerMachines icon-home">
               <img
                 src={Maquina}
@@ -100,7 +111,7 @@ export default function App() {
           </div>
         </Link>
         <Link to="/view?product" onClick={refreshPage}>
-          <div className="registerProduct homeContainer">
+          <div className="registerProduct homeContainer" id={currentProduct}>
             <div className="icon-registerProduct icon-home">
               <img
                 src={Produto}
@@ -116,7 +127,7 @@ export default function App() {
           </div>
         </Link>
         <Link to="/view?provider" onClick={refreshPage}>
-          <div className="registerProvider homeContainer">
+          <div className="registerProvider homeContainer" id={currentProvider}>
             <div className="icon-registerProvider icon-home">
               <img
                 src={Fornecedor}
@@ -132,7 +143,7 @@ export default function App() {
           </div>
         </Link>
         <Link to="/view?mesh" onClick={refreshPage}>
-          <div className="registerMesh homeContainer">
+          <div className="registerMesh homeContainer" id={currentMesh}>
             <div className="icon-registerMesh icon-home">
               <img
                 src={Malha}
@@ -147,7 +158,7 @@ export default function App() {
             </div>
           </div>
         </Link>
-        <Link to="/view?wire" onClick={refreshPage}>
+        <Link to="/view?wire" onClick={refreshPage} id={currentWire}>
           <div className="enterWire homeContainer">
             <div className="icon-enterWire icon-home">
               <img
@@ -164,7 +175,7 @@ export default function App() {
           </div>
         </Link>
         <Link to="/view?employee" onClick={refreshPage}>
-          <div className="registerEmployee homeContainer">
+          <div className="registerEmployee homeContainer" id={currentEmployee}>
             <div className="icon-registerEmployee icon-home">
               <img
                 src={Funcionario1}
@@ -181,7 +192,7 @@ export default function App() {
         </Link>
         <div className="dotLine"></div>
         <Link to="/view?enterWire" onClick={refreshPage}>
-          <div className="enterWire homeContainer">
+          <div className="enterWire homeContainer" id={currentEnterWire}>
             <div className="icon-enterWire icon-home">
               <img
                 src={Fio1}
@@ -195,7 +206,7 @@ export default function App() {
           </div>
         </Link>
         <Link to="/view?leaveMesh" onClick={refreshPage}>
-          <div className="leftMesh homeContainer">
+          <div className="leftMesh homeContainer" id={currentLeftMesh}>
             <div className="icon-leftMesh icon-home">
               <img
                 src={Malha1}
@@ -211,7 +222,7 @@ export default function App() {
           </div>
         </Link>
         <Link to="/view?productionScreen" onClick={refreshPage}>
-          <div className="startProduction homeContainer">
+          <div className="startProduction homeContainer" id={currentStartProduction}>
             <div className="icon-startProduction icon-home">
               <img
                 src={Producao}

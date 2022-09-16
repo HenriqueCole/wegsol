@@ -16,6 +16,7 @@ export default function Client() {
   const [viewList, setViewList] = useState(undefined);
   const [headerlist, setHeaderList] = useState(undefined);
   const [loading, setLoading] = useState();
+  const [placeholderName, setPlaceholderName] = useState("");
 
   function buscarCliente() {
     Services.buscarCliente().then((result) => {
@@ -41,6 +42,7 @@ export default function Client() {
     if (url === "client") {
       setCurrentPage("Cadastrar Cliente");
       setLinkPage("/clientRegister");
+      setPlaceholderName("um cliente");
 
       Services.buscarClientes().then((result) => {
         setHeaderList(
@@ -72,6 +74,7 @@ export default function Client() {
     } else if (url === "machine") {
       setCurrentPage("Cadastrar Maquina");
       setLinkPage("/machineRegister");
+      setPlaceholderName("uma maquina");
 
       Services.buscarMaquinas().then((result) => {
         setHeaderList(
@@ -113,6 +116,7 @@ export default function Client() {
     } else if (url === "product") {
       setCurrentPage("Cadastrar Produtos");
       setLinkPage("/productRegister");
+      setPlaceholderName("um produto");
 
       Services.buscarProdutos().then((result) => {
         setHeaderList(
@@ -142,6 +146,7 @@ export default function Client() {
     } else if (url === "provider") {
       setCurrentPage("Cadastrar Fornecedor");
       setLinkPage("/providerRegister");
+      setPlaceholderName("um Fornecedor");
 
       Services.buscarFornecedores().then((result) => {
         setHeaderList(
@@ -165,6 +170,7 @@ export default function Client() {
     } else if (url === "mesh") {
       setCurrentPage("Cadastrar Malha");
       setLinkPage("/meshRegister");
+      setPlaceholderName("uma malha");
 
       Services.buscarMalha().then((result) => {
         console.log(result);
@@ -191,6 +197,7 @@ export default function Client() {
     } else if (url === "wire") {
       setCurrentPage("Cadastrar Fio");
       setLinkPage("/wireRegister");
+      setPlaceholderName("um Fio");
 
       Services.buscarFios().then((result) => {
         setHeaderList(
@@ -212,6 +219,7 @@ export default function Client() {
     } else if (url === "employee") {
       setCurrentPage("Cadastrar Funcionário");
       setLinkPage("/employeeRegister");
+      setPlaceholderName("um funcionário");
 
       Services.buscarFuncionarios().then((result) => {
         setHeaderList(
@@ -241,6 +249,7 @@ export default function Client() {
     } else if (url === "enterWire") {
       setCurrentPage("Cadastrar Entrada de Fio");
       setLinkPage("/enterWire");
+      setPlaceholderName("uma entrada de fio");
 
       Services.buscarEntradaFio().then((result) => {
         setHeaderList(
@@ -274,6 +283,7 @@ export default function Client() {
     } else if (url === "leaveMesh") {
       setCurrentPage("Cadastrar Saída de Fio");
       setLinkPage("/leaveMesh");
+      setPlaceholderName("uma saída de fio");
 
       Services.buscarSaidaMalha().then((result) => {
         console.log(result);
@@ -302,6 +312,7 @@ export default function Client() {
     } else if (url === "productionScreen") {
       setCurrentPage("Iniciar Produção");
       setLinkPage("/productionScreen");
+      setPlaceholderName("uma produção");
 
       Services.buscarProducoes().then((result) => {
         console.log(result);
@@ -340,7 +351,8 @@ export default function Client() {
       <div className="container">
         <main>
           <div className="page">
-            <input type="text" placeholder="Procure um cliente aqui" />
+            <input type="text" placeholder={`Procure ${placeholderName}`} />
+          
 
             <Link to={linkPage}>
               <button>{currentPage}</button>

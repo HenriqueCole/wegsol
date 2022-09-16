@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Services from "../../services/service.ts";
 
 import deleteIcon from "../../assets/excluir.png";
+import deleteAllIcon from "../../assets/excluirAll.png";
 
 export default function Client() {
   const [list, setList] = useState([]);
@@ -46,10 +47,12 @@ export default function Client() {
 
       Services.buscarClientes().then((result) => {
         setHeaderList(
-          <tr key="name">
-            <th>Nome</th>
-            <th>CNPJ</th>
-          </tr>
+          <>
+            <tr key="name">
+              <th>Nome</th>
+              <th>CNPJ</th>
+            </tr>
+          </>
         );
         setViewList(
           result.map(function (item) {
@@ -352,7 +355,6 @@ export default function Client() {
         <main>
           <div className="page">
             <input type="text" placeholder={`Procure ${placeholderName}`} />
-          
 
             <Link to={linkPage}>
               <button>{currentPage}</button>

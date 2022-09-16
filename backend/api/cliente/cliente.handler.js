@@ -3,8 +3,13 @@ const crud = require('../../crud/server');
 
 async function criarCliente(req, res){
     const cliente = req.body;
+    const clientes = await crud.buscar('cliente');
     if(cliente.nome != "" && cliente.cnpj != ""){
-        return await crud.salvar("cliente", null, cliente);
+        if(clientes.findIndex(c => cliente.cnpj == cliente.cnpj)){
+            return await crud.salvar("cliente", null, cliente);
+        }else{
+            return "Erro! cnpj existente!"
+        }
     }else{
         return await "Erro! Falta algum dado!";
     }

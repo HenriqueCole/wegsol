@@ -4,9 +4,13 @@ import Header from "../Header/header";
 import "../../styles.scss";
 import { Link } from "react-router-dom";
 import Services from "../../services/service.ts";
+import toast, { Toaster } from "react-hot-toast";
 
 import deleteIcon from "../../assets/excluir.png";
 import deleteAllIcon from "../../assets/excluirAll.png";
+
+const notify = () => toast.success("Excluido com sucesso!");
+
 
 export default function Client() {
   const [list, setList] = useState([]);
@@ -19,6 +23,8 @@ export default function Client() {
   const [loading, setLoading] = useState();
   const [placeholderName, setPlaceholderName] = useState("");
 
+
+
   function buscarCliente() {
     Services.buscarCliente().then((result) => {
       setList(result);
@@ -28,8 +34,11 @@ export default function Client() {
   function excluirCliente(id) {
     Services.excluirCliente(id).then((result) => {
       buscarCliente();
+      notify();
 
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     });
   }
 
@@ -46,14 +55,6 @@ export default function Client() {
       setPlaceholderName("um cliente");
 
       Services.buscarClientes().then((result) => {
-        setHeaderList(
-          <>
-            <tr key="name">
-              <th>Nome</th>
-              <th>CNPJ</th>
-            </tr>
-          </>
-        );
         setViewList(
           result.map(function (item) {
             return (
@@ -72,6 +73,12 @@ export default function Client() {
             );
           })
         );
+        setHeaderList(
+          <tr key="name">
+            <th>Nome</th>
+            <th>CNPJ</th>
+          </tr>
+        );
         setLoading(undefined);
       });
     } else if (url === "machine") {
@@ -80,21 +87,7 @@ export default function Client() {
       setPlaceholderName("uma maquina");
 
       Services.buscarMaquinas().then((result) => {
-        setHeaderList(
-          <tr key="name">
-            <th>Nome</th>
-            <th>Marca</th>
-            <th>Ano Fab.</th>
-            <th>Ano Compra</th>
-            <th>Valor Compra</th>
-            <th>RPM</th>
-            <th>Agulhas</th>
-            <th>Platinas</th>
-            <th>Blocos</th>
-            <th>Gaiolas</th>
-            <th>Cones</th>
-          </tr>
-        );
+      
         setViewList(
           result.map(function (item) {
             return (
@@ -114,6 +107,22 @@ export default function Client() {
             );
           })
         );
+
+        setHeaderList(
+          <tr key="name">
+            <th>Nome</th>
+            <th>Marca</th>
+            <th>Ano Fab.</th>
+            <th>Ano Compra</th>
+            <th>Valor Compra</th>
+            <th>RPM</th>
+            <th>Agulhas</th>
+            <th>Platinas</th>
+            <th>Blocos</th>
+            <th>Gaiolas</th>
+            <th>Cones</th>
+          </tr>
+        );
         setLoading(undefined);
       });
     } else if (url === "product") {
@@ -122,15 +131,7 @@ export default function Client() {
       setPlaceholderName("um produto");
 
       Services.buscarProdutos().then((result) => {
-        setHeaderList(
-          <tr key="name">
-            <th>Descrição</th>
-            <th>Quantidade</th>
-            <th>Valor Total</th>
-            <th>Anexo</th>
-            <th>Fornecedor</th>
-          </tr>
-        );
+        
         setViewList(
           result.map(function (item) {
             return (
@@ -144,6 +145,16 @@ export default function Client() {
             );
           })
         );
+
+        setHeaderList(
+          <tr key="name">
+            <th>Descrição</th>
+            <th>Quantidade</th>
+            <th>Valor Total</th>
+            <th>Anexo</th>
+            <th>Fornecedor</th>
+          </tr>
+        );
         setLoading(undefined);
       });
     } else if (url === "provider") {
@@ -152,12 +163,7 @@ export default function Client() {
       setPlaceholderName("um Fornecedor");
 
       Services.buscarFornecedores().then((result) => {
-        setHeaderList(
-          <tr key="name">
-            <th>Nome</th>
-            <th>CNPJ</th>
-          </tr>
-        );
+      
         setViewList(
           result.map(function (item) {
             return (
@@ -168,6 +174,13 @@ export default function Client() {
             );
           })
         );
+
+        setHeaderList(
+          <tr key="name">
+            <th>Nome</th>
+            <th>CNPJ</th>
+          </tr>
+        );
         setLoading(undefined);
       });
     } else if (url === "mesh") {
@@ -175,15 +188,7 @@ export default function Client() {
       setLinkPage("/meshRegister");
       setPlaceholderName("uma malha");
 
-      Services.buscarMalha().then((result) => {
-        console.log(result);
-        setHeaderList(
-          <tr key="name">
-            <th>Descrição</th>
-            <th>Fio Malha</th>
-            <th>Cliente</th>
-          </tr>
-        );
+      Services.buscarMalha().then((result) => {       
         setViewList(
           result.map(function (item) {
             return (
@@ -195,6 +200,14 @@ export default function Client() {
             );
           })
         );
+
+        setHeaderList(
+          <tr key="name">
+            <th>Descrição</th>
+            <th>Fio Malha</th>
+            <th>Cliente</th>
+          </tr>
+        );
         setLoading(undefined);
       });
     } else if (url === "wire") {
@@ -203,11 +216,7 @@ export default function Client() {
       setPlaceholderName("um Fio");
 
       Services.buscarFios().then((result) => {
-        setHeaderList(
-          <tr key="name">
-            <th>Descrição</th>
-          </tr>
-        );
+       
         setViewList(
           result.map(function (item) {
             return (
@@ -217,6 +226,12 @@ export default function Client() {
             );
           })
         );
+
+        setHeaderList(
+          <tr key="name">
+            <th>Descrição</th>
+          </tr>
+        );
         setLoading(undefined);
       });
     } else if (url === "employee") {
@@ -225,15 +240,7 @@ export default function Client() {
       setPlaceholderName("um funcionário");
 
       Services.buscarFuncionarios().then((result) => {
-        setHeaderList(
-          <tr key="name">
-            <th>Nome</th>
-            <th>CNPJ</th>
-            <th>Idade</th>
-            <th>Salário</th>
-            <th>Turno</th>
-          </tr>
-        );
+      
         setViewList(
           result.map(function (item) {
             return (
@@ -247,6 +254,16 @@ export default function Client() {
             );
           })
         );
+
+        setHeaderList(
+          <tr key="name">
+            <th>Nome</th>
+            <th>CNPJ</th>
+            <th>Idade</th>
+            <th>Salário</th>
+            <th>Turno</th>
+          </tr>
+        );
         setLoading(undefined);
       });
     } else if (url === "enterWire") {
@@ -255,17 +272,7 @@ export default function Client() {
       setPlaceholderName("uma entrada de fio");
 
       Services.buscarEntradaFio().then((result) => {
-        setHeaderList(
-          <tr key="name">
-            <th>Caixas</th>
-            <th>Kg</th>
-            <th>Rolos</th>
-            <th>Sub-total</th>
-            <th>Fornecedor</th>
-            <th>Fio</th>
-            <th>Anexo</th>
-          </tr>
-        );
+       
         setViewList(
           result.map(function (item) {
             return (
@@ -281,6 +288,18 @@ export default function Client() {
             );
           })
         );
+
+        setHeaderList(
+          <tr key="name">
+            <th>Caixas</th>
+            <th>Kg</th>
+            <th>Rolos</th>
+            <th>Sub-total</th>
+            <th>Fornecedor</th>
+            <th>Fio</th>
+            <th>Anexo</th>
+          </tr>
+        );
         setLoading(undefined);
       });
     } else if (url === "leaveMesh") {
@@ -289,15 +308,7 @@ export default function Client() {
       setPlaceholderName("uma saída de fio");
 
       Services.buscarSaidaMalha().then((result) => {
-        console.log(result);
-        setHeaderList(
-          <tr key="name">
-            <th>Saída</th>
-            <th>Anexo</th>
-            <th>Valor Total</th>
-            <th>Cliente</th>
-          </tr>
-        );
+        
         setViewList(
           result.map(function (item) {
             return (
@@ -310,6 +321,15 @@ export default function Client() {
             );
           })
         );
+
+        setHeaderList(
+          <tr key="name">
+            <th>Saída</th>
+            <th>Anexo</th>
+            <th>Valor Total</th>
+            <th>Cliente</th>
+          </tr>
+        );
         setLoading(undefined);
       });
     } else if (url === "productionScreen") {
@@ -317,17 +337,7 @@ export default function Client() {
       setLinkPage("/productionScreen");
       setPlaceholderName("uma produção");
 
-      Services.buscarProducoes().then((result) => {
-        console.log(result);
-        setHeaderList(
-          <tr key="name">
-            <th>Peso</th>
-            <th>Defeitos</th>
-            <th>Cliente</th>
-            <th>Maquina</th>
-            <th>Funcionário</th>
-          </tr>
-        );
+      Services.buscarProducoes().then((result) => {       
         setViewList(
           list.map(function (item) {
             return (
@@ -341,6 +351,16 @@ export default function Client() {
             );
           })
         );
+
+        setHeaderList(
+          <tr key="name">
+            <th>Peso</th>
+            <th>Defeitos</th>
+            <th>Cliente</th>
+            <th>Maquina</th>
+            <th>Funcionário</th>
+          </tr>
+        );
         setLoading(undefined);
       });
     }
@@ -350,11 +370,26 @@ export default function Client() {
     <div className="container">
       <Header></Header>
       <Sidebar></Sidebar>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={{
+          className: "",
+          style: {
+            backgroundColor: "#414141",
+            color: "white",
+          },
+        }}
+      />
 
       <div className="container">
         <main>
           <div className="page">
             <input type="text" placeholder={`Procure ${placeholderName}`} />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2191f80cfa82f7f80e2c2fe3bf903824b7bf8685
 
             <Link to={linkPage}>
               <button>{currentPage}</button>

@@ -37,5 +37,6 @@ async function deletarPossui_Produto(id){
 
 
 module.exports = {
-    procurarPossui_Produtos, procurarPossui_Produto, procurarFioPorMalhaID, criarPossui_Produto, editarPossui_Produto, deletarPossui_Produto
+    // procurarFioPorMalhaID,
+    procurarPossui_Produtos, procurarPossui_Produto, criarPossui_Produto, editarPossui_Produto, deletarPossui_Produto
 };

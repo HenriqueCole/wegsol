@@ -98,7 +98,6 @@ async function deletarProduto(id) {
     }
 }
 
-
 module.exports = {
     procurarProdutos,
     procurarProduto,

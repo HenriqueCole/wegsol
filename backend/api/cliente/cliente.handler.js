@@ -3,8 +3,13 @@ const crud = require('../../crud/server');
 
 async function criarCliente(req, res){
     const cliente = req.body;
+    const clientes = await crud.buscar('cliente');
     if(cliente.nome != "" && cliente.cnpj != ""){
-        return await crud.salvar("cliente", null, cliente);
+        if(clientes.findIndex(c => c.cnpj == cliente.cnpj)){
+            return await crud.salvar("cliente", null, cliente);
+        }else{
+            return "Erro! cnpj existente!"
+        }
     }else{
         return "Erro! Falta algum dado!";
     }
@@ -29,7 +34,7 @@ async function deletarCliente(req, res){
     if(cliente.findIndex(c => c.id == req.params.id) != -1){
     return await crud.remover("cliente", req.params.id);
     }else{
-        return ("Id inválido!");
+        return("Id inválido!");
     }
 }
 

@@ -22,22 +22,7 @@ export default function Client() {
   const [loading, setLoading] = useState();
   const [placeholderName, setPlaceholderName] = useState("");
 
-  function buscarCliente() {
-    Services.buscarCliente().then((result) => {
-      setList(result);
-    });
-  }
 
-  function excluirCliente(id) {
-    Services.excluirCliente(id).then((result) => {
-      buscarCliente();
-      notify();
-
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
-    });
-  }
 
   useEffect(() => {
     setLoading(
@@ -45,6 +30,16 @@ export default function Client() {
         <img src="/loading.svg" alt="" />
       </div>
     );
+
+    function excluirCliente(id) {
+      Services.excluirCliente(id).then((result) => {
+        notify();
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      });
+    }
 
     if (url === "client") {
       setCurrentPage("Cadastrar Cliente");
@@ -59,10 +54,7 @@ export default function Client() {
                 <tr id="" key={item.id}>
                   <td>{item.nome}</td>
                   <td>{item.cnpj}</td>
-                  <div
-                    onClick={() => excluirCliente(item.id)}
-                    className="containerDelete"
-                  >
+                  <div onClick={() => excluirCliente(item.id)} className="containerDelete">
                     <img className="deleteIcon" src={deleteIcon} alt="" />
                   </div>
                 </tr>
@@ -74,6 +66,7 @@ export default function Client() {
           <tr key="name">
             <th>Nome</th>
             <th>CNPJ</th>
+            <th>Excluir</th>
           </tr>
         );
         setLoading(undefined);

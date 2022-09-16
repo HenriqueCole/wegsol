@@ -4,7 +4,7 @@ const crud = require('../../crud/server');
 async function criarCliente(req, res){
     const listaClientes = await await crud.buscar("cliente");
     const cliente = req.body;
-    if(cliente.nome != "" && cliente.cnpj != ""){
+    if(cliente.nome && cliente.cnpj){
         if(listaClientes.filter((Clientes) => Clientes.cnpj == cliente.cnpj).length == 0) {
             return await crud.salvar("cliente", null, cliente);
         } else {

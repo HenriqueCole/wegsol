@@ -13,7 +13,16 @@ async function buscarFio(id) {
 }
 
 async function criarFio(fio) {
-    return await crud.salvar(tabelaFio, null, fio);
+    const listaFios = await crud.buscar(tabelaFio);
+    if(fio.descricao) {
+        if(listaFios.filter((Fios) => Fios.descricao == fio.descricao).length == 0 ) {
+            return await crud.salvar(tabelaFio, null, fio);
+        }else {
+            return "Erro! Descrição já existe!"
+        }
+    } else {
+        return "Erro! Falta ter uma descrição!"
+    }
 }
 
 async function atualizarFio(id, fioAtualizado) {

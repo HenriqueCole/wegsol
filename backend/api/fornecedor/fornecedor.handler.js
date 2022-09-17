@@ -3,7 +3,8 @@ const crud = require("../../crud/server");
 const tabelaFornecedor = "fornecedor";
 
 async function buscarFornecedores() {
-    return await crud.buscar(tabelaFornecedor);
+    // return await crud.buscar(tabelaFornecedor);
+    return [{teste: "teste"}];
 }
 
 async function buscarFornecedor(id) {

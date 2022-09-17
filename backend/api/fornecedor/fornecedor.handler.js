@@ -9,37 +9,37 @@ async function buscarFornecedores() {
 async function buscarFornecedor(id) {
     if (await idExiste(id))
         return await crud.buscarPorId(tabelaFornecedor, id);
-    return `ID inválido!`
+    throw new Error(`ID inválido!`);
 }
 
 async function criarFornecedor(fornecedor) {
     if (!(fornecedor.nome && fornecedor.cnpj) && Object.values(fornecedor).length != 2)
-        return `Para cadastrar um fornecedor é preciso ter somente um nome e CNPJ!`
+        throw new Error(`Para cadastrar um fornecedor é preciso ter somente um nome e CNPJ!`);
 
     if (await cnpjInvalido(fornecedor.cnpj))
-        return `CNPJ já em uso`
+        throw new Error(`CNPJ já em uso`);
 
     return await crud.salvar(tabelaFornecedor, null, fornecedor);
 }
 
 async function atualizarFornecedor(id, fornecedor) {
     if (!await idExiste(id))
-        return `ID inválido!`
+        throw new Error(`ID inválido!`);
 
     if (!(fornecedor.nome && fornecedor.cnpj) && Object.values(fornecedor).length != 2)
-        return `Para atualizar um fornecedor é preciso ter somente um nome e CNPJ!`
-    
+        throw new Error(`Para atualizar um fornecedor é preciso ter somente um nome e CNPJ!`);
+
     return await crud.salvar(tabelaFornecedor, id, fornecedor);
 }
 
 async function deletarFornecedor(id) {
     if (!await idExiste(id))
-        return `ID inválido!`
+        throw new Error(`ID inválido!`);
 
     return await crud.remover(tabelaFornecedor, id);
 }
 
-async function cnpjInvalido (cnpj) {
+async function cnpjInvalido(cnpj) {
     const listaFornecedores = await crud.buscar(tabelaFornecedor);
 
     const cnpjInvalido = listaFornecedores.some((fornecedor) => {

@@ -251,8 +251,8 @@ export default function Client() {
               <tr id="" key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.descricao}</td>
-                <td>{item.fioMalha}</td>
-                <td>{item.cliente}</td>
+                <td>{item.idFio}</td>
+                <td>{item.idCliente.nome}</td>
 
                 <td
                   onClick={() => excluirMalha(item.id)}

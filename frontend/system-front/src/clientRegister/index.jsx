@@ -8,12 +8,12 @@ import { useState } from "react";
 
 import toast, { Toaster } from "react-hot-toast";
 
-const notify = () => toast.success("Cliente cadastrado com sucesso!");
+const notify = (item) => toast.success(item);
 
 export default function clientRegister() {
   function cadastrarCliente() {
     Service.cadastrarCliente(nome, cpf).then((result) => {
-      console.log(result);
+      notify("Cliente cadastrado com sucesso!");
     });
   }
 

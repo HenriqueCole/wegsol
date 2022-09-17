@@ -92,12 +92,12 @@ export default function Client() {
                   <td>{item.id}</td>
                   <td>{item.nome}</td>
                   <td>{item.cnpj}</td>
-                  <div
+                  <td
                     onClick={() => excluirCliente(item.id)}
                     className="containerDelete"
                   >
                     <img className="deleteIcon" src={deleteIcon} alt="" />
-                  </div>
+                  </td>
                 </tr>
               </>
             );
@@ -175,11 +175,11 @@ export default function Client() {
                 <td>{item.arquivo_nf}</td>
                 <td>{item.idFornecedor}</td>
 
-                <div
+                <td
                   onClick={() => excluirProduto(item.id)}
                   className="containerDelete">
                   <img className="deleteIcon" src={deleteIcon} alt="" />
-                </div>
+                </td>
               </tr>
             );
           })
@@ -241,11 +241,11 @@ export default function Client() {
                 <td>{item.cliente}</td>
 
 
-                <div
+                <td
                   onClick={() => excluirMalha(item.id)}
                   className="containerDelete">
                   <img className="deleteIcon" src={deleteIcon} alt="" />
-                </div>
+                </td>
               </tr>
             );
           })
@@ -274,11 +274,11 @@ export default function Client() {
               <tr id="" key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.descricao}</td>
-                <div
+                <td
                   onClick={() => excluirFio(item.id)}
                   className="containerDelete">
                   <img className="deleteIcon" src={deleteIcon} alt="" />
-                </div>
+                </td>
               </tr>
             );
           })
@@ -310,9 +310,9 @@ export default function Client() {
                 <td>{item.idade}</td>
                 <td>{item.salario}</td>
                 <td>{item.turno}</td>
-                <div onClick={() => excluirFuncionario(item.id)} className="containerDelete">
+                <td onClick={() => excluirFuncionario(item.id)} className="containerDelete">
                   <img className="deleteIcon" src={deleteIcon} alt="" />
-                </div>
+                </td>
               </tr>
             );
           })

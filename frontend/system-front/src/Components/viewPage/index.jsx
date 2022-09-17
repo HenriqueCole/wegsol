@@ -12,6 +12,7 @@ const notify = () => toast.success("Excluido com sucesso!");
 
 export default function Client() {
   const [list, setList] = useState([]);
+  const [search, setSearch] = useState("");
 
   let url = window.location.search.substring(1);
   const [currentPage, setCurrentPage] = useState("");
@@ -54,23 +55,36 @@ export default function Client() {
       setPlaceholderName("um cliente");
 
       Services.buscarClientes().then((result) => {
+        if (search !== "") {
+          let filteredList = [];
+          for (let i = 0; i < result.length; i++) {
+            if (result[i].nome == search) {
+              filteredList.push(result[i]);
+            }
+          }
+          setList(filteredList);
+        } else {
+          setList(result.data);
+        }
+
         setViewList(
-          result.map(function (item) {
-            return (
-              <>
-                <tr id="" key={item.id}>
-                  <td>{item.nome}</td>
-                  <td>{item.cnpj}</td>
-                  <div
-                    onClick={() => excluirCliente(item.id)}
-                    className="containerDelete"
-                  >
-                    <img className="deleteIcon" src={deleteIcon} alt="" />
-                  </div>
-                </tr>
-              </>
-            );
-          })
+          list.map((e) => e)
+          // result.map(function (item) {
+          //   return (
+          //     <>
+          //       <tr id="" key={item.id}>
+          //         <td>{item.nome}</td>
+          //         <td>{item.cnpj}</td>
+          //         <div
+          //           onClick={() => excluirCliente(item.id)}
+          //           className="containerDelete"
+          //         >
+          //           <img className="deleteIcon" src={deleteIcon} alt="" />
+          //         </div>
+          //       </tr>
+          //     </>
+          //   );
+          // })
         );
         setHeaderList(
           <tr key="name">
@@ -384,7 +398,14 @@ export default function Client() {
       <div className="container">
         <main>
           <div className="page">
-            <input type="text" placeholder={`Procure ${placeholderName}`} />
+            <input
+              type="text"
+              value={search}
+              placeholder={`Procure ${placeholderName}`}
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+            />
 
             <Link to={linkPage}>
               <button>{currentPage}</button>

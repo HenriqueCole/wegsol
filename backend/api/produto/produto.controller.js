@@ -4,14 +4,14 @@ const router = express.Router();
 const produtoHandler = require('./produto.handler')
 
 router.get("/", async (req, res) => {
-    produtoHandler.procurarProdutos().then(dados => res.json(dados)).catch(error => {
+    res.json(await produtoHandler.procurarProdutos()).catch(error => {
         res.status(404).json(error.message);
     });
 })
 
 router.get("/:id", async(req, res) => {
     const id = req.params.id;
-    produtoHandler.procurarProduto(id).then(dados => res.json(dados)).catch(error => {
+    res.json(await produtoHandler.procurarProduto(id)).catch(error => {
         res.status(404).json(error.message);
     });
 })

@@ -3,10 +3,41 @@ import React from "react";
 import "../styles.scss";
 import Sidebar from "../Components/Sidebar/sidebar";
 import Header from "../Components/Header/header";
+import Service from "../services/service.ts";
 import { useState } from "react";
+import { useEffect } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 export default function addLeaveMesh() {
     const [value, setValue] = useState(0);
+    const [arr, setArr] = useState([]);
+    const [arr2, setArr2] = useState([]);
+
+    const notify = () => toast.success("Saídas Malhas cadastrada com sucesso!");
+
+
+    // useEffect(() => {
+    //     Service.buscarMalha().then((result) => {
+    //         setArr(result);
+    //         console.log(result);
+    //     });
+    // }, []);
+
+    useEffect(() => {
+        Service.buscarClientes().then((result) => {
+            setArr2(result);
+            console.log(result);
+        });
+    }, []);
+
+    // useEffect(() => {
+    //     addToSelect();
+    // }, [arr]);
+
+    useEffect(() => {
+        addToSelect2();
+    }, [arr2]);
 
     function increaseValue() {
         setValue(value + 1);
@@ -19,6 +50,74 @@ export default function addLeaveMesh() {
         }
     }
 
+    // function addToSelect() {
+    //     var select = document.getElementById("selectMesh");
+    //     var elmts = arr;
+
+    //     select.innerHTML = "";
+
+    //     for (var i = 0; i < elmts.length; i++) {
+    //         var opt = document.createElement("option");
+    //         opt.value = elmts[i].descricao + " - " + elmts[i].id;
+    //         opt.innerHTML = elmts[i].descricao + " - " + elmts[i].id;
+    //         select.appendChild(opt);
+    //     }
+    // }
+
+    function addToSelect2() {
+        var select = document.getElementById("selectClient");
+        var elmts = arr2;
+
+        select.innerHTML = "";
+
+        for (var i = 0; i < elmts.length; i++) {
+            var opt = document.createElement("option");
+            opt.value = elmts[i].nome + " - " + elmts[i].id;
+            opt.innerHTML = elmts[i].nome + " - " + elmts[i].id;
+            select.appendChild(opt);
+        }
+    }
+
+    let i = 0;
+
+    function cadastrarSaidasMalhas() {
+        console.log("nf", nf);
+        console.log("preco", preco);
+        console.log("idCliente", cliente);
+        console.log("idMalha", malha);
+        i++;
+        Service.cadastrarSaidasMalhas(nf, preco, cliente).then((result) => {
+            console.log(result);
+            notify();
+        });
+
+        if (Service.cadastrarSaidasMalhas(nf, preco, cliente) != [{}]) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    const [nf, setNf] = useState("");
+    function handleNf(event) {
+        setNf(event.target.value);
+    }
+
+    const [preco, setPreco] = useState(0);
+    function handlePreco(event) {
+        setPreco(event.target.value);
+    }
+
+    const [malha, setMalha] = useState("");
+    function handleMalha(event) {
+        setMalha(event.target.value.split(" - ")[1]);
+    }
+
+    const [cliente, setCliente] = useState("");
+    function handleClient(event) {
+        setCliente(event.target.value.split(" - ")[1]);
+    }
+
     return (
         <div className="container">
             <Header></Header>
@@ -29,49 +128,11 @@ export default function addLeaveMesh() {
                         <span>Adicionar Saída</span>
                     </div>
 
-
-                    <div className="topContainer">
-                        <label>
-                            <span>Quantidade:</span>
-                            <div className="quantidade">
-                                <div className="menos" onClick={decreaseValue}>
-                                    -
-                                </div>
-                                <input type="text" value={value} />
-                                <div className="mais" onClick={increaseValue}>
-                                    +
-                                </div>
-                            </div>
-                        </label>
-
-                        <label className="labelPeso">
-                            <span >Peso:</span>
-                            <div className="inputPeso">
-                                <input type="text" />
-                            </div>
-                        </label>
-                    </div>
-
-                    <br />
-
-                    <div className="qualityContainer">
-                        <label className="labelQuality">
-                            <label className="titleAndInput">
-                                <span>Qualidade</span>
-                                <div className="inputQualidade">
-                                    <input type="text" className="inputQuality" />
-                                </div>
-                            </label>
-                        </label>
-                    </div>
-
-                    <br />
-
                     <div className="nfContainer">
                         <label>
                             <span>Anexar Nota Fiscal: </span>
                             <div className="buttonUpload">
-                                <input type="file" />
+                                <input onChange={handleNf} type="file" />
                             </div>
                         </label>
                     </div>
@@ -82,7 +143,7 @@ export default function addLeaveMesh() {
                         <label className="labelPeso">
                             <span>Preço:</span>
                             <div className="inputPeso">
-                                <input type="text" />
+                                <input onChange={handlePreco} type="text" />
                             </div>
                         </label>
                     </div>
@@ -91,19 +152,29 @@ export default function addLeaveMesh() {
 
                     <div className="priceContainer">
                         <label className="labelPeso">
-                            <span>Malha: </span>
+                            <span>Cliente: </span>
                             <div className="inputPeso">
-                                <input list="mesh" name="mesh" id="meshInput" />
-                                <datalist id="mesh">
-                                    <option value="Poliêster" />
-                                    <option value="Algodão" />
-                                    <option value="DryFit" />
-                                </datalist>
+                                <select onChange={handleClient} id="selectClient"></select>
                             </div>
                         </label>
                     </div>
+
+                    <br />
+
+                    {/* <div className="priceContainer">
+                        <label className="labelPeso">
+                            <span>Malha: </span>
+                            <div className="inputPeso">
+                                <select onChange={handleMalha} id="selectMesh"></select>
+                            </div>
+                        </label>
+                    </div> */}
                     <div className="containerButton">
-                        <button>Concluir</button>
+                        <Link to="/leaveMesh">
+                            <button onClick={cadastrarSaidasMalhas} className="button">
+                                Cadastrar
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </main>

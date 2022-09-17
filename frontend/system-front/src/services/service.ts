@@ -107,6 +107,18 @@ const Services = {
         })
     },
 
+    cadastrarSaidasMalhas: function (nota_fiscal, valor_total, idCliente) {
+        return new Promise((resolve, reject) => {
+            fetch(url + '/saidas_de_malhas', { method: 'POST', body: JSON.stringify({ nota_fiscal: nota_fiscal, valor_total: valor_total, idCliente: idCliente }), headers: { 'Content-Type': 'application/json' } }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
+        })
+    },
+
+    buscarSaidasMalhas: function () {
+        return new Promise((resolve, reject) => {
+            fetch(url + '/saidas_de_malhas', { method: 'GET' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
+        })
+    },
+
     buscarSaidaMalha: function () {
         return new Promise((resolve, reject) => {
             fetch(url + '/saida_de_malha', { method: 'GET' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)

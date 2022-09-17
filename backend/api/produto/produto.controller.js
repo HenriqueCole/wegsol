@@ -4,7 +4,7 @@ const router = express.Router();
 const produtoHandler = require('./produto.handler')
 
 router.get("/", async (req, res) => {
-    res.json(await produtoHandler.procurarProdutos()).catch(error => {
+    produtoHandler.procurarProdutos().then(dados => res.json(dados)).catch(error => {
         res.status(404).json(error.message);
     });
 })

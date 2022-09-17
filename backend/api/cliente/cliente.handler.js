@@ -1,17 +1,16 @@
-const { request } = require('express');
 const crud = require('../../crud/server');
 
 async function criarCliente(req, res){
-    const listaClientes = await await crud.buscar("cliente");
     const cliente = req.body;
-    if(cliente.nome && cliente.cnpj){
-        if(listaClientes.filter((Clientes) => Clientes.cnpj == cliente.cnpj).length == 0) {
+    const clientes = await crud.buscar('cliente');
+    if(cliente.nome != "" && cliente.cnpj != ""){
+        if(clientes.findIndex(c => c.cnpj == cliente.cnpj) == -1){
             return await crud.salvar("cliente", null, cliente);
-        } else {
-            return "Erro! CNPJ já existe!";
+        }else{
+            return "Erro! cnpj existente!"
         }
     }else{
-        return await "Erro! Falta algum dado!";
+        return "Erro! Falta algum dado!";
     }
 }
 
@@ -24,9 +23,8 @@ async function buscarCliente(req, res){
     if(cliente.findIndex(c => c.id == req.params.id) != -1){
         return await crud.buscarPorId("cliente", req.params.id);
     }else{
-        return await "Erro! Id inválido!";
+        return "Erro! Id inválido!";
     }
-    
 }
 
 async function deletarCliente(req, res){
@@ -43,7 +41,7 @@ async function editarCliente(req, res){
     if(cliente.findIndex(c => c.id == req.params.id) != -1){
         return await crud.salvar("cliente", req.params.id, req.body);
     }else{
-        return await "Id inválido!";
+        return "Id inválido!";
     }
 }
 

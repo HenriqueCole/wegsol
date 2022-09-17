@@ -52,6 +52,13 @@ const Services = {
         })
     },
 
+    excluirProduto: function (id) {
+        return new Promise((resolve, reject) => {
+            fetch(url + '/produto/' + id, { method: 'DELETE' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
+        })
+    },
+
+
     cadastrarFornecedor: function (nome, cnpj) {
         return new Promise((resolve, reject) => {
             fetch(url + '/fornecedor', { method: 'POST', body: JSON.stringify({ nome: nome, cnpj: cnpj }), headers: { 'Content-Type': 'application/json' } }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
@@ -73,6 +80,12 @@ const Services = {
     buscarMalha: function () {
         return new Promise((resolve, reject) => {
             fetch(url + '/malha', { method: 'GET' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
+        })
+    },
+
+    excluirFio: function (id) {
+        return new Promise((resolve, reject) => {
+            fetch(url + '/fio/' + id, { method: 'DELETE' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
         })
     },
 

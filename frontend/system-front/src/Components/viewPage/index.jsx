@@ -49,6 +49,36 @@ export default function Client() {
       });
     }
 
+    function excluirProduto(id) {
+      Services.excluirProduto(id).then((result) => {
+        notify();
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      });
+    }
+
+    function excluirFio(id) {
+      Services.excluirFio(id).then((result) => {
+        notify();
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      });
+    }
+
+    function excluirMalha(id) {
+      Services.excluirMalha(id).then((result) => {
+        notify();
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      });
+    }
+
     if (url === "client") {
       setCurrentPage("Cadastrar Cliente");
       setLinkPage("/clientRegister");
@@ -88,6 +118,7 @@ export default function Client() {
         );
         setHeaderList(
           <tr key="name">
+            <th>ID</th>
             <th>Nome</th>
             <th>CNPJ</th>
             <th>Excluir</th>
@@ -105,6 +136,7 @@ export default function Client() {
           result.map(function (item) {
             return (
               <tr id="" key={item.id}>
+                <td>{item.id}</td>
                 <td>{item.nome}</td>
                 <td>{item.marca}</td>
                 <td>{item.ano_fabricacao}</td>
@@ -123,6 +155,7 @@ export default function Client() {
 
         setHeaderList(
           <tr key="name">
+            <th>ID</th>
             <th>Nome</th>
             <th>Marca</th>
             <th>Ano Fab.</th>
@@ -148,11 +181,19 @@ export default function Client() {
           result.map(function (item) {
             return (
               <tr id="" key={item.id}>
+                <td>{item.id}</td>
                 <td>{item.descricao}</td>
                 <td>{item.quantidade}</td>
                 <td>{item.valor_total_produto}</td>
                 <td>{item.arquivo_nf}</td>
                 <td>{item.idFornecedor}</td>
+
+                <td
+                  onClick={() => excluirProduto(item.id)}
+                  className="containerDelete"
+                >
+                  <img className="deleteIcon" src={deleteIcon} alt="" />
+                </td>
               </tr>
             );
           })
@@ -160,11 +201,13 @@ export default function Client() {
 
         setHeaderList(
           <tr key="name">
+            <th>ID</th>
             <th>Descrição</th>
             <th>Quantidade</th>
             <th>Valor Total</th>
             <th>Anexo</th>
             <th>Fornecedor</th>
+            <th>Excluir</th>
           </tr>
         );
         setLoading(undefined);
@@ -179,6 +222,7 @@ export default function Client() {
           result.map(function (item) {
             return (
               <tr id="" key={item.id}>
+                <td>{item.id}</td>
                 <td>{item.nome}</td>
                 <td>{item.cnpj}</td>
               </tr>
@@ -188,6 +232,7 @@ export default function Client() {
 
         setHeaderList(
           <tr key="name">
+            <th>ID</th>
             <th>Nome</th>
             <th>CNPJ</th>
           </tr>
@@ -204,9 +249,17 @@ export default function Client() {
           result.map(function (item) {
             return (
               <tr id="" key={item.id}>
+                <td>{item.id}</td>
                 <td>{item.descricao}</td>
                 <td>{item.fioMalha}</td>
                 <td>{item.cliente}</td>
+
+                <td
+                  onClick={() => excluirMalha(item.id)}
+                  className="containerDelete"
+                >
+                  <img className="deleteIcon" src={deleteIcon} alt="" />
+                </td>
               </tr>
             );
           })
@@ -214,9 +267,11 @@ export default function Client() {
 
         setHeaderList(
           <tr key="name">
+            <th>ID</th>
             <th>Descrição</th>
             <th>Fio Malha</th>
             <th>Cliente</th>
+            <th>Excluir</th>
           </tr>
         );
         setLoading(undefined);
@@ -231,7 +286,14 @@ export default function Client() {
           result.map(function (item) {
             return (
               <tr id="" key={item.id}>
+                <td>{item.id}</td>
                 <td>{item.descricao}</td>
+                <td
+                  onClick={() => excluirFio(item.id)}
+                  className="containerDelete"
+                >
+                  <img className="deleteIcon" src={deleteIcon} alt="" />
+                </td>
               </tr>
             );
           })
@@ -239,7 +301,9 @@ export default function Client() {
 
         setHeaderList(
           <tr key="name">
+            <th>ID</th>
             <th>Descrição</th>
+            <th>Excluir</th>
           </tr>
         );
         setLoading(undefined);
@@ -254,17 +318,18 @@ export default function Client() {
           result.map(function (item) {
             return (
               <tr id="" key={item.id}>
+                <td>{item.id}</td>
                 <td>{item.nome}</td>
                 <td>{item.cpf}</td>
                 <td>{item.idade}</td>
                 <td>{item.salario}</td>
                 <td>{item.turno}</td>
-                <div
+                <td
                   onClick={() => excluirFuncionario(item.id)}
                   className="containerDelete"
                 >
                   <img className="deleteIcon" src={deleteIcon} alt="" />
-                </div>
+                </td>
               </tr>
             );
           })
@@ -272,11 +337,13 @@ export default function Client() {
 
         setHeaderList(
           <tr key="name">
+            <th>ID</th>
             <th>Nome</th>
             <th>CNPJ</th>
             <th>Idade</th>
             <th>Salário</th>
             <th>Turno</th>
+            <td>Excluir</td>
           </tr>
         );
         setLoading(undefined);

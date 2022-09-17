@@ -4,38 +4,28 @@ const router = express.Router();
 const produtoHandler = require('./produto.handler')
 
 router.get("/", async (req, res) => {
-    res.json(await produtoHandler.procurarProdutos()).catch(error => {
-        res.status(404).json(error.message);
-    });
+    res.json(await produtoHandler.procurarProdutos())
 })
 
 router.get("/:id", async(req, res) => {
     const id = req.params.id;
-    res.json(await produtoHandler.procurarProduto(id)).catch(error => {
-        res.status(404).json(error.message);
-    });
+    res.json(await produtoHandler.procurarProduto(id))
 })
 
 router.post("/", async (req, res) => {
     const dados = req.body;
-    res.json(await produtoHandler.criarProduto(dados)).catch(error => {
-        res.status(404).json(error.message);
-    });
+    res.json(await produtoHandler.criarProduto(dados));
 })
 
 router.put("/:id", async (req, res) => {
     const id = req.params.id;
     const dados = req.body;
-    res.json(await produtoHandler.editarProduto(dados, id)).catch(error => {
-        res.status(404).json(error.message);
-    });
+    res.json(await produtoHandler.editarProduto(dados, id))
 })
 
 router.delete("/:id", async (req, res) => {
     const id = req.params.id;
-    res.json(await produtoHandler.deletarProduto(id)).catch(error => {
-        res.status(404).json(error.message);
-    });
+    res.json(await produtoHandler.deletarProduto(id));
 })
 
 module.exports = router

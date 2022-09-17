@@ -3,8 +3,7 @@ const crud = require("../../crud/server");
 const tabelaFornecedor = "fornecedor";
 
 async function buscarFornecedores() {
-    // return await crud.buscar(tabelaFornecedor);
-    return [{teste: "teste"}];
+    return await crud.buscar(tabelaFornecedor);
 }
 
 async function buscarFornecedor(id) {
@@ -16,6 +15,7 @@ async function buscarFornecedor(id) {
 async function criarFornecedor(fornecedor) {
     if (!(fornecedor.nome && fornecedor.cnpj) && Object.values(fornecedor).length != 2)
         throw new Error(`Para cadastrar um fornecedor é preciso ter somente um nome e CNPJ!`);
+
 
     if (await cnpjInvalido(fornecedor.cnpj))
         throw new Error(`CNPJ já em uso`);

@@ -332,8 +332,17 @@ label {
   th,
   td {
     border-radius: 2px;
+
+    &:hover{
+      background-color: #505050;
+    }
   }
+
+  
+
+
 }
+
 
 .loading {
   display: flex;

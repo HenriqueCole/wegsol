@@ -5,13 +5,13 @@ async function criarMaquina(req, res) {
     const maquinas = await crud.buscar("maquina");
     const malha = await crud.buscar("malha");
     //trocar a condição
+    // console.log()
     if (maquina.nome && maquina.marca && maquina.ano_fabricacao && maquina.ano_compra
         && maquina.valor_compra && maquina.rpm && maquina.qtd_agulhas && maquina.qtd_blocos
         && maquina.qtd_platinas &&
         maquina.qtd_gaiolas && maquina.qtd_cones_por_gaiola && maquina.idMalha) {
-            return "maquina: " + maquina.nome;
         if (malha.filter((Malha) => Malha.id == maquina.idMalha) != "") {
-            if(maquinas.findIndex(m => m.nome == maquina.nome) != -1){
+            if(maquinas.findIndex(m => m.nome == maquina.nome) == -1 || maquinas.findIndex(m => m.marca == maquina.marca) == -1){
                 return await crud.salvar("maquina", null, maquina);
             }else{
                 return "Erro! Já existe com este nome e esta marca!";

@@ -16,9 +16,10 @@ router.get('/:id', (req, res) => {
 })
 
 router.post("/", (req, res) => {   
-    maquinaHandler.criarMaquina(req, res).then(dados => res.json(dados)).catch(error => {
-        res.status(404).json(error.message);
-    });
+    maquinaHandler.criarMaquina(req, res).then(dados => res.json(dados))
+    // .catch(error => {
+    //     res.status(404).json(error.message);
+    // });
 })
 
 router.delete("/:id", (req, res) => {   

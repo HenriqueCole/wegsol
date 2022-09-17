@@ -9,36 +9,36 @@ async function buscarEntradas_De_Fios() {
 async function buscarEntrada_De_Fio(id) {
     if (await idExiste(id))
         return await crud.buscarPorId(tabelaEntrada_De_Fio, id);
-    throw new Error(`ID inválido!`);
+    return `ID inválido!`
 }
 
 async function criarEntrada_De_Fio(entrada_de_fio) {
     if (entrada_de_fioTemPropriedades(entrada_de_fio) && Object.values(entrada_de_fio).length != 8)
-        throw new Error(`Para cadastrar um entrada_de_fio é preciso ter os seguintes campos: qtd_caixa, qtd_kg, subtotal, qtd_rolos_por_caixa, arquivo_nf, idFornecedor, idFio, idCliente!`);
-
+        return `Para cadastrar um entrada_de_fio é preciso ter os seguintes campos: qtd_caixa, qtd_kg, subtotal, qtd_rolos_por_caixa, arquivo_nf, idFornecedor, idFio, idCliente!`
+    
     if (!await chaveSecundariaValida(entrada_de_fio))
-        throw new Error(`Há chaves secundárias inválidas!`);
-
+        return `Há chaves secundárias inválidas!`
+        
     return await crud.salvar(tabelaEntrada_De_Fio, null, entrada_de_fio);
 }
 
 async function atualizarEntrada_De_Fio(id, entrada_de_fio) {
     if (!await idExiste(id))
-        throw new Error(`ID inválido!`);
+        return `ID inválido!`
 
     if (entrada_de_fioTemPropriedades(entrada_de_fio) && Object.values(entrada_de_fio).length != 8)
-        throw new Error(`Para atualizar um entrada_de_fio é preciso ter os seguintes campos: qtd_caixa, qtd_kg, subtotal, qtd_rolos_por_caixa, arquivo_nf, idFornecedor, idFio, idCliente!`);
-
+        return `Para atualizar um entrada_de_fio é preciso ter os seguintes campos: qtd_caixa, qtd_kg, subtotal, qtd_rolos_por_caixa, arquivo_nf, idFornecedor, idFio, idCliente!`
+    
     if (!await chaveSecundariaValida(entrada_de_fio))
-        throw new Error(`Há chaves secundárias inválidas!`);
+        return `Há chaves secundárias inválidas!`
 
     return await crud.salvar(tabelaEntrada_De_Fio, id, entrada_de_fio);
 }
 
 async function deletarEntrada_De_Fio(id) {
     if (!await idExiste(id))
-        throw new Error(`ID inválido!`);
-
+        return `ID inválido!`
+        
     return await crud.remover(tabelaEntrada_De_Fio, id);
 }
 

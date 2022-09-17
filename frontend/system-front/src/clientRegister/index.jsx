@@ -8,14 +8,12 @@ import { useState } from "react";
 
 import toast, { Toaster } from "react-hot-toast";
 
-const notify = () => toast.success("Cliente cadastrado com sucesso!");
-
+const notify = (item) => toast.success(item);
 
 export default function clientRegister() {
-
   function cadastrarCliente() {
     Service.cadastrarCliente(nome, cpf).then((result) => {
-      console.log(result);
+      notify("Cliente cadastrado com sucesso!");
     });
   }
 
@@ -28,7 +26,6 @@ export default function clientRegister() {
   function handleCpf(event) {
     setCpf(event.target.value);
   }
-
 
   return (
     <div className="container">
@@ -61,7 +58,7 @@ export default function clientRegister() {
             </label>
           </div>
           <div className="containerButton">
-            <button onClick={cadastrarCliente} >Concluir</button>
+            <button onClick={cadastrarCliente}>Concluir</button>
           </div>
         </div>
       </main>

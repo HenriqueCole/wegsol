@@ -42,6 +42,24 @@ main {
   margin-left: 200px;
 }
 
+.deleteIcon {
+  height: 30px;
+  width: 30px;
+}
+
+.deleteAllIcon {
+  height: 30px;
+  width: 30px;
+}
+
+.containerDelete {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .container {
   display: flex;
   width: 100%;
@@ -50,7 +68,6 @@ main {
   font-weight: 400;
 
   .form {
-
     .labelQuality {
       display: flex;
       justify-content: center;
@@ -73,7 +90,7 @@ main {
       height: 2rem;
       border-radius: 0.4rem;
       border: none;
-      transition: .4s;
+      transition: 0.4s;
     }
 
     button:hover {
@@ -234,7 +251,6 @@ label {
   }
 }
 
-
 .saida {
   width: 100%;
   display: flex;
@@ -265,7 +281,6 @@ label {
     padding: 15px;
     color: #000;
   }
-
 
   a {
     width: auto !important;
@@ -317,10 +332,17 @@ label {
   th,
   td {
     border-radius: 2px;
+
+    &:hover{
+      background-color: #505050;
+    }
   }
+
+  
 
 
 }
+
 
 .loading {
   display: flex;

@@ -4,7 +4,7 @@ const router = express.Router();
 const malhaHandler = require('./malha.handler')
 
 router.get("/", async (req, res) => {
-    res.json(await malhaHandler.procurarMalhas())
+    res.json(await malhaHandler.procurarMalhas());
 })
 
 router.get("/:id", async(req, res) => {

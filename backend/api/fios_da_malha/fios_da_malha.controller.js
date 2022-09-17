@@ -4,7 +4,7 @@ const router = express.Router();
 const fios_da_malhaHandler = require('./fios_da_malha.handler')
 
 router.get("/", async (req, res) => {
-    res.json(await fios_da_malhaHandler.procurarFios_Da_Malhas())
+    res.json(await fios_da_malhaHandler.procurarFios_Da_Malhas());
 })
 
 router.get("/:id", async(req, res) => {

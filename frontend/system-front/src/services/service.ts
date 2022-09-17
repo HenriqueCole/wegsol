@@ -1,9 +1,8 @@
 
-const url = "https://system-three.vercel.app/api";
+const url = "https://backend-ten-sigma.vercel.app/api";
 
 
 const Services = {
-
 
     cadastrarCliente: function (nome, cnpj) {
         return new Promise((resolve, reject) => {
@@ -11,9 +10,21 @@ const Services = {
         })
     },
 
+    excluirCliente: function (id) {
+        return new Promise((resolve, reject) => {
+            fetch(url + '/cliente/' + id, { method: 'DELETE' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
+        })
+    },
+
     buscarClientes: async function () {
         return new Promise((resolve, reject) => {
             fetch(url + '/cliente', { method: 'GET' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
+        })
+    },
+
+    buscarCliente: async function (id) {
+        return new Promise((resolve, reject) => {
+            fetch(url + '/cliente/' + id, { method: 'GET' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
         })
     },
 
@@ -41,6 +52,13 @@ const Services = {
         })
     },
 
+    excluirProduto: function (id) {
+        return new Promise((resolve, reject) => {
+            fetch(url + '/produto/' + id, { method: 'DELETE' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
+        })
+    },
+
+
     cadastrarFornecedor: function (nome, cnpj) {
         return new Promise((resolve, reject) => {
             fetch(url + '/fornecedor', { method: 'POST', body: JSON.stringify({ nome: nome, cnpj: cnpj }), headers: { 'Content-Type': 'application/json' } }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
@@ -65,6 +83,12 @@ const Services = {
         })
     },
 
+    excluirFio: function (id) {
+        return new Promise((resolve, reject) => {
+            fetch(url + '/fio/' + id, { method: 'DELETE' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
+        })
+    },
+
     cadastrarFio: function (descricao) {
         return new Promise((resolve, reject) => {
             fetch(url + '/fio', { method: 'POST', body: JSON.stringify({ descricao: descricao }), headers: { 'Content-Type': 'application/json' } }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
@@ -80,6 +104,12 @@ const Services = {
     cadastrarFuncionario: function (nome, cpf, idade, salario, turno) {
         return new Promise((resolve, reject) => {
             fetch(url + '/funcionario', { method: 'POST', body: JSON.stringify({ nome: nome, cpf: cpf, idade: idade, salario: salario, turno: turno }), headers: { 'Content-Type': 'application/json' } }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
+        })
+    },
+
+    excluirFuncionario: function (id) {
+        return new Promise((resolve, reject) => {
+            fetch(url + '/funcionario/' + id, { method: 'DELETE' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
         })
     },
 

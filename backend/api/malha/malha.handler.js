@@ -1,17 +1,31 @@
 const crud = require("../../crud/server");
+
+const malha_do_cliente = require("../malha_do_cliente/malha_do_cliente.handler");
+const fios_da_malha = require("../fios_da_malha/fios_da_malha.handler");
+
 const tabela = "malha";
 const tabelaFio = "fio";
-const fios_da_malha = require("../fios_da_malha/fios_da_malha.handler");
-const malha_do_cliente = require("../malha_do_cliente/malha_do_cliente.handler");
+const tabelaCliente = "cliente";
 
 async function procurarMalhas() {
   let malhas = await crud.buscar(tabela);
 
-  // for (let malha of malhas) {
-  //   malha.idFio = await fios_da_malha.procurarFios_Da_Malha(malha.id);
+  for (let malha of malhas) {
+    let clienteId = await malha_do_cliente.procurarClientePorMalhaID(malha.id);
+    let cliente = await crud.buscarPorId(tabelaCliente, clienteId);
+    malha.idCliente = cliente;
 
-  //   malha.idCliente = await malha_do_cliente.procurarMalha_Do_Cliente(malha.id);
-  // }
+    let listaFiosMalha = await fios_da_malha.procurarFioPorMalhaID(malha.id);
+    let listaFios = [];
+    
+    for (let fioMalha of listaFiosMalha) {
+      let fio = await crud.buscarPorId(tabelaFio, fioMalha.idFio);
+      
+      listaFios.push(fio.descricao);
+    }
+
+    malha.idFio = listaFios;
+  }
 
   return malhas;
 }

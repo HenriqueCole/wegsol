@@ -4,7 +4,7 @@ const router = express.Router();
 const fioHandler = require("./fio.handler");
 
 router.get("/", async (req, res) => {
-    res.json(await fioHandler.buscarFios());
+    res.json(await fioHandler.buscarFios())
 });
 
 router.get("/:id", async (req, res) => {

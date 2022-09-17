@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async(req, res) => {
     const id = req.params.id;
-    produtoHandler.procurarProduto(req, res).then(dados => res.json(dados)).catch(error => {
+    res.json(await produtoHandler.procurarProduto(id)).catch(error => {
         res.status(404).json(error.message);
     });
 })

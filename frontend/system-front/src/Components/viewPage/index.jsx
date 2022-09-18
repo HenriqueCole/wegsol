@@ -276,7 +276,7 @@ export default function Client() {
         );
         setLoading(undefined);
       });
-    } else if (url === "wire") {
+    } else if(url === "wire") {
       setCurrentPage("Cadastrar Fio");
       setLinkPage("/wireRegister");
       setPlaceholderName("um Fio");

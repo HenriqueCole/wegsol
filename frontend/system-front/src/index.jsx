@@ -18,7 +18,6 @@ import AddLeaveMesh from "./addLeaveMesh";
 import EnterWire from "./enterWire";
 import ProductionScreen from "./productionScreen";
 import Header from "./Components/Header/header";
-
 import View from "./Components/viewPage"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

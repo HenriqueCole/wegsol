@@ -22,6 +22,14 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "eslintConfig": {
+    "extends": [
+      "react-hooks"
+    ],
+    "plugins": [
+      "react-hooks"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",

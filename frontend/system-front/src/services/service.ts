@@ -28,17 +28,18 @@ const Services = {
         })
     },
 
+    buscarMaquinas: function () {
+        return new Promise((resolve, reject) => {
+            fetch(url + '/maquina', { method: 'GET' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
+        })
+    },
+    
     cadastrarMaquina: function (nome, marca, anoFabicacao, anoCompra, valorCompra, RPM, agulhas, platinas, blocos, gaiolas, cones, idMalha) {
         return new Promise((resolve, reject) => {
             fetch(url + '/maquina', { method: 'POST', body: JSON.stringify({ nome: nome, marca: marca, ano_fabricacao: anoFabicacao, ano_compra: anoCompra, valor_compra: valorCompra, rpm: RPM, qtd_agulhas: agulhas, qtd_blocos: blocos, qtd_platinas: platinas, qtd_gaiolas: gaiolas, qtd_cones_por_gaiola: cones, idMalha: idMalha }), headers: { 'Content-Type': 'application/json' } }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
         })
     },
 
-    buscarMaquinas: function () {
-        return new Promise((resolve, reject) => {
-            fetch(url + '/maquina', { method: 'GET' }).then(function (result) { return result.json(); }).then(resolve).catch(resolve)
-        })
-    },
 
     cadastrarProduto: function (descricao, quantidade, valor_total_produto, arquivo_nf, idFornecedor, idMaquina) {
         return new Promise((resolve, reject) => {

@@ -98,23 +98,23 @@ export default function Client() {
         }
 
         setViewList(
-          list.map((e) => e)
-          // result.map(function (item) {
-          //   return (
-          //     <>
-          //       <tr id="" key={item.id}>
-          //         <td>{item.nome}</td>
-          //         <td>{item.cnpj}</td>
-          //         <div
-          //           onClick={() => excluirCliente(item.id)}
-          //           className="containerDelete"
-          //         >
-          //           <img className="deleteIcon" src={deleteIcon} alt="" />
-          //         </div>
-          //       </tr>
-          //     </>
-          //   );
-          // })
+          result.map(function (item) {
+            return (
+              <>
+                <tr id="" key={item.id}>
+                  <td>{item.id}</td>
+                  <td>{item.nome}</td>
+                  <td>{item.cnpj}</td>
+                  <div
+                    onClick={() => excluirCliente(item.id)}
+                    className="containerDelete"
+                  >
+                    <img className="deleteIcon" src={deleteIcon} alt="" />
+                  </div>
+                </tr>
+              </>
+            );
+          })
         );
         setHeaderList(
           <tr key="name">
@@ -276,7 +276,7 @@ export default function Client() {
         );
         setLoading(undefined);
       });
-    } else if(url === "wire") {
+    } else if (url === "wire") {
       setCurrentPage("Cadastrar Fio");
       setLinkPage("/wireRegister");
       setPlaceholderName("um Fio");

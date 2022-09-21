@@ -11,7 +11,6 @@ import toast, { Toaster } from "react-hot-toast";
 const notify = () => toast.success("Malha cadastrada com sucesso!");
 
 export default function meshRegister() {
-
   function cadastrarMalhas() {
     Service.cadastrarMalhas(descricao, malha, cliente).then((result) => {
       console.log(descricao, malha, cliente);
@@ -58,7 +57,11 @@ export default function meshRegister() {
           <div className="containerInputs">
             <label>
               <span>Descrição:</span>
-              <textarea onChange={handleDescricao} cols="30" rows="10"></textarea>
+              <textarea
+                onChange={handleDescricao}
+                cols="30"
+                rows="10"
+              ></textarea>
             </label>
 
             <label>
